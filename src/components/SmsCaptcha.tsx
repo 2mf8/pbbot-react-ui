@@ -6,9 +6,6 @@ import { dto } from '../api/gen/proto'
 const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
     const { botId } = props
     const [smsResult, setSmsResult] = useState("");
-    const handleSmsResultChange = (e) => {
-        setSmsResult(e.target.value)
-    }
     const handleSubmitClick = () => {
         service.solveCaptcha({
             botId: botId,
@@ -22,7 +19,7 @@ const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
                     <span className="ant-form-text">手机短信</span>
                 </Form.Item>
                 <Form.Item label="验证码">
-                    <Input onChange={handleSmsResultChange} />
+                    <Input onChange={(e) => { setSmsResult(e.target.value) }} />
                 </Form.Item>
                 <Form.Item >
                     <Button type="primary" onClick={handleSubmitClick}>

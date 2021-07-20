@@ -64,10 +64,6 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
         setFetchQRCodeResp({})
     }
 
-    const handleDeviceSeedChange = (value: number) => {
-        setDeviceSeed(value)
-    }
-
     const handleFetchQRCode = async () => {
         try {
             let resp = await service.fetchQRCode({ deviceSeed: Long.fromNumber(deviceSeed) })
@@ -78,13 +74,12 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
                 description: e.toString(),
             });
         }
-
-
     }
 
     return (
         <>
             <Modal
+                title="扫码创建"
                 visible={isVisible}
                 onCancel={onClose}
                 okButtonProps={{ style: { display: 'none' } }}
@@ -100,7 +95,7 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
                             value={deviceSeed}
                             max={4503599627370496}
                             style={{ width: 180 }}
-                            onChange={handleDeviceSeedChange}
+                            onChange={(value) => { setDeviceSeed(value) }}
 
                         />
                     </Form.Item>

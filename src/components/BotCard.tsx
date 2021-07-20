@@ -19,6 +19,7 @@ const BotCard = (props: dto.IBot) => {
         } catch (e) {
             notification["error"]({
                 message: '删除失败',
+                description: e.toString(),
             });
         }
     }
@@ -37,6 +38,7 @@ const BotCard = (props: dto.IBot) => {
                         okText="Yes"
                         onConfirm={handleDeleteBot}
                         cancelText="No"
+                        okType="error"
                     >
                         <DeleteOutlined key="delete" />
                     </Popconfirm>,
