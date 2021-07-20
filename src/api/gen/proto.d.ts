@@ -1,0 +1,1592 @@
+import * as $protobuf from "protobufjs";
+/** Namespace dto. */
+export namespace dto {
+
+    /** Properties of a Bot. */
+    interface IBot {
+
+        /** Bot botId */
+        botId?: (Long|null);
+
+        /** Bot isOnline */
+        isOnline?: (boolean|null);
+
+        /** Bot captcha */
+        captcha?: (dto.Bot.ICaptcha|null);
+    }
+
+    /** Represents a Bot. */
+    class Bot implements IBot {
+
+        /**
+         * Constructs a new Bot.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IBot);
+
+        /** Bot botId. */
+        public botId: Long;
+
+        /** Bot isOnline. */
+        public isOnline: boolean;
+
+        /** Bot captcha. */
+        public captcha?: (dto.Bot.ICaptcha|null);
+
+        /**
+         * Creates a new Bot instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Bot instance
+         */
+        public static create(properties?: dto.IBot): dto.Bot;
+
+        /**
+         * Encodes the specified Bot message. Does not implicitly {@link dto.Bot.verify|verify} messages.
+         * @param message Bot message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IBot, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Bot message, length delimited. Does not implicitly {@link dto.Bot.verify|verify} messages.
+         * @param message Bot message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IBot, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a Bot message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Bot
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.Bot;
+
+        /**
+         * Decodes a Bot message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Bot
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.Bot;
+
+        /**
+         * Verifies a Bot message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a Bot message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Bot
+         */
+        public static fromObject(object: { [k: string]: any }): dto.Bot;
+
+        /**
+         * Creates a plain object from a Bot message. Also converts values to other types if specified.
+         * @param message Bot
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.Bot, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Bot to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    namespace Bot {
+
+        /** Properties of a Captcha. */
+        interface ICaptcha {
+
+            /** Captcha botId */
+            botId?: (Long|null);
+
+            /** Captcha captchaType */
+            captchaType?: (dto.Bot.Captcha.CaptchaType|null);
+
+            /** Captcha url */
+            url?: (string|null);
+
+            /** Captcha image */
+            image?: (Uint8Array|null);
+        }
+
+        /** Represents a Captcha. */
+        class Captcha implements ICaptcha {
+
+            /**
+             * Constructs a new Captcha.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: dto.Bot.ICaptcha);
+
+            /** Captcha botId. */
+            public botId: Long;
+
+            /** Captcha captchaType. */
+            public captchaType: dto.Bot.Captcha.CaptchaType;
+
+            /** Captcha url. */
+            public url?: (string|null);
+
+            /** Captcha image. */
+            public image?: (Uint8Array|null);
+
+            /** Captcha data. */
+            public data?: ("url"|"image");
+
+            /**
+             * Creates a new Captcha instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Captcha instance
+             */
+            public static create(properties?: dto.Bot.ICaptcha): dto.Bot.Captcha;
+
+            /**
+             * Encodes the specified Captcha message. Does not implicitly {@link dto.Bot.Captcha.verify|verify} messages.
+             * @param message Captcha message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: dto.Bot.ICaptcha, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Captcha message, length delimited. Does not implicitly {@link dto.Bot.Captcha.verify|verify} messages.
+             * @param message Captcha message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: dto.Bot.ICaptcha, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Captcha message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Captcha
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.Bot.Captcha;
+
+            /**
+             * Decodes a Captcha message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Captcha
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.Bot.Captcha;
+
+            /**
+             * Verifies a Captcha message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Captcha message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Captcha
+             */
+            public static fromObject(object: { [k: string]: any }): dto.Bot.Captcha;
+
+            /**
+             * Creates a plain object from a Captcha message. Also converts values to other types if specified.
+             * @param message Captcha
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: dto.Bot.Captcha, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Captcha to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        namespace Captcha {
+
+            /** CaptchaType enum. */
+            enum CaptchaType {
+                PIC_CAPTCHA = 0,
+                SLIDER_CAPTCHA = 1,
+                UNSAFE_DEVICE_LOGIN_VERIFY = 2,
+                SMS = 4
+            }
+        }
+    }
+
+    /** Properties of a CreateBotReq. */
+    interface ICreateBotReq {
+
+        /** CreateBotReq botId */
+        botId?: (Long|null);
+
+        /** CreateBotReq password */
+        password?: (string|null);
+
+        /** CreateBotReq deviceSeed */
+        deviceSeed?: (Long|null);
+    }
+
+    /** Represents a CreateBotReq. */
+    class CreateBotReq implements ICreateBotReq {
+
+        /**
+         * Constructs a new CreateBotReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.ICreateBotReq);
+
+        /** CreateBotReq botId. */
+        public botId: Long;
+
+        /** CreateBotReq password. */
+        public password: string;
+
+        /** CreateBotReq deviceSeed. */
+        public deviceSeed: Long;
+
+        /**
+         * Creates a new CreateBotReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns CreateBotReq instance
+         */
+        public static create(properties?: dto.ICreateBotReq): dto.CreateBotReq;
+
+        /**
+         * Encodes the specified CreateBotReq message. Does not implicitly {@link dto.CreateBotReq.verify|verify} messages.
+         * @param message CreateBotReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.ICreateBotReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified CreateBotReq message, length delimited. Does not implicitly {@link dto.CreateBotReq.verify|verify} messages.
+         * @param message CreateBotReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.ICreateBotReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a CreateBotReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns CreateBotReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.CreateBotReq;
+
+        /**
+         * Decodes a CreateBotReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns CreateBotReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.CreateBotReq;
+
+        /**
+         * Verifies a CreateBotReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a CreateBotReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns CreateBotReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.CreateBotReq;
+
+        /**
+         * Creates a plain object from a CreateBotReq message. Also converts values to other types if specified.
+         * @param message CreateBotReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.CreateBotReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this CreateBotReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a CreateBotResp. */
+    interface ICreateBotResp {
+    }
+
+    /** Represents a CreateBotResp. */
+    class CreateBotResp implements ICreateBotResp {
+
+        /**
+         * Constructs a new CreateBotResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.ICreateBotResp);
+
+        /**
+         * Creates a new CreateBotResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns CreateBotResp instance
+         */
+        public static create(properties?: dto.ICreateBotResp): dto.CreateBotResp;
+
+        /**
+         * Encodes the specified CreateBotResp message. Does not implicitly {@link dto.CreateBotResp.verify|verify} messages.
+         * @param message CreateBotResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.ICreateBotResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified CreateBotResp message, length delimited. Does not implicitly {@link dto.CreateBotResp.verify|verify} messages.
+         * @param message CreateBotResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.ICreateBotResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a CreateBotResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns CreateBotResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.CreateBotResp;
+
+        /**
+         * Decodes a CreateBotResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns CreateBotResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.CreateBotResp;
+
+        /**
+         * Verifies a CreateBotResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a CreateBotResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns CreateBotResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.CreateBotResp;
+
+        /**
+         * Creates a plain object from a CreateBotResp message. Also converts values to other types if specified.
+         * @param message CreateBotResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.CreateBotResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this CreateBotResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a DeleteBotReq. */
+    interface IDeleteBotReq {
+
+        /** DeleteBotReq botId */
+        botId?: (Long|null);
+    }
+
+    /** Represents a DeleteBotReq. */
+    class DeleteBotReq implements IDeleteBotReq {
+
+        /**
+         * Constructs a new DeleteBotReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IDeleteBotReq);
+
+        /** DeleteBotReq botId. */
+        public botId: Long;
+
+        /**
+         * Creates a new DeleteBotReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeleteBotReq instance
+         */
+        public static create(properties?: dto.IDeleteBotReq): dto.DeleteBotReq;
+
+        /**
+         * Encodes the specified DeleteBotReq message. Does not implicitly {@link dto.DeleteBotReq.verify|verify} messages.
+         * @param message DeleteBotReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IDeleteBotReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeleteBotReq message, length delimited. Does not implicitly {@link dto.DeleteBotReq.verify|verify} messages.
+         * @param message DeleteBotReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IDeleteBotReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeleteBotReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeleteBotReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.DeleteBotReq;
+
+        /**
+         * Decodes a DeleteBotReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeleteBotReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.DeleteBotReq;
+
+        /**
+         * Verifies a DeleteBotReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeleteBotReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeleteBotReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.DeleteBotReq;
+
+        /**
+         * Creates a plain object from a DeleteBotReq message. Also converts values to other types if specified.
+         * @param message DeleteBotReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.DeleteBotReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeleteBotReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a DeleteBotResp. */
+    interface IDeleteBotResp {
+    }
+
+    /** Represents a DeleteBotResp. */
+    class DeleteBotResp implements IDeleteBotResp {
+
+        /**
+         * Constructs a new DeleteBotResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IDeleteBotResp);
+
+        /**
+         * Creates a new DeleteBotResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeleteBotResp instance
+         */
+        public static create(properties?: dto.IDeleteBotResp): dto.DeleteBotResp;
+
+        /**
+         * Encodes the specified DeleteBotResp message. Does not implicitly {@link dto.DeleteBotResp.verify|verify} messages.
+         * @param message DeleteBotResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IDeleteBotResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeleteBotResp message, length delimited. Does not implicitly {@link dto.DeleteBotResp.verify|verify} messages.
+         * @param message DeleteBotResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IDeleteBotResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeleteBotResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeleteBotResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.DeleteBotResp;
+
+        /**
+         * Decodes a DeleteBotResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeleteBotResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.DeleteBotResp;
+
+        /**
+         * Verifies a DeleteBotResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeleteBotResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeleteBotResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.DeleteBotResp;
+
+        /**
+         * Creates a plain object from a DeleteBotResp message. Also converts values to other types if specified.
+         * @param message DeleteBotResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.DeleteBotResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeleteBotResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a ListBotReq. */
+    interface IListBotReq {
+    }
+
+    /** Represents a ListBotReq. */
+    class ListBotReq implements IListBotReq {
+
+        /**
+         * Constructs a new ListBotReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IListBotReq);
+
+        /**
+         * Creates a new ListBotReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListBotReq instance
+         */
+        public static create(properties?: dto.IListBotReq): dto.ListBotReq;
+
+        /**
+         * Encodes the specified ListBotReq message. Does not implicitly {@link dto.ListBotReq.verify|verify} messages.
+         * @param message ListBotReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IListBotReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListBotReq message, length delimited. Does not implicitly {@link dto.ListBotReq.verify|verify} messages.
+         * @param message ListBotReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IListBotReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListBotReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListBotReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.ListBotReq;
+
+        /**
+         * Decodes a ListBotReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListBotReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.ListBotReq;
+
+        /**
+         * Verifies a ListBotReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListBotReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListBotReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.ListBotReq;
+
+        /**
+         * Creates a plain object from a ListBotReq message. Also converts values to other types if specified.
+         * @param message ListBotReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.ListBotReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListBotReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a ListBotResp. */
+    interface IListBotResp {
+
+        /** ListBotResp botList */
+        botList?: (dto.IBot[]|null);
+    }
+
+    /** Represents a ListBotResp. */
+    class ListBotResp implements IListBotResp {
+
+        /**
+         * Constructs a new ListBotResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IListBotResp);
+
+        /** ListBotResp botList. */
+        public botList: dto.IBot[];
+
+        /**
+         * Creates a new ListBotResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListBotResp instance
+         */
+        public static create(properties?: dto.IListBotResp): dto.ListBotResp;
+
+        /**
+         * Encodes the specified ListBotResp message. Does not implicitly {@link dto.ListBotResp.verify|verify} messages.
+         * @param message ListBotResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IListBotResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListBotResp message, length delimited. Does not implicitly {@link dto.ListBotResp.verify|verify} messages.
+         * @param message ListBotResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IListBotResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListBotResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListBotResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.ListBotResp;
+
+        /**
+         * Decodes a ListBotResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListBotResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.ListBotResp;
+
+        /**
+         * Verifies a ListBotResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListBotResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListBotResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.ListBotResp;
+
+        /**
+         * Creates a plain object from a ListBotResp message. Also converts values to other types if specified.
+         * @param message ListBotResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.ListBotResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListBotResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a BotLoginAsyncReq. */
+    interface IBotLoginAsyncReq {
+
+        /** BotLoginAsyncReq botId */
+        botId?: (Long|null);
+    }
+
+    /** Represents a BotLoginAsyncReq. */
+    class BotLoginAsyncReq implements IBotLoginAsyncReq {
+
+        /**
+         * Constructs a new BotLoginAsyncReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IBotLoginAsyncReq);
+
+        /** BotLoginAsyncReq botId. */
+        public botId: Long;
+
+        /**
+         * Creates a new BotLoginAsyncReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotLoginAsyncReq instance
+         */
+        public static create(properties?: dto.IBotLoginAsyncReq): dto.BotLoginAsyncReq;
+
+        /**
+         * Encodes the specified BotLoginAsyncReq message. Does not implicitly {@link dto.BotLoginAsyncReq.verify|verify} messages.
+         * @param message BotLoginAsyncReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IBotLoginAsyncReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotLoginAsyncReq message, length delimited. Does not implicitly {@link dto.BotLoginAsyncReq.verify|verify} messages.
+         * @param message BotLoginAsyncReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IBotLoginAsyncReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotLoginAsyncReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotLoginAsyncReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.BotLoginAsyncReq;
+
+        /**
+         * Decodes a BotLoginAsyncReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotLoginAsyncReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.BotLoginAsyncReq;
+
+        /**
+         * Verifies a BotLoginAsyncReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotLoginAsyncReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotLoginAsyncReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.BotLoginAsyncReq;
+
+        /**
+         * Creates a plain object from a BotLoginAsyncReq message. Also converts values to other types if specified.
+         * @param message BotLoginAsyncReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.BotLoginAsyncReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotLoginAsyncReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a BotLoginAsyncResp. */
+    interface IBotLoginAsyncResp {
+    }
+
+    /** Represents a BotLoginAsyncResp. */
+    class BotLoginAsyncResp implements IBotLoginAsyncResp {
+
+        /**
+         * Constructs a new BotLoginAsyncResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IBotLoginAsyncResp);
+
+        /**
+         * Creates a new BotLoginAsyncResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotLoginAsyncResp instance
+         */
+        public static create(properties?: dto.IBotLoginAsyncResp): dto.BotLoginAsyncResp;
+
+        /**
+         * Encodes the specified BotLoginAsyncResp message. Does not implicitly {@link dto.BotLoginAsyncResp.verify|verify} messages.
+         * @param message BotLoginAsyncResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IBotLoginAsyncResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotLoginAsyncResp message, length delimited. Does not implicitly {@link dto.BotLoginAsyncResp.verify|verify} messages.
+         * @param message BotLoginAsyncResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IBotLoginAsyncResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotLoginAsyncResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotLoginAsyncResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.BotLoginAsyncResp;
+
+        /**
+         * Decodes a BotLoginAsyncResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotLoginAsyncResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.BotLoginAsyncResp;
+
+        /**
+         * Verifies a BotLoginAsyncResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotLoginAsyncResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotLoginAsyncResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.BotLoginAsyncResp;
+
+        /**
+         * Creates a plain object from a BotLoginAsyncResp message. Also converts values to other types if specified.
+         * @param message BotLoginAsyncResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.BotLoginAsyncResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotLoginAsyncResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a SolveCaptchaReq. */
+    interface ISolveCaptchaReq {
+
+        /** SolveCaptchaReq botId */
+        botId?: (Long|null);
+
+        /** SolveCaptchaReq result */
+        result?: (string|null);
+    }
+
+    /** Represents a SolveCaptchaReq. */
+    class SolveCaptchaReq implements ISolveCaptchaReq {
+
+        /**
+         * Constructs a new SolveCaptchaReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.ISolveCaptchaReq);
+
+        /** SolveCaptchaReq botId. */
+        public botId: Long;
+
+        /** SolveCaptchaReq result. */
+        public result: string;
+
+        /**
+         * Creates a new SolveCaptchaReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SolveCaptchaReq instance
+         */
+        public static create(properties?: dto.ISolveCaptchaReq): dto.SolveCaptchaReq;
+
+        /**
+         * Encodes the specified SolveCaptchaReq message. Does not implicitly {@link dto.SolveCaptchaReq.verify|verify} messages.
+         * @param message SolveCaptchaReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.ISolveCaptchaReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SolveCaptchaReq message, length delimited. Does not implicitly {@link dto.SolveCaptchaReq.verify|verify} messages.
+         * @param message SolveCaptchaReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.ISolveCaptchaReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SolveCaptchaReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SolveCaptchaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.SolveCaptchaReq;
+
+        /**
+         * Decodes a SolveCaptchaReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SolveCaptchaReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.SolveCaptchaReq;
+
+        /**
+         * Verifies a SolveCaptchaReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SolveCaptchaReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SolveCaptchaReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.SolveCaptchaReq;
+
+        /**
+         * Creates a plain object from a SolveCaptchaReq message. Also converts values to other types if specified.
+         * @param message SolveCaptchaReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.SolveCaptchaReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SolveCaptchaReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a SolveCaptchaResp. */
+    interface ISolveCaptchaResp {
+    }
+
+    /** Represents a SolveCaptchaResp. */
+    class SolveCaptchaResp implements ISolveCaptchaResp {
+
+        /**
+         * Constructs a new SolveCaptchaResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.ISolveCaptchaResp);
+
+        /**
+         * Creates a new SolveCaptchaResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SolveCaptchaResp instance
+         */
+        public static create(properties?: dto.ISolveCaptchaResp): dto.SolveCaptchaResp;
+
+        /**
+         * Encodes the specified SolveCaptchaResp message. Does not implicitly {@link dto.SolveCaptchaResp.verify|verify} messages.
+         * @param message SolveCaptchaResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.ISolveCaptchaResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SolveCaptchaResp message, length delimited. Does not implicitly {@link dto.SolveCaptchaResp.verify|verify} messages.
+         * @param message SolveCaptchaResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.ISolveCaptchaResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SolveCaptchaResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SolveCaptchaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.SolveCaptchaResp;
+
+        /**
+         * Decodes a SolveCaptchaResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SolveCaptchaResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.SolveCaptchaResp;
+
+        /**
+         * Verifies a SolveCaptchaResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SolveCaptchaResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SolveCaptchaResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.SolveCaptchaResp;
+
+        /**
+         * Creates a plain object from a SolveCaptchaResp message. Also converts values to other types if specified.
+         * @param message SolveCaptchaResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.SolveCaptchaResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SolveCaptchaResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a FetchQRCodeReq. */
+    interface IFetchQRCodeReq {
+
+        /** FetchQRCodeReq deviceSeed */
+        deviceSeed?: (Long|null);
+    }
+
+    /** Represents a FetchQRCodeReq. */
+    class FetchQRCodeReq implements IFetchQRCodeReq {
+
+        /**
+         * Constructs a new FetchQRCodeReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IFetchQRCodeReq);
+
+        /** FetchQRCodeReq deviceSeed. */
+        public deviceSeed: Long;
+
+        /**
+         * Creates a new FetchQRCodeReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns FetchQRCodeReq instance
+         */
+        public static create(properties?: dto.IFetchQRCodeReq): dto.FetchQRCodeReq;
+
+        /**
+         * Encodes the specified FetchQRCodeReq message. Does not implicitly {@link dto.FetchQRCodeReq.verify|verify} messages.
+         * @param message FetchQRCodeReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IFetchQRCodeReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified FetchQRCodeReq message, length delimited. Does not implicitly {@link dto.FetchQRCodeReq.verify|verify} messages.
+         * @param message FetchQRCodeReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IFetchQRCodeReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a FetchQRCodeReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns FetchQRCodeReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.FetchQRCodeReq;
+
+        /**
+         * Decodes a FetchQRCodeReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns FetchQRCodeReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.FetchQRCodeReq;
+
+        /**
+         * Verifies a FetchQRCodeReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a FetchQRCodeReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns FetchQRCodeReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.FetchQRCodeReq;
+
+        /**
+         * Creates a plain object from a FetchQRCodeReq message. Also converts values to other types if specified.
+         * @param message FetchQRCodeReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.FetchQRCodeReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this FetchQRCodeReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a QueryQRCodeStatusReq. */
+    interface IQueryQRCodeStatusReq {
+
+        /** QueryQRCodeStatusReq sig */
+        sig?: (Uint8Array|null);
+
+        /** QueryQRCodeStatusReq botId */
+        botId?: (Long|null);
+    }
+
+    /** Represents a QueryQRCodeStatusReq. */
+    class QueryQRCodeStatusReq implements IQueryQRCodeStatusReq {
+
+        /**
+         * Constructs a new QueryQRCodeStatusReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IQueryQRCodeStatusReq);
+
+        /** QueryQRCodeStatusReq sig. */
+        public sig: Uint8Array;
+
+        /** QueryQRCodeStatusReq botId. */
+        public botId: Long;
+
+        /**
+         * Creates a new QueryQRCodeStatusReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns QueryQRCodeStatusReq instance
+         */
+        public static create(properties?: dto.IQueryQRCodeStatusReq): dto.QueryQRCodeStatusReq;
+
+        /**
+         * Encodes the specified QueryQRCodeStatusReq message. Does not implicitly {@link dto.QueryQRCodeStatusReq.verify|verify} messages.
+         * @param message QueryQRCodeStatusReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IQueryQRCodeStatusReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified QueryQRCodeStatusReq message, length delimited. Does not implicitly {@link dto.QueryQRCodeStatusReq.verify|verify} messages.
+         * @param message QueryQRCodeStatusReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IQueryQRCodeStatusReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a QueryQRCodeStatusReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns QueryQRCodeStatusReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.QueryQRCodeStatusReq;
+
+        /**
+         * Decodes a QueryQRCodeStatusReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns QueryQRCodeStatusReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.QueryQRCodeStatusReq;
+
+        /**
+         * Verifies a QueryQRCodeStatusReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a QueryQRCodeStatusReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns QueryQRCodeStatusReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.QueryQRCodeStatusReq;
+
+        /**
+         * Creates a plain object from a QueryQRCodeStatusReq message. Also converts values to other types if specified.
+         * @param message QueryQRCodeStatusReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.QueryQRCodeStatusReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this QueryQRCodeStatusReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a QRCodeLoginResp. */
+    interface IQRCodeLoginResp {
+
+        /** QRCodeLoginResp state */
+        state?: (dto.QRCodeLoginResp.QRCodeLoginState|null);
+
+        /** QRCodeLoginResp imageData */
+        imageData?: (Uint8Array|null);
+
+        /** QRCodeLoginResp sig */
+        sig?: (Uint8Array|null);
+    }
+
+    /** Represents a QRCodeLoginResp. */
+    class QRCodeLoginResp implements IQRCodeLoginResp {
+
+        /**
+         * Constructs a new QRCodeLoginResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IQRCodeLoginResp);
+
+        /** QRCodeLoginResp state. */
+        public state: dto.QRCodeLoginResp.QRCodeLoginState;
+
+        /** QRCodeLoginResp imageData. */
+        public imageData: Uint8Array;
+
+        /** QRCodeLoginResp sig. */
+        public sig: Uint8Array;
+
+        /**
+         * Creates a new QRCodeLoginResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns QRCodeLoginResp instance
+         */
+        public static create(properties?: dto.IQRCodeLoginResp): dto.QRCodeLoginResp;
+
+        /**
+         * Encodes the specified QRCodeLoginResp message. Does not implicitly {@link dto.QRCodeLoginResp.verify|verify} messages.
+         * @param message QRCodeLoginResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IQRCodeLoginResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified QRCodeLoginResp message, length delimited. Does not implicitly {@link dto.QRCodeLoginResp.verify|verify} messages.
+         * @param message QRCodeLoginResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IQRCodeLoginResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a QRCodeLoginResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns QRCodeLoginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.QRCodeLoginResp;
+
+        /**
+         * Decodes a QRCodeLoginResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns QRCodeLoginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.QRCodeLoginResp;
+
+        /**
+         * Verifies a QRCodeLoginResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a QRCodeLoginResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns QRCodeLoginResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.QRCodeLoginResp;
+
+        /**
+         * Creates a plain object from a QRCodeLoginResp message. Also converts values to other types if specified.
+         * @param message QRCodeLoginResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.QRCodeLoginResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this QRCodeLoginResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    namespace QRCodeLoginResp {
+
+        /** QRCodeLoginState enum. */
+        enum QRCodeLoginState {
+            Unknown = 0,
+            QRCodeImageFetch = 1,
+            QRCodeWaitingForScan = 2,
+            QRCodeWaitingForConfirm = 3,
+            QRCodeTimeout = 4,
+            QRCodeConfirmed = 5,
+            QRCodeCanceled = 6
+        }
+    }
+
+    /** Represents a HttpService */
+    class HttpService extends $protobuf.rpc.Service {
+
+        /**
+         * Constructs a new HttpService service.
+         * @param rpcImpl RPC implementation
+         * @param [requestDelimited=false] Whether requests are length-delimited
+         * @param [responseDelimited=false] Whether responses are length-delimited
+         */
+        constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+        /**
+         * Creates new HttpService service using the specified rpc implementation.
+         * @param rpcImpl RPC implementation
+         * @param [requestDelimited=false] Whether requests are length-delimited
+         * @param [responseDelimited=false] Whether responses are length-delimited
+         * @returns RPC service. Useful where requests and/or responses are streamed.
+         */
+        public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): HttpService;
+
+        /**
+         * Calls CreateBot.
+         * @param request CreateBotReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and CreateBotResp
+         */
+        public createBot(request: dto.ICreateBotReq, callback: dto.HttpService.CreateBotCallback): void;
+
+        /**
+         * Calls CreateBot.
+         * @param request CreateBotReq message or plain object
+         * @returns Promise
+         */
+        public createBot(request: dto.ICreateBotReq): Promise<dto.CreateBotResp>;
+
+        /**
+         * Calls DeleteBot.
+         * @param request DeleteBotReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and DeleteBotResp
+         */
+        public deleteBot(request: dto.IDeleteBotReq, callback: dto.HttpService.DeleteBotCallback): void;
+
+        /**
+         * Calls DeleteBot.
+         * @param request DeleteBotReq message or plain object
+         * @returns Promise
+         */
+        public deleteBot(request: dto.IDeleteBotReq): Promise<dto.DeleteBotResp>;
+
+        /**
+         * Calls ListBot.
+         * @param request ListBotReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and ListBotResp
+         */
+        public listBot(request: dto.IListBotReq, callback: dto.HttpService.ListBotCallback): void;
+
+        /**
+         * Calls ListBot.
+         * @param request ListBotReq message or plain object
+         * @returns Promise
+         */
+        public listBot(request: dto.IListBotReq): Promise<dto.ListBotResp>;
+
+        /**
+         * Calls BotLoginAsync.
+         * @param request BotLoginAsyncReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and BotLoginAsyncResp
+         */
+        public botLoginAsync(request: dto.IBotLoginAsyncReq, callback: dto.HttpService.BotLoginAsyncCallback): void;
+
+        /**
+         * Calls BotLoginAsync.
+         * @param request BotLoginAsyncReq message or plain object
+         * @returns Promise
+         */
+        public botLoginAsync(request: dto.IBotLoginAsyncReq): Promise<dto.BotLoginAsyncResp>;
+
+        /**
+         * Calls SolveCaptcha.
+         * @param request SolveCaptchaReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and SolveCaptchaResp
+         */
+        public solveCaptcha(request: dto.ISolveCaptchaReq, callback: dto.HttpService.SolveCaptchaCallback): void;
+
+        /**
+         * Calls SolveCaptcha.
+         * @param request SolveCaptchaReq message or plain object
+         * @returns Promise
+         */
+        public solveCaptcha(request: dto.ISolveCaptchaReq): Promise<dto.SolveCaptchaResp>;
+
+        /**
+         * Calls FetchQRCode.
+         * @param request FetchQRCodeReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and QRCodeLoginResp
+         */
+        public fetchQRCode(request: dto.IFetchQRCodeReq, callback: dto.HttpService.FetchQRCodeCallback): void;
+
+        /**
+         * Calls FetchQRCode.
+         * @param request FetchQRCodeReq message or plain object
+         * @returns Promise
+         */
+        public fetchQRCode(request: dto.IFetchQRCodeReq): Promise<dto.QRCodeLoginResp>;
+
+        /**
+         * Calls QueryQRCodeStatus.
+         * @param request QueryQRCodeStatusReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and QRCodeLoginResp
+         */
+        public queryQRCodeStatus(request: dto.IQueryQRCodeStatusReq, callback: dto.HttpService.QueryQRCodeStatusCallback): void;
+
+        /**
+         * Calls QueryQRCodeStatus.
+         * @param request QueryQRCodeStatusReq message or plain object
+         * @returns Promise
+         */
+        public queryQRCodeStatus(request: dto.IQueryQRCodeStatusReq): Promise<dto.QRCodeLoginResp>;
+    }
+
+    namespace HttpService {
+
+        /**
+         * Callback as used by {@link dto.HttpService#createBot}.
+         * @param error Error, if any
+         * @param [response] CreateBotResp
+         */
+        type CreateBotCallback = (error: (Error|null), response?: dto.CreateBotResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#deleteBot}.
+         * @param error Error, if any
+         * @param [response] DeleteBotResp
+         */
+        type DeleteBotCallback = (error: (Error|null), response?: dto.DeleteBotResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#listBot}.
+         * @param error Error, if any
+         * @param [response] ListBotResp
+         */
+        type ListBotCallback = (error: (Error|null), response?: dto.ListBotResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#botLoginAsync}.
+         * @param error Error, if any
+         * @param [response] BotLoginAsyncResp
+         */
+        type BotLoginAsyncCallback = (error: (Error|null), response?: dto.BotLoginAsyncResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#solveCaptcha}.
+         * @param error Error, if any
+         * @param [response] SolveCaptchaResp
+         */
+        type SolveCaptchaCallback = (error: (Error|null), response?: dto.SolveCaptchaResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#fetchQRCode}.
+         * @param error Error, if any
+         * @param [response] QRCodeLoginResp
+         */
+        type FetchQRCodeCallback = (error: (Error|null), response?: dto.QRCodeLoginResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#queryQRCodeStatus}.
+         * @param error Error, if any
+         * @param [response] QRCodeLoginResp
+         */
+        type QueryQRCodeStatusCallback = (error: (Error|null), response?: dto.QRCodeLoginResp) => void;
+    }
+}

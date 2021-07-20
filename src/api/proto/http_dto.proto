@@ -1,0 +1,97 @@
+syntax = "proto3";
+package dto;
+
+
+message Bot{
+    int64 bot_id = 1;
+    bool is_online = 2;
+    Captcha captcha = 3;
+    message Captcha{
+        int64 bot_id = 1;
+        CaptchaType captcha_type = 2;
+        oneof data{
+            string url = 3;
+            bytes image = 4;
+        }
+        enum CaptchaType{
+            PIC_CAPTCHA = 0;
+            SLIDER_CAPTCHA = 1;
+            UNSAFE_DEVICE_LOGIN_VERIFY = 2;
+            SMS = 4;
+        }
+    }
+}
+
+// 创建机器人 /bot/create/v1/
+message CreateBotReq{
+    int64 bot_id = 1;
+    string password = 2;
+    int64 device_seed = 3; // 设备信息随机种子
+}
+message CreateBotResp{
+}
+
+// 创建机器人 /bot/delete/v1/
+message DeleteBotReq{
+    int64 bot_id = 1;
+}
+message DeleteBotResp{
+}
+
+// 查询机器人 /bot/list/v1/
+message ListBotReq{
+}
+message ListBotResp{
+    repeated Bot bot_list = 1;
+}
+
+// 机器人登陆 /bot/login/v1/
+message BotLoginAsyncReq{
+    int64 bot_id = 1;
+}
+message BotLoginAsyncResp{
+}
+
+// 处理验证码 /captcha/solve/v1/
+message SolveCaptchaReq{
+    int64 bot_id = 1;
+    string result = 2;
+}
+message SolveCaptchaResp{
+}
+
+// 获取二维码 /qrcode/fetch/v1/
+message FetchQRCodeReq{
+    int64 device_seed = 1;
+}
+// 查询二维码状态 /qrcode/query/v1/
+message QueryQRCodeStatusReq{
+    bytes sig = 1;
+    int64 bot_id = 2;
+}
+// 二维码登陆响应（获取和查询统一）
+message QRCodeLoginResp{
+    QRCodeLoginState state = 1;
+    bytes image_data = 2;
+    bytes sig = 3;
+    enum QRCodeLoginState{
+        Unknown = 0;
+        QRCodeImageFetch = 1;
+        QRCodeWaitingForScan = 2; // 等待扫描
+        QRCodeWaitingForConfirm = 3; // 扫码成功，请确认登陆
+        QRCodeTimeout = 4; // 二维码过期
+        QRCodeConfirmed = 5; // 已确认登陆
+        QRCodeCanceled = 6; // 扫码被用户取消
+    }
+}
+
+
+service HttpService{
+    rpc CreateBot(CreateBotReq)returns (CreateBotResp);
+    rpc DeleteBot(DeleteBotReq)returns (DeleteBotResp);
+    rpc ListBot(ListBotReq)returns (ListBotResp);
+    rpc BotLoginAsync(BotLoginAsyncReq)returns (BotLoginAsyncResp);
+    rpc SolveCaptcha(SolveCaptchaReq)returns (SolveCaptchaResp);
+    rpc FetchQRCode(FetchQRCodeReq)returns (QRCodeLoginResp);
+    rpc QueryQRCodeStatus(QueryQRCodeStatusReq)returns (QRCodeLoginResp);
+}
