@@ -23,12 +23,14 @@ const PasswordLogin = (props: PasswordLoginProp) => {
             notification["success"]({
                 message: '创建成功',
                 description: "5秒后刷新机器人列表，如有验证码请点击图标处理",
+                duration: 3,
             });
             onClose()
         } catch (e) {
             notification["error"]({
                 message: '创建失败',
                 description: e.toString(),
+                duration: 3,
             });
         }
     }

@@ -34,6 +34,7 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
                 notification["success"]({
                     message: '登录成功',
                     description: "5秒后刷新机器人列表",
+                    duration: 3,
                 });
                 onClose()
                 return
@@ -59,6 +60,7 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
             notification["error"]({
                 message: '请重新获取二维码',
                 description: msg,
+                duration: 3,
             });
         }
         setFetchQRCodeResp({})
@@ -72,6 +74,7 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
             notification["error"]({
                 message: '获取二维码失败',
                 description: e.toString(),
+                duration: 3,
             });
         }
     }

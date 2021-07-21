@@ -15,11 +15,13 @@ const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
             notification["success"]({
                 message: '提交成功',
                 description: "请等5秒后查看是否还有验证码",
+                duration: 3,
             });
         } catch (e) {
             notification["error"]({
                 message: '提交失败',
                 description: e.toString(),
+                duration: 3,
             });
         }
     }
