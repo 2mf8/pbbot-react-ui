@@ -1,24 +1,22 @@
 import { Form, Button, Input, notification } from 'antd'
-import React, { useState } from 'react';
+import React from 'react';
 import { service } from '../api/RpcImpl'
 import { dto } from '../api/gen/proto'
 
-const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
-    const { botId } = props
-    const [smsResult, setSmsResult] = useState("");
+const UnsafeDeviceCaptcha = (props: dto.Bot.ICaptcha) => {
+    const { botId, url } = props
     const handleSubmitClick = async () => {
         try {
             await service.solveCaptcha({
                 botId: botId,
-                result: smsResult
             })
             notification["success"]({
-                message: '提交成功',
+                message: '确认成功',
                 description: "请等5秒后查看是否还有验证码",
             });
         } catch (e) {
             notification["error"]({
-                message: '提交失败',
+                message: '确认失败',
                 description: e.toString(),
             });
         }
@@ -27,10 +25,10 @@ const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
         <>
             <Form>
                 <Form.Item label="验证类型">
-                    <span className="ant-form-text">手机短信</span>
+                    <span className="ant-form-text">设备锁</span>
                 </Form.Item>
-                <Form.Item label="验证码">
-                    <Input onChange={(e) => { setSmsResult(e.target.value) }} />
+                <Form.Item label="验证URL">
+                    <span>{url}</span>
                 </Form.Item>
                 <Form.Item >
                     <Button type="primary" onClick={handleSubmitClick}>
@@ -42,4 +40,4 @@ const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
     )
 }
 
-export default React.memo(SmsCaptcha)
+export default React.memo(UnsafeDeviceCaptcha)

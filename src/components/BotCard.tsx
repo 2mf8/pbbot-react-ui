@@ -38,11 +38,10 @@ const BotCard = (props: dto.IBot) => {
                         okText="Yes"
                         onConfirm={handleDeleteBot}
                         cancelText="No"
-                        okType="error"
+                        okType="danger"
                     >
                         <DeleteOutlined key="delete" />
                     </Popconfirm>,
-
                 ]}
             >
                 <Row gutter={24}>

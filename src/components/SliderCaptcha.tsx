@@ -1,16 +1,17 @@
+import React, { useState } from "react"
 import { Form, Button, Input, notification } from 'antd'
-import React, { useState } from 'react';
 import { service } from '../api/RpcImpl'
 import { dto } from '../api/gen/proto'
 
-const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
-    const { botId } = props
-    const [smsResult, setSmsResult] = useState("");
+
+const SliderCaptcha = (props: dto.Bot.ICaptcha) => {
+    const { botId, url } = props
+    const [ticket, setTicket] = useState("")
     const handleSubmitClick = async () => {
         try {
             await service.solveCaptcha({
                 botId: botId,
-                result: smsResult
+                result: ticket
             })
             notification["success"]({
                 message: '提交成功',
@@ -27,10 +28,13 @@ const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
         <>
             <Form>
                 <Form.Item label="验证类型">
-                    <span className="ant-form-text">手机短信</span>
+                    <span className="ant-form-text">滑块</span>
                 </Form.Item>
-                <Form.Item label="验证码">
-                    <Input onChange={(e) => { setSmsResult(e.target.value) }} />
+                <Form.Item label="滑块URL">
+                    <span className="ant-form-text">{url}</span>
+                </Form.Item>
+                <Form.Item label="Ticket">
+                    <Input onChange={(e) => { setTicket(e.target.value) }} />
                 </Form.Item>
                 <Form.Item >
                     <Button type="primary" onClick={handleSubmitClick}>
@@ -42,4 +46,5 @@ const SmsCaptcha = (props: dto.Bot.ICaptcha) => {
     )
 }
 
-export default React.memo(SmsCaptcha)
+export default React.memo(SliderCaptcha)
+
