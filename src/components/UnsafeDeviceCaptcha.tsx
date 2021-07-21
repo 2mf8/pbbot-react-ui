@@ -28,11 +28,12 @@ const UnsafeDeviceCaptcha = (props: dto.Bot.ICaptcha) => {
                     <span className="ant-form-text">设备锁</span>
                 </Form.Item>
                 <Form.Item label="验证URL">
-                    <span>{url}</span>
+                    <Input value={url}></Input>
+                    <div>复制链接到手机QQ打开进行处理</div>
                 </Form.Item>
                 <Form.Item >
                     <Button type="primary" onClick={handleSubmitClick}>
-                        提交
+                        完成
                     </Button>
                 </Form.Item>
             </Form>

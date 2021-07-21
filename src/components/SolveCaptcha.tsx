@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Modal, Form, Input, Button } from 'antd'
 import { dto } from '../api/gen/proto'
 import SmsCaptcha from './SmsCaptcha'
+import SliderCaptcha from './SliderCaptcha'
+import UnsafeDeviceCaptcha from './UnsafeDeviceCaptcha'
 
 
 
@@ -30,9 +32,8 @@ const SolveCaptcha = (props: SolveCaptchaProp) => {
 
 
                 {!!captcha && captcha.captchaType == dto.Bot.Captcha.CaptchaType.SMS && <SmsCaptcha botId={captcha.botId} />}
-
-
-
+                {!!captcha && captcha.captchaType == dto.Bot.Captcha.CaptchaType.SLIDER_CAPTCHA && <SliderCaptcha botId={captcha.botId} url={captcha.url} />}
+                {!!captcha && captcha.captchaType == dto.Bot.Captcha.CaptchaType.UNSAFE_DEVICE_LOGIN_VERIFY && <UnsafeDeviceCaptcha botId={captcha.botId} url={captcha.url} />}
             </Modal>
         </>
     )
