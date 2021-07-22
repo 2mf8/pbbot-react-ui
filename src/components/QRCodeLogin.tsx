@@ -101,6 +101,7 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
                             onChange={(value) => { setDeviceSeed(value) }}
 
                         />
+                        <div style={{ color: "red" }}>建议每次使用相同种子</div>
                     </Form.Item>
 
                     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
