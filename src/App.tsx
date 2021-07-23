@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import { Layout, Button, Row, Col, Card, Input, notification, Empty } from 'antd';
+import { Layout, Button, Row, Col, notification, Empty } from 'antd';
 import { GithubOutlined } from '@ant-design/icons'
 import BotCard from './components/BotCard'
 import QRCodeLogin from './components/QRCodeLogin'

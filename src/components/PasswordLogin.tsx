@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Modal, Form, InputNumber, Button, Skeleton, notification, Image, Input, Alert } from 'antd'
-import { dto } from '../api/gen/proto'
+import React, { useState } from 'react';
+import { Modal, Form, InputNumber, Button, notification, Input, Alert } from 'antd'
 import { service } from '../api/RpcImpl'
 import Long from 'long'
 interface PasswordLoginProp {

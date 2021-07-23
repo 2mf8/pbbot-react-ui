@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Row, Col, Card, Avatar, Popconfirm, notification } from 'antd';
-import { QqOutlined, SettingOutlined, VerifiedOutlined, DeleteOutlined, LoginOutlined, ArrowRightOutlined, MessageOutlined, CheckOutlined, QrcodeOutlined, PictureOutlined, LockOutlined } from '@ant-design/icons'
+import { QqOutlined, VerifiedOutlined, DeleteOutlined, ArrowRightOutlined, MessageOutlined, CheckOutlined, LockOutlined } from '@ant-design/icons'
 import { dto } from '../api/gen/proto'
 import { service } from '../api/RpcImpl'
 import SolveCaptcha from './SolveCaptcha'

@@ -1,7 +1,7 @@
 import { Modal, Form, InputNumber, Button, Skeleton, notification, Image } from 'antd'
 import { dto } from '../api/gen/proto'
 import { service } from '../api/RpcImpl'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { getImage } from '../utils/img'
 import { useInterval } from '../utils/interval'
 import Long from "long";
