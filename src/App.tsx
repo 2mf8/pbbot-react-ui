@@ -46,8 +46,9 @@ const App = () => {
           {!!listBotResp && !!listBotResp.botList ?
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{ margin: '20px' }}>
               {
-                listBotResp.botList.map(bot => (
+                listBotResp.botList.sort((b1, b2) => b1.botId.toString().localeCompare(b2.botId.toString())).map(bot => (
                   <Col
+                    key={bot.botId.toString()}
                     xl={{ span: 6 }}
                     lg={{ span: 8 }}
                     md={{ span: 12 }}

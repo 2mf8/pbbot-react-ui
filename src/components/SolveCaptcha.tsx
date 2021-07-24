@@ -5,8 +5,6 @@ import SmsCaptcha from './SmsCaptcha'
 import SliderCaptcha from './SliderCaptcha'
 import UnsafeDeviceCaptcha from './UnsafeDeviceCaptcha'
 
-
-
 interface SolveCaptchaProp {
     isVisible: boolean;
     onClose: (() => void);
