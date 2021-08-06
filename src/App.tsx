@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Layout style={{ height: "100vh" }}>
+      <Layout style={{ minHeight: "100vh" }}>
         <Header>
           <div className="logo">ProtobufBot</div>
         </Header>
