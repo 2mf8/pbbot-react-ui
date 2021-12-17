@@ -7,4 +7,7 @@ export const urls: { [key: string]: string } = {
     'SolveCaptcha': "./captcha/solve/v1",
     'FetchQRCode': "./qrcode/fetch/v1",
     'QueryQRCodeStatus': "./qrcode/query/v1",
+    'ListPlugin': "./plugin/list/v1",
+    'SavePlugin': "./plugin/save/v1",
+    'DeletePlugin': "./plugin/delete/v1",
 }
