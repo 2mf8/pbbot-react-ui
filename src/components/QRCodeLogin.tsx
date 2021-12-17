@@ -1,4 +1,4 @@
-import { Modal, Form, InputNumber, Button, Skeleton, notification, Image, Alert } from 'antd'
+import { Modal, Form, InputNumber, Button, Skeleton, notification, Image, Alert, Select } from 'antd'
 import { dto } from '../api/gen/proto'
 import { service } from '../api/RpcImpl'
 import React, { useRef, useState } from 'react';
@@ -14,6 +14,7 @@ interface QRCodeLoginProp {
 const QRCodeLogin = (props: QRCodeLoginProp) => {
     const { isVisible, onClose } = props;
     const [deviceSeed, setDeviceSeed] = useState<number>(new Date().getTime());
+    const [clientProtocol, setClientProtocol] = useState<number>(0);
     // 如果不是{}，轮询获取状态
     const [fetchQRCodeResp, setFetchQRCodeResp] = useState<dto.IQRCodeLoginResp>({});
     const queryQRCodeRespRef = useRef<dto.IQRCodeLoginResp>({});
@@ -68,7 +69,7 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
 
     const handleFetchQRCode = async () => {
         try {
-            let resp = await service.fetchQRCode({ deviceSeed: Long.fromNumber(deviceSeed) })
+            let resp = await service.fetchQRCode({ deviceSeed: Long.fromNumber(deviceSeed), clientProtocol: clientProtocol })
             setFetchQRCodeResp(resp)
         } catch (e) {
             notification["error"]({
@@ -90,46 +91,58 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
                 destroyOnClose={true}
                 afterClose={() => setFetchQRCodeResp({})}
             >
-                <Form layout={"inline"}>
-                    <Form.Item label="设备随机种子">
+                <Form>
+                    <Form.Item label="协议类型" style={{marginBottom: "12px"}}>
+                        <Select
+                          value={clientProtocol}
+                          onChange={(value) => { setClientProtocol(value) }}
+                        >
+                            <Select.Option value={0}>Default</Select.Option>
+                            <Select.Option value={1}>AndroidPhone</Select.Option>
+                            <Select.Option value={2}>AndroidWatch</Select.Option>
+                            <Select.Option value={3}>MacOS</Select.Option>
+                            <Select.Option value={4}>QiDian</Select.Option>
+                            <Select.Option value={5}>IPad</Select.Option>
+                        </Select>
+                    </Form.Item>
+                    <Form.Item label="设备种子" style={{marginBottom: "12px"}}>
                         <InputNumber
-                            // defaultValue={deviceSeed}
-                            min={0}
-                            value={deviceSeed}
-                            max={4503599627370496}
-                            style={{ width: 180 }}
-                            onChange={(value) => { setDeviceSeed(value) }}
-
+                          min={0}
+                          value={deviceSeed}
+                          max={4503599627370496}
+                          style={{ width: '100%' }}
+                          onChange={(value) => { setDeviceSeed(value) }}
                         />
                         <div style={{ color: "red" }}>建议每次使用相同种子</div>
                     </Form.Item>
 
-                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                    <Form.Item style={{marginBottom: "12px"}}>
                         <Button
-                            type="primary"
-                            htmlType="submit"
-                            onClick={handleFetchQRCode}
+                          block
+                          type="primary"
+                          htmlType="submit"
+                          onClick={handleFetchQRCode}
                         >
                             获取二维码
                         </Button>
                     </Form.Item>
                 </Form>
                 <div
-                    style={{ margin: "24px", textAlign: "center" }}
+                    style={{ margin: "24px 0 12px 0", textAlign: "center" }}
                 >
                     {!!fetchQRCodeResp && !!fetchQRCodeResp.sig ?
                         (<div >
                             <Image
-                                style={{ width: "200px", height: "200px" }}
+                                style={{ width: "160px", height: "160px" }}
                                 src={getImage(fetchQRCodeResp.imageData)}
                             />
-                            <p style={{ margin: "16px" }}>扫码登录机器人</p>
+                            <p style={{ margin: "12px" }}>扫码登录机器人</p>
                         </div>) :
                         (<div >
                             <Skeleton.Image
-                                style={{ width: "200px", height: "200px" }}
+                                style={{ width: "160px", height: "160px" }}
                             />
-                            <p style={{ margin: "16px" }}>请先获取二维码</p>
+                            <p style={{ margin: "12px" }}>请先获取二维码</p>
                         </div>)
                     }
 

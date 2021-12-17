@@ -240,6 +240,9 @@ export namespace dto {
 
         /** CreateBotReq deviceSeed */
         deviceSeed?: (Long|null);
+
+        /** CreateBotReq clientProtocol */
+        clientProtocol?: (number|null);
     }
 
     /** Represents a CreateBotReq. */
@@ -259,6 +262,9 @@ export namespace dto {
 
         /** CreateBotReq deviceSeed. */
         public deviceSeed: Long;
+
+        /** CreateBotReq clientProtocol. */
+        public clientProtocol: number;
 
         /**
          * Creates a new CreateBotReq instance using the specified properties.
@@ -763,180 +769,6 @@ export namespace dto {
         public toJSON(): { [k: string]: any };
     }
 
-    /** Properties of a BotLoginAsyncReq. */
-    interface IBotLoginAsyncReq {
-
-        /** BotLoginAsyncReq botId */
-        botId?: (Long|null);
-    }
-
-    /** Represents a BotLoginAsyncReq. */
-    class BotLoginAsyncReq implements IBotLoginAsyncReq {
-
-        /**
-         * Constructs a new BotLoginAsyncReq.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: dto.IBotLoginAsyncReq);
-
-        /** BotLoginAsyncReq botId. */
-        public botId: Long;
-
-        /**
-         * Creates a new BotLoginAsyncReq instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns BotLoginAsyncReq instance
-         */
-        public static create(properties?: dto.IBotLoginAsyncReq): dto.BotLoginAsyncReq;
-
-        /**
-         * Encodes the specified BotLoginAsyncReq message. Does not implicitly {@link dto.BotLoginAsyncReq.verify|verify} messages.
-         * @param message BotLoginAsyncReq message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: dto.IBotLoginAsyncReq, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified BotLoginAsyncReq message, length delimited. Does not implicitly {@link dto.BotLoginAsyncReq.verify|verify} messages.
-         * @param message BotLoginAsyncReq message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: dto.IBotLoginAsyncReq, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a BotLoginAsyncReq message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns BotLoginAsyncReq
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.BotLoginAsyncReq;
-
-        /**
-         * Decodes a BotLoginAsyncReq message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns BotLoginAsyncReq
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.BotLoginAsyncReq;
-
-        /**
-         * Verifies a BotLoginAsyncReq message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a BotLoginAsyncReq message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns BotLoginAsyncReq
-         */
-        public static fromObject(object: { [k: string]: any }): dto.BotLoginAsyncReq;
-
-        /**
-         * Creates a plain object from a BotLoginAsyncReq message. Also converts values to other types if specified.
-         * @param message BotLoginAsyncReq
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: dto.BotLoginAsyncReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this BotLoginAsyncReq to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
-    }
-
-    /** Properties of a BotLoginAsyncResp. */
-    interface IBotLoginAsyncResp {
-    }
-
-    /** Represents a BotLoginAsyncResp. */
-    class BotLoginAsyncResp implements IBotLoginAsyncResp {
-
-        /**
-         * Constructs a new BotLoginAsyncResp.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: dto.IBotLoginAsyncResp);
-
-        /**
-         * Creates a new BotLoginAsyncResp instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns BotLoginAsyncResp instance
-         */
-        public static create(properties?: dto.IBotLoginAsyncResp): dto.BotLoginAsyncResp;
-
-        /**
-         * Encodes the specified BotLoginAsyncResp message. Does not implicitly {@link dto.BotLoginAsyncResp.verify|verify} messages.
-         * @param message BotLoginAsyncResp message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: dto.IBotLoginAsyncResp, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified BotLoginAsyncResp message, length delimited. Does not implicitly {@link dto.BotLoginAsyncResp.verify|verify} messages.
-         * @param message BotLoginAsyncResp message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: dto.IBotLoginAsyncResp, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a BotLoginAsyncResp message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns BotLoginAsyncResp
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.BotLoginAsyncResp;
-
-        /**
-         * Decodes a BotLoginAsyncResp message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns BotLoginAsyncResp
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.BotLoginAsyncResp;
-
-        /**
-         * Verifies a BotLoginAsyncResp message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a BotLoginAsyncResp message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns BotLoginAsyncResp
-         */
-        public static fromObject(object: { [k: string]: any }): dto.BotLoginAsyncResp;
-
-        /**
-         * Creates a plain object from a BotLoginAsyncResp message. Also converts values to other types if specified.
-         * @param message BotLoginAsyncResp
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: dto.BotLoginAsyncResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this BotLoginAsyncResp to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
-    }
-
     /** Properties of a SolveCaptchaReq. */
     interface ISolveCaptchaReq {
 
@@ -1122,6 +954,9 @@ export namespace dto {
 
         /** FetchQRCodeReq deviceSeed */
         deviceSeed?: (Long|null);
+
+        /** FetchQRCodeReq clientProtocol */
+        clientProtocol?: (number|null);
     }
 
     /** Represents a FetchQRCodeReq. */
@@ -1135,6 +970,9 @@ export namespace dto {
 
         /** FetchQRCodeReq deviceSeed. */
         public deviceSeed: Long;
+
+        /** FetchQRCodeReq clientProtocol. */
+        public clientProtocol: number;
 
         /**
          * Creates a new FetchQRCodeReq instance using the specified properties.
@@ -1482,20 +1320,6 @@ export namespace dto {
         public listBot(request: dto.IListBotReq): Promise<dto.ListBotResp>;
 
         /**
-         * Calls BotLoginAsync.
-         * @param request BotLoginAsyncReq message or plain object
-         * @param callback Node-style callback called with the error, if any, and BotLoginAsyncResp
-         */
-        public botLoginAsync(request: dto.IBotLoginAsyncReq, callback: dto.HttpService.BotLoginAsyncCallback): void;
-
-        /**
-         * Calls BotLoginAsync.
-         * @param request BotLoginAsyncReq message or plain object
-         * @returns Promise
-         */
-        public botLoginAsync(request: dto.IBotLoginAsyncReq): Promise<dto.BotLoginAsyncResp>;
-
-        /**
          * Calls SolveCaptcha.
          * @param request SolveCaptchaReq message or plain object
          * @param callback Node-style callback called with the error, if any, and SolveCaptchaResp
@@ -1560,13 +1384,6 @@ export namespace dto {
          * @param [response] ListBotResp
          */
         type ListBotCallback = (error: (Error|null), response?: dto.ListBotResp) => void;
-
-        /**
-         * Callback as used by {@link dto.HttpService#botLoginAsync}.
-         * @param error Error, if any
-         * @param [response] BotLoginAsyncResp
-         */
-        type BotLoginAsyncCallback = (error: (Error|null), response?: dto.BotLoginAsyncResp) => void;
 
         /**
          * Callback as used by {@link dto.HttpService#solveCaptcha}.

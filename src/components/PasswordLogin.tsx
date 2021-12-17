@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Form, InputNumber, Button, notification, Input, Alert } from 'antd'
+import { Modal, Form, InputNumber, Button, notification, Input, Alert, Select } from 'antd'
 import { service } from '../api/RpcImpl'
 import Long from 'long'
 interface PasswordLoginProp {
@@ -10,6 +10,7 @@ const PasswordLogin = (props: PasswordLoginProp) => {
     const { isVisible, onClose } = props
     const [botId, setBotId] = useState("")
     const [password, setPassword] = useState("")
+    const [clientProtocol, setClientProtocol] = useState<number>(0);
     const [deviceSeed, setDeviceSeed] = useState<number>(new Date().getTime());
 
     const handleCreateBot = async () => {
@@ -18,6 +19,7 @@ const PasswordLogin = (props: PasswordLoginProp) => {
                 botId: Long.fromString(botId),
                 password: password,
                 deviceSeed: Long.fromNumber(deviceSeed),
+                clientProtocol: clientProtocol
             })
             notification["success"]({
                 message: '创建成功',
@@ -47,13 +49,27 @@ const PasswordLogin = (props: PasswordLoginProp) => {
             >
 
                 <Form>
-                    <Form.Item label="账号">
+                    <Form.Item label="账号" style={{marginBottom: "12px"}}>
                         <Input onChange={(e) => { setBotId(e.target.value) }}></Input>
                     </Form.Item>
-                    <Form.Item label="密码">
+                    <Form.Item label="密码" style={{marginBottom: "12px"}}>
                         <Input.Password onChange={(e) => { setPassword(e.target.value) }}></Input.Password>
                     </Form.Item>
-                    <Form.Item label="设备随机种子">
+                    <Form.Item label="协议类型" style={{marginBottom: "12px"}}>
+                        <Select
+                          value={clientProtocol}
+                          style={{ width: 180 }}
+                          onChange={(value) => { setClientProtocol(value) }}
+                        >
+                            <Select.Option value={0}>Default</Select.Option>
+                            <Select.Option value={1}>AndroidPhone</Select.Option>
+                            <Select.Option value={2}>AndroidWatch</Select.Option>
+                            <Select.Option value={3}>MacOS</Select.Option>
+                            <Select.Option value={4}>QiDian</Select.Option>
+                            <Select.Option value={5}>IPad</Select.Option>
+                        </Select>
+                    </Form.Item>
+                    <Form.Item label="设备种子" style={{marginBottom: "12px"}}>
                         <InputNumber
                             min={0}
                             value={deviceSeed}

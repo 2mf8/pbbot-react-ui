@@ -615,6 +615,7 @@ $root.dto = (function() {
          * @property {Long|null} [botId] CreateBotReq botId
          * @property {string|null} [password] CreateBotReq password
          * @property {Long|null} [deviceSeed] CreateBotReq deviceSeed
+         * @property {number|null} [clientProtocol] CreateBotReq clientProtocol
          */
 
         /**
@@ -657,6 +658,14 @@ $root.dto = (function() {
         CreateBotReq.prototype.deviceSeed = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
 
         /**
+         * CreateBotReq clientProtocol.
+         * @member {number} clientProtocol
+         * @memberof dto.CreateBotReq
+         * @instance
+         */
+        CreateBotReq.prototype.clientProtocol = 0;
+
+        /**
          * Creates a new CreateBotReq instance using the specified properties.
          * @function create
          * @memberof dto.CreateBotReq
@@ -686,6 +695,8 @@ $root.dto = (function() {
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.password);
             if (message.deviceSeed != null && Object.hasOwnProperty.call(message, "deviceSeed"))
                 writer.uint32(/* id 3, wireType 0 =*/24).int64(message.deviceSeed);
+            if (message.clientProtocol != null && Object.hasOwnProperty.call(message, "clientProtocol"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.clientProtocol);
             return writer;
         };
 
@@ -728,6 +739,9 @@ $root.dto = (function() {
                     break;
                 case 3:
                     message.deviceSeed = reader.int64();
+                    break;
+                case 4:
+                    message.clientProtocol = reader.int32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -773,6 +787,9 @@ $root.dto = (function() {
             if (message.deviceSeed != null && message.hasOwnProperty("deviceSeed"))
                 if (!$util.isInteger(message.deviceSeed) && !(message.deviceSeed && $util.isInteger(message.deviceSeed.low) && $util.isInteger(message.deviceSeed.high)))
                     return "deviceSeed: integer|Long expected";
+            if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
+                if (!$util.isInteger(message.clientProtocol))
+                    return "clientProtocol: integer expected";
             return null;
         };
 
@@ -808,6 +825,8 @@ $root.dto = (function() {
                     message.deviceSeed = object.deviceSeed;
                 else if (typeof object.deviceSeed === "object")
                     message.deviceSeed = new $util.LongBits(object.deviceSeed.low >>> 0, object.deviceSeed.high >>> 0).toNumber();
+            if (object.clientProtocol != null)
+                message.clientProtocol = object.clientProtocol | 0;
             return message;
         };
 
@@ -836,6 +855,7 @@ $root.dto = (function() {
                     object.deviceSeed = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
                     object.deviceSeed = options.longs === String ? "0" : 0;
+                object.clientProtocol = 0;
             }
             if (message.botId != null && message.hasOwnProperty("botId"))
                 if (typeof message.botId === "number")
@@ -849,6 +869,8 @@ $root.dto = (function() {
                     object.deviceSeed = options.longs === String ? String(message.deviceSeed) : message.deviceSeed;
                 else
                     object.deviceSeed = options.longs === String ? $util.Long.prototype.toString.call(message.deviceSeed) : options.longs === Number ? new $util.LongBits(message.deviceSeed.low >>> 0, message.deviceSeed.high >>> 0).toNumber() : message.deviceSeed;
+            if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
+                object.clientProtocol = message.clientProtocol;
             return object;
         };
 
@@ -1755,367 +1777,6 @@ $root.dto = (function() {
         return ListBotResp;
     })();
 
-    dto.BotLoginAsyncReq = (function() {
-
-        /**
-         * Properties of a BotLoginAsyncReq.
-         * @memberof dto
-         * @interface IBotLoginAsyncReq
-         * @property {Long|null} [botId] BotLoginAsyncReq botId
-         */
-
-        /**
-         * Constructs a new BotLoginAsyncReq.
-         * @memberof dto
-         * @classdesc Represents a BotLoginAsyncReq.
-         * @implements IBotLoginAsyncReq
-         * @constructor
-         * @param {dto.IBotLoginAsyncReq=} [properties] Properties to set
-         */
-        function BotLoginAsyncReq(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * BotLoginAsyncReq botId.
-         * @member {Long} botId
-         * @memberof dto.BotLoginAsyncReq
-         * @instance
-         */
-        BotLoginAsyncReq.prototype.botId = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-
-        /**
-         * Creates a new BotLoginAsyncReq instance using the specified properties.
-         * @function create
-         * @memberof dto.BotLoginAsyncReq
-         * @static
-         * @param {dto.IBotLoginAsyncReq=} [properties] Properties to set
-         * @returns {dto.BotLoginAsyncReq} BotLoginAsyncReq instance
-         */
-        BotLoginAsyncReq.create = function create(properties) {
-            return new BotLoginAsyncReq(properties);
-        };
-
-        /**
-         * Encodes the specified BotLoginAsyncReq message. Does not implicitly {@link dto.BotLoginAsyncReq.verify|verify} messages.
-         * @function encode
-         * @memberof dto.BotLoginAsyncReq
-         * @static
-         * @param {dto.IBotLoginAsyncReq} message BotLoginAsyncReq message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        BotLoginAsyncReq.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.botId != null && Object.hasOwnProperty.call(message, "botId"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int64(message.botId);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified BotLoginAsyncReq message, length delimited. Does not implicitly {@link dto.BotLoginAsyncReq.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof dto.BotLoginAsyncReq
-         * @static
-         * @param {dto.IBotLoginAsyncReq} message BotLoginAsyncReq message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        BotLoginAsyncReq.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a BotLoginAsyncReq message from the specified reader or buffer.
-         * @function decode
-         * @memberof dto.BotLoginAsyncReq
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {dto.BotLoginAsyncReq} BotLoginAsyncReq
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        BotLoginAsyncReq.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.BotLoginAsyncReq();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.botId = reader.int64();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a BotLoginAsyncReq message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof dto.BotLoginAsyncReq
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {dto.BotLoginAsyncReq} BotLoginAsyncReq
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        BotLoginAsyncReq.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a BotLoginAsyncReq message.
-         * @function verify
-         * @memberof dto.BotLoginAsyncReq
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        BotLoginAsyncReq.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.botId != null && message.hasOwnProperty("botId"))
-                if (!$util.isInteger(message.botId) && !(message.botId && $util.isInteger(message.botId.low) && $util.isInteger(message.botId.high)))
-                    return "botId: integer|Long expected";
-            return null;
-        };
-
-        /**
-         * Creates a BotLoginAsyncReq message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof dto.BotLoginAsyncReq
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {dto.BotLoginAsyncReq} BotLoginAsyncReq
-         */
-        BotLoginAsyncReq.fromObject = function fromObject(object) {
-            if (object instanceof $root.dto.BotLoginAsyncReq)
-                return object;
-            var message = new $root.dto.BotLoginAsyncReq();
-            if (object.botId != null)
-                if ($util.Long)
-                    (message.botId = $util.Long.fromValue(object.botId)).unsigned = false;
-                else if (typeof object.botId === "string")
-                    message.botId = parseInt(object.botId, 10);
-                else if (typeof object.botId === "number")
-                    message.botId = object.botId;
-                else if (typeof object.botId === "object")
-                    message.botId = new $util.LongBits(object.botId.low >>> 0, object.botId.high >>> 0).toNumber();
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a BotLoginAsyncReq message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof dto.BotLoginAsyncReq
-         * @static
-         * @param {dto.BotLoginAsyncReq} message BotLoginAsyncReq
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        BotLoginAsyncReq.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            var object = {};
-            if (options.defaults)
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, false);
-                    object.botId = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.botId = options.longs === String ? "0" : 0;
-            if (message.botId != null && message.hasOwnProperty("botId"))
-                if (typeof message.botId === "number")
-                    object.botId = options.longs === String ? String(message.botId) : message.botId;
-                else
-                    object.botId = options.longs === String ? $util.Long.prototype.toString.call(message.botId) : options.longs === Number ? new $util.LongBits(message.botId.low >>> 0, message.botId.high >>> 0).toNumber() : message.botId;
-            return object;
-        };
-
-        /**
-         * Converts this BotLoginAsyncReq to JSON.
-         * @function toJSON
-         * @memberof dto.BotLoginAsyncReq
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        BotLoginAsyncReq.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        return BotLoginAsyncReq;
-    })();
-
-    dto.BotLoginAsyncResp = (function() {
-
-        /**
-         * Properties of a BotLoginAsyncResp.
-         * @memberof dto
-         * @interface IBotLoginAsyncResp
-         */
-
-        /**
-         * Constructs a new BotLoginAsyncResp.
-         * @memberof dto
-         * @classdesc Represents a BotLoginAsyncResp.
-         * @implements IBotLoginAsyncResp
-         * @constructor
-         * @param {dto.IBotLoginAsyncResp=} [properties] Properties to set
-         */
-        function BotLoginAsyncResp(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Creates a new BotLoginAsyncResp instance using the specified properties.
-         * @function create
-         * @memberof dto.BotLoginAsyncResp
-         * @static
-         * @param {dto.IBotLoginAsyncResp=} [properties] Properties to set
-         * @returns {dto.BotLoginAsyncResp} BotLoginAsyncResp instance
-         */
-        BotLoginAsyncResp.create = function create(properties) {
-            return new BotLoginAsyncResp(properties);
-        };
-
-        /**
-         * Encodes the specified BotLoginAsyncResp message. Does not implicitly {@link dto.BotLoginAsyncResp.verify|verify} messages.
-         * @function encode
-         * @memberof dto.BotLoginAsyncResp
-         * @static
-         * @param {dto.IBotLoginAsyncResp} message BotLoginAsyncResp message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        BotLoginAsyncResp.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified BotLoginAsyncResp message, length delimited. Does not implicitly {@link dto.BotLoginAsyncResp.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof dto.BotLoginAsyncResp
-         * @static
-         * @param {dto.IBotLoginAsyncResp} message BotLoginAsyncResp message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        BotLoginAsyncResp.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a BotLoginAsyncResp message from the specified reader or buffer.
-         * @function decode
-         * @memberof dto.BotLoginAsyncResp
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {dto.BotLoginAsyncResp} BotLoginAsyncResp
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        BotLoginAsyncResp.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.BotLoginAsyncResp();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a BotLoginAsyncResp message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof dto.BotLoginAsyncResp
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {dto.BotLoginAsyncResp} BotLoginAsyncResp
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        BotLoginAsyncResp.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a BotLoginAsyncResp message.
-         * @function verify
-         * @memberof dto.BotLoginAsyncResp
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        BotLoginAsyncResp.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            return null;
-        };
-
-        /**
-         * Creates a BotLoginAsyncResp message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof dto.BotLoginAsyncResp
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {dto.BotLoginAsyncResp} BotLoginAsyncResp
-         */
-        BotLoginAsyncResp.fromObject = function fromObject(object) {
-            if (object instanceof $root.dto.BotLoginAsyncResp)
-                return object;
-            return new $root.dto.BotLoginAsyncResp();
-        };
-
-        /**
-         * Creates a plain object from a BotLoginAsyncResp message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof dto.BotLoginAsyncResp
-         * @static
-         * @param {dto.BotLoginAsyncResp} message BotLoginAsyncResp
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        BotLoginAsyncResp.toObject = function toObject() {
-            return {};
-        };
-
-        /**
-         * Converts this BotLoginAsyncResp to JSON.
-         * @function toJSON
-         * @memberof dto.BotLoginAsyncResp
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        BotLoginAsyncResp.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        return BotLoginAsyncResp;
-    })();
-
     dto.SolveCaptchaReq = (function() {
 
         /**
@@ -2507,6 +2168,7 @@ $root.dto = (function() {
          * @memberof dto
          * @interface IFetchQRCodeReq
          * @property {Long|null} [deviceSeed] FetchQRCodeReq deviceSeed
+         * @property {number|null} [clientProtocol] FetchQRCodeReq clientProtocol
          */
 
         /**
@@ -2531,6 +2193,14 @@ $root.dto = (function() {
          * @instance
          */
         FetchQRCodeReq.prototype.deviceSeed = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * FetchQRCodeReq clientProtocol.
+         * @member {number} clientProtocol
+         * @memberof dto.FetchQRCodeReq
+         * @instance
+         */
+        FetchQRCodeReq.prototype.clientProtocol = 0;
 
         /**
          * Creates a new FetchQRCodeReq instance using the specified properties.
@@ -2558,6 +2228,8 @@ $root.dto = (function() {
                 writer = $Writer.create();
             if (message.deviceSeed != null && Object.hasOwnProperty.call(message, "deviceSeed"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int64(message.deviceSeed);
+            if (message.clientProtocol != null && Object.hasOwnProperty.call(message, "clientProtocol"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.clientProtocol);
             return writer;
         };
 
@@ -2594,6 +2266,9 @@ $root.dto = (function() {
                 switch (tag >>> 3) {
                 case 1:
                     message.deviceSeed = reader.int64();
+                    break;
+                case 2:
+                    message.clientProtocol = reader.int32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -2633,6 +2308,9 @@ $root.dto = (function() {
             if (message.deviceSeed != null && message.hasOwnProperty("deviceSeed"))
                 if (!$util.isInteger(message.deviceSeed) && !(message.deviceSeed && $util.isInteger(message.deviceSeed.low) && $util.isInteger(message.deviceSeed.high)))
                     return "deviceSeed: integer|Long expected";
+            if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
+                if (!$util.isInteger(message.clientProtocol))
+                    return "clientProtocol: integer expected";
             return null;
         };
 
@@ -2657,6 +2335,8 @@ $root.dto = (function() {
                     message.deviceSeed = object.deviceSeed;
                 else if (typeof object.deviceSeed === "object")
                     message.deviceSeed = new $util.LongBits(object.deviceSeed.low >>> 0, object.deviceSeed.high >>> 0).toNumber();
+            if (object.clientProtocol != null)
+                message.clientProtocol = object.clientProtocol | 0;
             return message;
         };
 
@@ -2673,17 +2353,21 @@ $root.dto = (function() {
             if (!options)
                 options = {};
             var object = {};
-            if (options.defaults)
+            if (options.defaults) {
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, false);
                     object.deviceSeed = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
                     object.deviceSeed = options.longs === String ? "0" : 0;
+                object.clientProtocol = 0;
+            }
             if (message.deviceSeed != null && message.hasOwnProperty("deviceSeed"))
                 if (typeof message.deviceSeed === "number")
                     object.deviceSeed = options.longs === String ? String(message.deviceSeed) : message.deviceSeed;
                 else
                     object.deviceSeed = options.longs === String ? $util.Long.prototype.toString.call(message.deviceSeed) : options.longs === Number ? new $util.LongBits(message.deviceSeed.low >>> 0, message.deviceSeed.high >>> 0).toNumber() : message.deviceSeed;
+            if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
+                object.clientProtocol = message.clientProtocol;
             return object;
         };
 
@@ -3374,39 +3058,6 @@ $root.dto = (function() {
          * @instance
          * @param {dto.IListBotReq} request ListBotReq message or plain object
          * @returns {Promise<dto.ListBotResp>} Promise
-         * @variation 2
-         */
-
-        /**
-         * Callback as used by {@link dto.HttpService#botLoginAsync}.
-         * @memberof dto.HttpService
-         * @typedef BotLoginAsyncCallback
-         * @type {function}
-         * @param {Error|null} error Error, if any
-         * @param {dto.BotLoginAsyncResp} [response] BotLoginAsyncResp
-         */
-
-        /**
-         * Calls BotLoginAsync.
-         * @function botLoginAsync
-         * @memberof dto.HttpService
-         * @instance
-         * @param {dto.IBotLoginAsyncReq} request BotLoginAsyncReq message or plain object
-         * @param {dto.HttpService.BotLoginAsyncCallback} callback Node-style callback called with the error, if any, and BotLoginAsyncResp
-         * @returns {undefined}
-         * @variation 1
-         */
-        Object.defineProperty(HttpService.prototype.botLoginAsync = function botLoginAsync(request, callback) {
-            return this.rpcCall(botLoginAsync, $root.dto.BotLoginAsyncReq, $root.dto.BotLoginAsyncResp, request, callback);
-        }, "name", { value: "BotLoginAsync" });
-
-        /**
-         * Calls BotLoginAsync.
-         * @function botLoginAsync
-         * @memberof dto.HttpService
-         * @instance
-         * @param {dto.IBotLoginAsyncReq} request BotLoginAsyncReq message or plain object
-         * @returns {Promise<dto.BotLoginAsyncResp>} Promise
          * @variation 2
          */
 
