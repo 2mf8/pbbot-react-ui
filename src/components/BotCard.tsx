@@ -57,9 +57,9 @@ const BotCard = (props: dto.IBot) => {
                         <div style={{ height: "30px" }}>
                             验证：
                             {!captcha && (<span>已完成<CheckOutlined style={{ marginLeft: "8px" }} /></span >)}
-                            {!!captcha && captcha.captchaType == dto.Bot.Captcha.CaptchaType.SMS && (<span>短信<MessageOutlined style={{ marginLeft: "8px" }} /></span >)}
-                            {!!captcha && captcha.captchaType == dto.Bot.Captcha.CaptchaType.SLIDER_CAPTCHA && (<span>滑块<ArrowRightOutlined style={{ marginLeft: "8px" }} /></span >)}
-                            {!!captcha && captcha.captchaType == dto.Bot.Captcha.CaptchaType.UNSAFE_DEVICE_LOGIN_VERIFY && (<span>设备锁<LockOutlined style={{ marginLeft: "8px" }} /></span >)}
+                            {!!captcha && captcha.captchaType === dto.Bot.Captcha.CaptchaType.SMS && (<span>短信<MessageOutlined style={{ marginLeft: "8px" }} /></span >)}
+                            {!!captcha && captcha.captchaType === dto.Bot.Captcha.CaptchaType.SLIDER_CAPTCHA && (<span>滑块<ArrowRightOutlined style={{ marginLeft: "8px" }} /></span >)}
+                            {!!captcha && captcha.captchaType === dto.Bot.Captcha.CaptchaType.UNSAFE_DEVICE_LOGIN_VERIFY && (<span>设备锁<LockOutlined style={{ marginLeft: "8px" }} /></span >)}
                         </div>
                     </Col>
                 </Row>
