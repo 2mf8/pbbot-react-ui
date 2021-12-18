@@ -183,6 +183,7 @@ const PluginSetting = (props: PluginSettingProp) => {
           </Form.Item>
           <Form.Item>
             <Button onClick={handleSavePlugin} type="primary">保存</Button>
+            <div style={{ color: "red" }}>改动只对新创建的机器人生效</div>
           </Form.Item>
         </Form>
       </Modal>
