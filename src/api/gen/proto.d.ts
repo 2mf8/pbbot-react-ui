@@ -1257,6 +1257,765 @@ export namespace dto {
         }
     }
 
+    /** Properties of a Plugin. */
+    interface IPlugin {
+
+        /** Plugin name */
+        name?: (string|null);
+
+        /** Plugin disabled */
+        disabled?: (boolean|null);
+
+        /** Plugin json */
+        json?: (boolean|null);
+
+        /** Plugin urls */
+        urls?: (string[]|null);
+
+        /** Plugin eventFilter */
+        eventFilter?: (number[]|null);
+
+        /** Plugin apiFilter */
+        apiFilter?: (number[]|null);
+
+        /** Plugin regexFilter */
+        regexFilter?: (string|null);
+
+        /** Plugin regexReplace */
+        regexReplace?: (string|null);
+
+        /** Plugin extraHeader */
+        extraHeader?: (dto.Plugin.IHeader[]|null);
+    }
+
+    /** Represents a Plugin. */
+    class Plugin implements IPlugin {
+
+        /**
+         * Constructs a new Plugin.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IPlugin);
+
+        /** Plugin name. */
+        public name: string;
+
+        /** Plugin disabled. */
+        public disabled: boolean;
+
+        /** Plugin json. */
+        public json: boolean;
+
+        /** Plugin urls. */
+        public urls: string[];
+
+        /** Plugin eventFilter. */
+        public eventFilter: number[];
+
+        /** Plugin apiFilter. */
+        public apiFilter: number[];
+
+        /** Plugin regexFilter. */
+        public regexFilter: string;
+
+        /** Plugin regexReplace. */
+        public regexReplace: string;
+
+        /** Plugin extraHeader. */
+        public extraHeader: dto.Plugin.IHeader[];
+
+        /**
+         * Creates a new Plugin instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Plugin instance
+         */
+        public static create(properties?: dto.IPlugin): dto.Plugin;
+
+        /**
+         * Encodes the specified Plugin message. Does not implicitly {@link dto.Plugin.verify|verify} messages.
+         * @param message Plugin message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IPlugin, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Plugin message, length delimited. Does not implicitly {@link dto.Plugin.verify|verify} messages.
+         * @param message Plugin message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IPlugin, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a Plugin message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Plugin
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.Plugin;
+
+        /**
+         * Decodes a Plugin message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Plugin
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.Plugin;
+
+        /**
+         * Verifies a Plugin message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a Plugin message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Plugin
+         */
+        public static fromObject(object: { [k: string]: any }): dto.Plugin;
+
+        /**
+         * Creates a plain object from a Plugin message. Also converts values to other types if specified.
+         * @param message Plugin
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.Plugin, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Plugin to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    namespace Plugin {
+
+        /** Properties of a Header. */
+        interface IHeader {
+
+            /** Header key */
+            key?: (string|null);
+
+            /** Header value */
+            value?: (string[]|null);
+        }
+
+        /** Represents a Header. */
+        class Header implements IHeader {
+
+            /**
+             * Constructs a new Header.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: dto.Plugin.IHeader);
+
+            /** Header key. */
+            public key: string;
+
+            /** Header value. */
+            public value: string[];
+
+            /**
+             * Creates a new Header instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Header instance
+             */
+            public static create(properties?: dto.Plugin.IHeader): dto.Plugin.Header;
+
+            /**
+             * Encodes the specified Header message. Does not implicitly {@link dto.Plugin.Header.verify|verify} messages.
+             * @param message Header message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: dto.Plugin.IHeader, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Header message, length delimited. Does not implicitly {@link dto.Plugin.Header.verify|verify} messages.
+             * @param message Header message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: dto.Plugin.IHeader, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Header message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Header
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.Plugin.Header;
+
+            /**
+             * Decodes a Header message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Header
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.Plugin.Header;
+
+            /**
+             * Verifies a Header message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Header message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Header
+             */
+            public static fromObject(object: { [k: string]: any }): dto.Plugin.Header;
+
+            /**
+             * Creates a plain object from a Header message. Also converts values to other types if specified.
+             * @param message Header
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: dto.Plugin.Header, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Header to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+    }
+
+    /** Properties of a ListPluginReq. */
+    interface IListPluginReq {
+    }
+
+    /** Represents a ListPluginReq. */
+    class ListPluginReq implements IListPluginReq {
+
+        /**
+         * Constructs a new ListPluginReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IListPluginReq);
+
+        /**
+         * Creates a new ListPluginReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListPluginReq instance
+         */
+        public static create(properties?: dto.IListPluginReq): dto.ListPluginReq;
+
+        /**
+         * Encodes the specified ListPluginReq message. Does not implicitly {@link dto.ListPluginReq.verify|verify} messages.
+         * @param message ListPluginReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IListPluginReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListPluginReq message, length delimited. Does not implicitly {@link dto.ListPluginReq.verify|verify} messages.
+         * @param message ListPluginReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IListPluginReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListPluginReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListPluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.ListPluginReq;
+
+        /**
+         * Decodes a ListPluginReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListPluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.ListPluginReq;
+
+        /**
+         * Verifies a ListPluginReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListPluginReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListPluginReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.ListPluginReq;
+
+        /**
+         * Creates a plain object from a ListPluginReq message. Also converts values to other types if specified.
+         * @param message ListPluginReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.ListPluginReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListPluginReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a ListPluginResp. */
+    interface IListPluginResp {
+
+        /** ListPluginResp plugins */
+        plugins?: (dto.IPlugin[]|null);
+    }
+
+    /** Represents a ListPluginResp. */
+    class ListPluginResp implements IListPluginResp {
+
+        /**
+         * Constructs a new ListPluginResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IListPluginResp);
+
+        /** ListPluginResp plugins. */
+        public plugins: dto.IPlugin[];
+
+        /**
+         * Creates a new ListPluginResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ListPluginResp instance
+         */
+        public static create(properties?: dto.IListPluginResp): dto.ListPluginResp;
+
+        /**
+         * Encodes the specified ListPluginResp message. Does not implicitly {@link dto.ListPluginResp.verify|verify} messages.
+         * @param message ListPluginResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IListPluginResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ListPluginResp message, length delimited. Does not implicitly {@link dto.ListPluginResp.verify|verify} messages.
+         * @param message ListPluginResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IListPluginResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ListPluginResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ListPluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.ListPluginResp;
+
+        /**
+         * Decodes a ListPluginResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ListPluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.ListPluginResp;
+
+        /**
+         * Verifies a ListPluginResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ListPluginResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ListPluginResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.ListPluginResp;
+
+        /**
+         * Creates a plain object from a ListPluginResp message. Also converts values to other types if specified.
+         * @param message ListPluginResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.ListPluginResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ListPluginResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a SavePluginReq. */
+    interface ISavePluginReq {
+
+        /** SavePluginReq plugin */
+        plugin?: (dto.IPlugin|null);
+    }
+
+    /** Represents a SavePluginReq. */
+    class SavePluginReq implements ISavePluginReq {
+
+        /**
+         * Constructs a new SavePluginReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.ISavePluginReq);
+
+        /** SavePluginReq plugin. */
+        public plugin?: (dto.IPlugin|null);
+
+        /**
+         * Creates a new SavePluginReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SavePluginReq instance
+         */
+        public static create(properties?: dto.ISavePluginReq): dto.SavePluginReq;
+
+        /**
+         * Encodes the specified SavePluginReq message. Does not implicitly {@link dto.SavePluginReq.verify|verify} messages.
+         * @param message SavePluginReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.ISavePluginReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SavePluginReq message, length delimited. Does not implicitly {@link dto.SavePluginReq.verify|verify} messages.
+         * @param message SavePluginReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.ISavePluginReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SavePluginReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SavePluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.SavePluginReq;
+
+        /**
+         * Decodes a SavePluginReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SavePluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.SavePluginReq;
+
+        /**
+         * Verifies a SavePluginReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SavePluginReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SavePluginReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.SavePluginReq;
+
+        /**
+         * Creates a plain object from a SavePluginReq message. Also converts values to other types if specified.
+         * @param message SavePluginReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.SavePluginReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SavePluginReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a SavePluginResp. */
+    interface ISavePluginResp {
+    }
+
+    /** Represents a SavePluginResp. */
+    class SavePluginResp implements ISavePluginResp {
+
+        /**
+         * Constructs a new SavePluginResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.ISavePluginResp);
+
+        /**
+         * Creates a new SavePluginResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SavePluginResp instance
+         */
+        public static create(properties?: dto.ISavePluginResp): dto.SavePluginResp;
+
+        /**
+         * Encodes the specified SavePluginResp message. Does not implicitly {@link dto.SavePluginResp.verify|verify} messages.
+         * @param message SavePluginResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.ISavePluginResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SavePluginResp message, length delimited. Does not implicitly {@link dto.SavePluginResp.verify|verify} messages.
+         * @param message SavePluginResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.ISavePluginResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SavePluginResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SavePluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.SavePluginResp;
+
+        /**
+         * Decodes a SavePluginResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SavePluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.SavePluginResp;
+
+        /**
+         * Verifies a SavePluginResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SavePluginResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SavePluginResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.SavePluginResp;
+
+        /**
+         * Creates a plain object from a SavePluginResp message. Also converts values to other types if specified.
+         * @param message SavePluginResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.SavePluginResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SavePluginResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a DeletePluginReq. */
+    interface IDeletePluginReq {
+
+        /** DeletePluginReq name */
+        name?: (string|null);
+    }
+
+    /** Represents a DeletePluginReq. */
+    class DeletePluginReq implements IDeletePluginReq {
+
+        /**
+         * Constructs a new DeletePluginReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IDeletePluginReq);
+
+        /** DeletePluginReq name. */
+        public name: string;
+
+        /**
+         * Creates a new DeletePluginReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeletePluginReq instance
+         */
+        public static create(properties?: dto.IDeletePluginReq): dto.DeletePluginReq;
+
+        /**
+         * Encodes the specified DeletePluginReq message. Does not implicitly {@link dto.DeletePluginReq.verify|verify} messages.
+         * @param message DeletePluginReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IDeletePluginReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeletePluginReq message, length delimited. Does not implicitly {@link dto.DeletePluginReq.verify|verify} messages.
+         * @param message DeletePluginReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IDeletePluginReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeletePluginReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeletePluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.DeletePluginReq;
+
+        /**
+         * Decodes a DeletePluginReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeletePluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.DeletePluginReq;
+
+        /**
+         * Verifies a DeletePluginReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeletePluginReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeletePluginReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.DeletePluginReq;
+
+        /**
+         * Creates a plain object from a DeletePluginReq message. Also converts values to other types if specified.
+         * @param message DeletePluginReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.DeletePluginReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeletePluginReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a DeletePluginResp. */
+    interface IDeletePluginResp {
+    }
+
+    /** Represents a DeletePluginResp. */
+    class DeletePluginResp implements IDeletePluginResp {
+
+        /**
+         * Constructs a new DeletePluginResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IDeletePluginResp);
+
+        /**
+         * Creates a new DeletePluginResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeletePluginResp instance
+         */
+        public static create(properties?: dto.IDeletePluginResp): dto.DeletePluginResp;
+
+        /**
+         * Encodes the specified DeletePluginResp message. Does not implicitly {@link dto.DeletePluginResp.verify|verify} messages.
+         * @param message DeletePluginResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IDeletePluginResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeletePluginResp message, length delimited. Does not implicitly {@link dto.DeletePluginResp.verify|verify} messages.
+         * @param message DeletePluginResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IDeletePluginResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeletePluginResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns DeletePluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.DeletePluginResp;
+
+        /**
+         * Decodes a DeletePluginResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns DeletePluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.DeletePluginResp;
+
+        /**
+         * Verifies a DeletePluginResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeletePluginResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeletePluginResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.DeletePluginResp;
+
+        /**
+         * Creates a plain object from a DeletePluginResp message. Also converts values to other types if specified.
+         * @param message DeletePluginResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.DeletePluginResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeletePluginResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
     /** Represents a HttpService */
     class HttpService extends $protobuf.rpc.Service {
 
@@ -1360,6 +2119,48 @@ export namespace dto {
          * @returns Promise
          */
         public queryQRCodeStatus(request: dto.IQueryQRCodeStatusReq): Promise<dto.QRCodeLoginResp>;
+
+        /**
+         * Calls ListPlugin.
+         * @param request ListPluginReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and ListPluginResp
+         */
+        public listPlugin(request: dto.IListPluginReq, callback: dto.HttpService.ListPluginCallback): void;
+
+        /**
+         * Calls ListPlugin.
+         * @param request ListPluginReq message or plain object
+         * @returns Promise
+         */
+        public listPlugin(request: dto.IListPluginReq): Promise<dto.ListPluginResp>;
+
+        /**
+         * Calls SavePlugin.
+         * @param request SavePluginReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and SavePluginResp
+         */
+        public savePlugin(request: dto.ISavePluginReq, callback: dto.HttpService.SavePluginCallback): void;
+
+        /**
+         * Calls SavePlugin.
+         * @param request SavePluginReq message or plain object
+         * @returns Promise
+         */
+        public savePlugin(request: dto.ISavePluginReq): Promise<dto.SavePluginResp>;
+
+        /**
+         * Calls DeletePlugin.
+         * @param request DeletePluginReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and DeletePluginResp
+         */
+        public deletePlugin(request: dto.IDeletePluginReq, callback: dto.HttpService.DeletePluginCallback): void;
+
+        /**
+         * Calls DeletePlugin.
+         * @param request DeletePluginReq message or plain object
+         * @returns Promise
+         */
+        public deletePlugin(request: dto.IDeletePluginReq): Promise<dto.DeletePluginResp>;
     }
 
     namespace HttpService {
@@ -1405,5 +2206,26 @@ export namespace dto {
          * @param [response] QRCodeLoginResp
          */
         type QueryQRCodeStatusCallback = (error: (Error|null), response?: dto.QRCodeLoginResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#listPlugin}.
+         * @param error Error, if any
+         * @param [response] ListPluginResp
+         */
+        type ListPluginCallback = (error: (Error|null), response?: dto.ListPluginResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#savePlugin}.
+         * @param error Error, if any
+         * @param [response] SavePluginResp
+         */
+        type SavePluginCallback = (error: (Error|null), response?: dto.SavePluginResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#deletePlugin}.
+         * @param error Error, if any
+         * @param [response] DeletePluginResp
+         */
+        type DeletePluginCallback = (error: (Error|null), response?: dto.DeletePluginResp) => void;
     }
 }

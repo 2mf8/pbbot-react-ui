@@ -85,7 +85,7 @@ const PasswordLogin = (props: PasswordLoginProp) => {
                         </Button>
                         <div style={{ color: "red" }}>建议每次使用相同种子</div>
                     </Form.Item>
-                    <Alert message="随机种子是数字，随机种子相同生成的设备文件相同，随机种子设为0默认使用账号作为种子。" type="info" />
+                    <Alert message="随机种子是数字，种子相同生成的设备文件相同，随机种子设为0默认使用账号作为种子。" type="info" />
                 </Form>
             </Modal>
         </>

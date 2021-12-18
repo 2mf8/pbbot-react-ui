@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './App.css';
 import { Layout, Button, Row, Col, notification, Empty } from 'antd';
-import { GithubOutlined } from '@ant-design/icons'
+import { GithubOutlined, SettingOutlined } from '@ant-design/icons'
 import BotCard from './components/BotCard'
 import QRCodeLogin from './components/QRCodeLogin'
 import PasswordLogin from './components/PasswordLogin'
+import PluginSetting from "./components/PluginSetting";
 import { useInterval } from './utils/interval'
 import { service } from './api/RpcImpl'
 import { dto } from './api/gen/proto';
@@ -13,6 +14,7 @@ const { Header, Content } = Layout;
 const App = () => {
   const [showQRCodeLogin, setShowQRCodeLogin] = useState<boolean>(false);
   const [showPasswordLogin, setShowPasswordLogin] = useState<boolean>(false);
+  const [showSetting, setShowSetting] = useState<boolean>(false);
 
   const [listBotResp, setListBotResp] = useState<dto.IListBotResp>({});
   useInterval(async () => {
@@ -36,12 +38,12 @@ const App = () => {
         <Content>
           <div >
             <Button style={{ margin: "20px 8px" }} type="primary" onClick={() => setShowQRCodeLogin(true)}>扫码创建</Button>
-            <QRCodeLogin isVisible={showQRCodeLogin} onClose={() => { setShowQRCodeLogin(false) }}></QRCodeLogin>
+            <QRCodeLogin isVisible={showQRCodeLogin} onClose={() => { setShowQRCodeLogin(false) }}/>
             <Button style={{ margin: "20px 8px" }} type="primary" onClick={() => setShowPasswordLogin(true)}>密码创建</Button>
-            <PasswordLogin isVisible={showPasswordLogin} onClose={() => { setShowPasswordLogin(false) }}></PasswordLogin>
-            <Button style={{ margin: "20px 8px" }} icon={<GithubOutlined />} href="https://github.com/ProtobufBot/ProtobufBot" target="_blank">
-              GitHub
-            </Button>
+            <PasswordLogin isVisible={showPasswordLogin} onClose={() => { setShowPasswordLogin(false) }}/>
+            <Button style={{ margin: "20px 8px" }} shape="circle" icon={<SettingOutlined />} onClick={() => setShowSetting(true)}/>
+            <PluginSetting isVisible={showSetting} onClose={() => { setShowSetting(false) }}/>
+            <Button style={{ margin: "20px 8px" }} shape="circle" icon={<GithubOutlined />} href="https://github.com/ProtobufBot/ProtobufBot" target="_blank"/>
           </div>
           {!!listBotResp && !!listBotResp.botList ?
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} style={{ margin: '20px' }}>

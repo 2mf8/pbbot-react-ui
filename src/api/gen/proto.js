@@ -2930,6 +2930,1750 @@ $root.dto = (function() {
         return QRCodeLoginResp;
     })();
 
+    dto.Plugin = (function() {
+
+        /**
+         * Properties of a Plugin.
+         * @memberof dto
+         * @interface IPlugin
+         * @property {string|null} [name] Plugin name
+         * @property {boolean|null} [disabled] Plugin disabled
+         * @property {boolean|null} [json] Plugin json
+         * @property {Array.<string>|null} [urls] Plugin urls
+         * @property {Array.<number>|null} [eventFilter] Plugin eventFilter
+         * @property {Array.<number>|null} [apiFilter] Plugin apiFilter
+         * @property {string|null} [regexFilter] Plugin regexFilter
+         * @property {string|null} [regexReplace] Plugin regexReplace
+         * @property {Array.<dto.Plugin.IHeader>|null} [extraHeader] Plugin extraHeader
+         */
+
+        /**
+         * Constructs a new Plugin.
+         * @memberof dto
+         * @classdesc Represents a Plugin.
+         * @implements IPlugin
+         * @constructor
+         * @param {dto.IPlugin=} [properties] Properties to set
+         */
+        function Plugin(properties) {
+            this.urls = [];
+            this.eventFilter = [];
+            this.apiFilter = [];
+            this.extraHeader = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Plugin name.
+         * @member {string} name
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.name = "";
+
+        /**
+         * Plugin disabled.
+         * @member {boolean} disabled
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.disabled = false;
+
+        /**
+         * Plugin json.
+         * @member {boolean} json
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.json = false;
+
+        /**
+         * Plugin urls.
+         * @member {Array.<string>} urls
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.urls = $util.emptyArray;
+
+        /**
+         * Plugin eventFilter.
+         * @member {Array.<number>} eventFilter
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.eventFilter = $util.emptyArray;
+
+        /**
+         * Plugin apiFilter.
+         * @member {Array.<number>} apiFilter
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.apiFilter = $util.emptyArray;
+
+        /**
+         * Plugin regexFilter.
+         * @member {string} regexFilter
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.regexFilter = "";
+
+        /**
+         * Plugin regexReplace.
+         * @member {string} regexReplace
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.regexReplace = "";
+
+        /**
+         * Plugin extraHeader.
+         * @member {Array.<dto.Plugin.IHeader>} extraHeader
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.extraHeader = $util.emptyArray;
+
+        /**
+         * Creates a new Plugin instance using the specified properties.
+         * @function create
+         * @memberof dto.Plugin
+         * @static
+         * @param {dto.IPlugin=} [properties] Properties to set
+         * @returns {dto.Plugin} Plugin instance
+         */
+        Plugin.create = function create(properties) {
+            return new Plugin(properties);
+        };
+
+        /**
+         * Encodes the specified Plugin message. Does not implicitly {@link dto.Plugin.verify|verify} messages.
+         * @function encode
+         * @memberof dto.Plugin
+         * @static
+         * @param {dto.IPlugin} message Plugin message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Plugin.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+            if (message.disabled != null && Object.hasOwnProperty.call(message, "disabled"))
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.disabled);
+            if (message.json != null && Object.hasOwnProperty.call(message, "json"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.json);
+            if (message.urls != null && message.urls.length)
+                for (var i = 0; i < message.urls.length; ++i)
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.urls[i]);
+            if (message.eventFilter != null && message.eventFilter.length) {
+                writer.uint32(/* id 5, wireType 2 =*/42).fork();
+                for (var i = 0; i < message.eventFilter.length; ++i)
+                    writer.int32(message.eventFilter[i]);
+                writer.ldelim();
+            }
+            if (message.apiFilter != null && message.apiFilter.length) {
+                writer.uint32(/* id 6, wireType 2 =*/50).fork();
+                for (var i = 0; i < message.apiFilter.length; ++i)
+                    writer.int32(message.apiFilter[i]);
+                writer.ldelim();
+            }
+            if (message.regexFilter != null && Object.hasOwnProperty.call(message, "regexFilter"))
+                writer.uint32(/* id 7, wireType 2 =*/58).string(message.regexFilter);
+            if (message.regexReplace != null && Object.hasOwnProperty.call(message, "regexReplace"))
+                writer.uint32(/* id 8, wireType 2 =*/66).string(message.regexReplace);
+            if (message.extraHeader != null && message.extraHeader.length)
+                for (var i = 0; i < message.extraHeader.length; ++i)
+                    $root.dto.Plugin.Header.encode(message.extraHeader[i], writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Plugin message, length delimited. Does not implicitly {@link dto.Plugin.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.Plugin
+         * @static
+         * @param {dto.IPlugin} message Plugin message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Plugin.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Plugin message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.Plugin
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.Plugin} Plugin
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Plugin.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.Plugin();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                case 2:
+                    message.disabled = reader.bool();
+                    break;
+                case 3:
+                    message.json = reader.bool();
+                    break;
+                case 4:
+                    if (!(message.urls && message.urls.length))
+                        message.urls = [];
+                    message.urls.push(reader.string());
+                    break;
+                case 5:
+                    if (!(message.eventFilter && message.eventFilter.length))
+                        message.eventFilter = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.eventFilter.push(reader.int32());
+                    } else
+                        message.eventFilter.push(reader.int32());
+                    break;
+                case 6:
+                    if (!(message.apiFilter && message.apiFilter.length))
+                        message.apiFilter = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.apiFilter.push(reader.int32());
+                    } else
+                        message.apiFilter.push(reader.int32());
+                    break;
+                case 7:
+                    message.regexFilter = reader.string();
+                    break;
+                case 8:
+                    message.regexReplace = reader.string();
+                    break;
+                case 9:
+                    if (!(message.extraHeader && message.extraHeader.length))
+                        message.extraHeader = [];
+                    message.extraHeader.push($root.dto.Plugin.Header.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Plugin message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.Plugin
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.Plugin} Plugin
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Plugin.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Plugin message.
+         * @function verify
+         * @memberof dto.Plugin
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Plugin.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            if (message.disabled != null && message.hasOwnProperty("disabled"))
+                if (typeof message.disabled !== "boolean")
+                    return "disabled: boolean expected";
+            if (message.json != null && message.hasOwnProperty("json"))
+                if (typeof message.json !== "boolean")
+                    return "json: boolean expected";
+            if (message.urls != null && message.hasOwnProperty("urls")) {
+                if (!Array.isArray(message.urls))
+                    return "urls: array expected";
+                for (var i = 0; i < message.urls.length; ++i)
+                    if (!$util.isString(message.urls[i]))
+                        return "urls: string[] expected";
+            }
+            if (message.eventFilter != null && message.hasOwnProperty("eventFilter")) {
+                if (!Array.isArray(message.eventFilter))
+                    return "eventFilter: array expected";
+                for (var i = 0; i < message.eventFilter.length; ++i)
+                    if (!$util.isInteger(message.eventFilter[i]))
+                        return "eventFilter: integer[] expected";
+            }
+            if (message.apiFilter != null && message.hasOwnProperty("apiFilter")) {
+                if (!Array.isArray(message.apiFilter))
+                    return "apiFilter: array expected";
+                for (var i = 0; i < message.apiFilter.length; ++i)
+                    if (!$util.isInteger(message.apiFilter[i]))
+                        return "apiFilter: integer[] expected";
+            }
+            if (message.regexFilter != null && message.hasOwnProperty("regexFilter"))
+                if (!$util.isString(message.regexFilter))
+                    return "regexFilter: string expected";
+            if (message.regexReplace != null && message.hasOwnProperty("regexReplace"))
+                if (!$util.isString(message.regexReplace))
+                    return "regexReplace: string expected";
+            if (message.extraHeader != null && message.hasOwnProperty("extraHeader")) {
+                if (!Array.isArray(message.extraHeader))
+                    return "extraHeader: array expected";
+                for (var i = 0; i < message.extraHeader.length; ++i) {
+                    var error = $root.dto.Plugin.Header.verify(message.extraHeader[i]);
+                    if (error)
+                        return "extraHeader." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a Plugin message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.Plugin
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.Plugin} Plugin
+         */
+        Plugin.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.Plugin)
+                return object;
+            var message = new $root.dto.Plugin();
+            if (object.name != null)
+                message.name = String(object.name);
+            if (object.disabled != null)
+                message.disabled = Boolean(object.disabled);
+            if (object.json != null)
+                message.json = Boolean(object.json);
+            if (object.urls) {
+                if (!Array.isArray(object.urls))
+                    throw TypeError(".dto.Plugin.urls: array expected");
+                message.urls = [];
+                for (var i = 0; i < object.urls.length; ++i)
+                    message.urls[i] = String(object.urls[i]);
+            }
+            if (object.eventFilter) {
+                if (!Array.isArray(object.eventFilter))
+                    throw TypeError(".dto.Plugin.eventFilter: array expected");
+                message.eventFilter = [];
+                for (var i = 0; i < object.eventFilter.length; ++i)
+                    message.eventFilter[i] = object.eventFilter[i] | 0;
+            }
+            if (object.apiFilter) {
+                if (!Array.isArray(object.apiFilter))
+                    throw TypeError(".dto.Plugin.apiFilter: array expected");
+                message.apiFilter = [];
+                for (var i = 0; i < object.apiFilter.length; ++i)
+                    message.apiFilter[i] = object.apiFilter[i] | 0;
+            }
+            if (object.regexFilter != null)
+                message.regexFilter = String(object.regexFilter);
+            if (object.regexReplace != null)
+                message.regexReplace = String(object.regexReplace);
+            if (object.extraHeader) {
+                if (!Array.isArray(object.extraHeader))
+                    throw TypeError(".dto.Plugin.extraHeader: array expected");
+                message.extraHeader = [];
+                for (var i = 0; i < object.extraHeader.length; ++i) {
+                    if (typeof object.extraHeader[i] !== "object")
+                        throw TypeError(".dto.Plugin.extraHeader: object expected");
+                    message.extraHeader[i] = $root.dto.Plugin.Header.fromObject(object.extraHeader[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Plugin message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.Plugin
+         * @static
+         * @param {dto.Plugin} message Plugin
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Plugin.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults) {
+                object.urls = [];
+                object.eventFilter = [];
+                object.apiFilter = [];
+                object.extraHeader = [];
+            }
+            if (options.defaults) {
+                object.name = "";
+                object.disabled = false;
+                object.json = false;
+                object.regexFilter = "";
+                object.regexReplace = "";
+            }
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            if (message.disabled != null && message.hasOwnProperty("disabled"))
+                object.disabled = message.disabled;
+            if (message.json != null && message.hasOwnProperty("json"))
+                object.json = message.json;
+            if (message.urls && message.urls.length) {
+                object.urls = [];
+                for (var j = 0; j < message.urls.length; ++j)
+                    object.urls[j] = message.urls[j];
+            }
+            if (message.eventFilter && message.eventFilter.length) {
+                object.eventFilter = [];
+                for (var j = 0; j < message.eventFilter.length; ++j)
+                    object.eventFilter[j] = message.eventFilter[j];
+            }
+            if (message.apiFilter && message.apiFilter.length) {
+                object.apiFilter = [];
+                for (var j = 0; j < message.apiFilter.length; ++j)
+                    object.apiFilter[j] = message.apiFilter[j];
+            }
+            if (message.regexFilter != null && message.hasOwnProperty("regexFilter"))
+                object.regexFilter = message.regexFilter;
+            if (message.regexReplace != null && message.hasOwnProperty("regexReplace"))
+                object.regexReplace = message.regexReplace;
+            if (message.extraHeader && message.extraHeader.length) {
+                object.extraHeader = [];
+                for (var j = 0; j < message.extraHeader.length; ++j)
+                    object.extraHeader[j] = $root.dto.Plugin.Header.toObject(message.extraHeader[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this Plugin to JSON.
+         * @function toJSON
+         * @memberof dto.Plugin
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Plugin.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        Plugin.Header = (function() {
+
+            /**
+             * Properties of a Header.
+             * @memberof dto.Plugin
+             * @interface IHeader
+             * @property {string|null} [key] Header key
+             * @property {Array.<string>|null} [value] Header value
+             */
+
+            /**
+             * Constructs a new Header.
+             * @memberof dto.Plugin
+             * @classdesc Represents a Header.
+             * @implements IHeader
+             * @constructor
+             * @param {dto.Plugin.IHeader=} [properties] Properties to set
+             */
+            function Header(properties) {
+                this.value = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Header key.
+             * @member {string} key
+             * @memberof dto.Plugin.Header
+             * @instance
+             */
+            Header.prototype.key = "";
+
+            /**
+             * Header value.
+             * @member {Array.<string>} value
+             * @memberof dto.Plugin.Header
+             * @instance
+             */
+            Header.prototype.value = $util.emptyArray;
+
+            /**
+             * Creates a new Header instance using the specified properties.
+             * @function create
+             * @memberof dto.Plugin.Header
+             * @static
+             * @param {dto.Plugin.IHeader=} [properties] Properties to set
+             * @returns {dto.Plugin.Header} Header instance
+             */
+            Header.create = function create(properties) {
+                return new Header(properties);
+            };
+
+            /**
+             * Encodes the specified Header message. Does not implicitly {@link dto.Plugin.Header.verify|verify} messages.
+             * @function encode
+             * @memberof dto.Plugin.Header
+             * @static
+             * @param {dto.Plugin.IHeader} message Header message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Header.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.key != null && Object.hasOwnProperty.call(message, "key"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.key);
+                if (message.value != null && message.value.length)
+                    for (var i = 0; i < message.value.length; ++i)
+                        writer.uint32(/* id 2, wireType 2 =*/18).string(message.value[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Header message, length delimited. Does not implicitly {@link dto.Plugin.Header.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof dto.Plugin.Header
+             * @static
+             * @param {dto.Plugin.IHeader} message Header message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Header.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a Header message from the specified reader or buffer.
+             * @function decode
+             * @memberof dto.Plugin.Header
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {dto.Plugin.Header} Header
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Header.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.Plugin.Header();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.key = reader.string();
+                        break;
+                    case 2:
+                        if (!(message.value && message.value.length))
+                            message.value = [];
+                        message.value.push(reader.string());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a Header message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof dto.Plugin.Header
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {dto.Plugin.Header} Header
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Header.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a Header message.
+             * @function verify
+             * @memberof dto.Plugin.Header
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Header.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.key != null && message.hasOwnProperty("key"))
+                    if (!$util.isString(message.key))
+                        return "key: string expected";
+                if (message.value != null && message.hasOwnProperty("value")) {
+                    if (!Array.isArray(message.value))
+                        return "value: array expected";
+                    for (var i = 0; i < message.value.length; ++i)
+                        if (!$util.isString(message.value[i]))
+                            return "value: string[] expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a Header message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof dto.Plugin.Header
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {dto.Plugin.Header} Header
+             */
+            Header.fromObject = function fromObject(object) {
+                if (object instanceof $root.dto.Plugin.Header)
+                    return object;
+                var message = new $root.dto.Plugin.Header();
+                if (object.key != null)
+                    message.key = String(object.key);
+                if (object.value) {
+                    if (!Array.isArray(object.value))
+                        throw TypeError(".dto.Plugin.Header.value: array expected");
+                    message.value = [];
+                    for (var i = 0; i < object.value.length; ++i)
+                        message.value[i] = String(object.value[i]);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a Header message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof dto.Plugin.Header
+             * @static
+             * @param {dto.Plugin.Header} message Header
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Header.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.value = [];
+                if (options.defaults)
+                    object.key = "";
+                if (message.key != null && message.hasOwnProperty("key"))
+                    object.key = message.key;
+                if (message.value && message.value.length) {
+                    object.value = [];
+                    for (var j = 0; j < message.value.length; ++j)
+                        object.value[j] = message.value[j];
+                }
+                return object;
+            };
+
+            /**
+             * Converts this Header to JSON.
+             * @function toJSON
+             * @memberof dto.Plugin.Header
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Header.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return Header;
+        })();
+
+        return Plugin;
+    })();
+
+    dto.ListPluginReq = (function() {
+
+        /**
+         * Properties of a ListPluginReq.
+         * @memberof dto
+         * @interface IListPluginReq
+         */
+
+        /**
+         * Constructs a new ListPluginReq.
+         * @memberof dto
+         * @classdesc Represents a ListPluginReq.
+         * @implements IListPluginReq
+         * @constructor
+         * @param {dto.IListPluginReq=} [properties] Properties to set
+         */
+        function ListPluginReq(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new ListPluginReq instance using the specified properties.
+         * @function create
+         * @memberof dto.ListPluginReq
+         * @static
+         * @param {dto.IListPluginReq=} [properties] Properties to set
+         * @returns {dto.ListPluginReq} ListPluginReq instance
+         */
+        ListPluginReq.create = function create(properties) {
+            return new ListPluginReq(properties);
+        };
+
+        /**
+         * Encodes the specified ListPluginReq message. Does not implicitly {@link dto.ListPluginReq.verify|verify} messages.
+         * @function encode
+         * @memberof dto.ListPluginReq
+         * @static
+         * @param {dto.IListPluginReq} message ListPluginReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListPluginReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListPluginReq message, length delimited. Does not implicitly {@link dto.ListPluginReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.ListPluginReq
+         * @static
+         * @param {dto.IListPluginReq} message ListPluginReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListPluginReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListPluginReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.ListPluginReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.ListPluginReq} ListPluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListPluginReq.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.ListPluginReq();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListPluginReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.ListPluginReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.ListPluginReq} ListPluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListPluginReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListPluginReq message.
+         * @function verify
+         * @memberof dto.ListPluginReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListPluginReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a ListPluginReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.ListPluginReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.ListPluginReq} ListPluginReq
+         */
+        ListPluginReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.ListPluginReq)
+                return object;
+            return new $root.dto.ListPluginReq();
+        };
+
+        /**
+         * Creates a plain object from a ListPluginReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.ListPluginReq
+         * @static
+         * @param {dto.ListPluginReq} message ListPluginReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListPluginReq.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this ListPluginReq to JSON.
+         * @function toJSON
+         * @memberof dto.ListPluginReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListPluginReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return ListPluginReq;
+    })();
+
+    dto.ListPluginResp = (function() {
+
+        /**
+         * Properties of a ListPluginResp.
+         * @memberof dto
+         * @interface IListPluginResp
+         * @property {Array.<dto.IPlugin>|null} [plugins] ListPluginResp plugins
+         */
+
+        /**
+         * Constructs a new ListPluginResp.
+         * @memberof dto
+         * @classdesc Represents a ListPluginResp.
+         * @implements IListPluginResp
+         * @constructor
+         * @param {dto.IListPluginResp=} [properties] Properties to set
+         */
+        function ListPluginResp(properties) {
+            this.plugins = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ListPluginResp plugins.
+         * @member {Array.<dto.IPlugin>} plugins
+         * @memberof dto.ListPluginResp
+         * @instance
+         */
+        ListPluginResp.prototype.plugins = $util.emptyArray;
+
+        /**
+         * Creates a new ListPluginResp instance using the specified properties.
+         * @function create
+         * @memberof dto.ListPluginResp
+         * @static
+         * @param {dto.IListPluginResp=} [properties] Properties to set
+         * @returns {dto.ListPluginResp} ListPluginResp instance
+         */
+        ListPluginResp.create = function create(properties) {
+            return new ListPluginResp(properties);
+        };
+
+        /**
+         * Encodes the specified ListPluginResp message. Does not implicitly {@link dto.ListPluginResp.verify|verify} messages.
+         * @function encode
+         * @memberof dto.ListPluginResp
+         * @static
+         * @param {dto.IListPluginResp} message ListPluginResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListPluginResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.plugins != null && message.plugins.length)
+                for (var i = 0; i < message.plugins.length; ++i)
+                    $root.dto.Plugin.encode(message.plugins[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ListPluginResp message, length delimited. Does not implicitly {@link dto.ListPluginResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.ListPluginResp
+         * @static
+         * @param {dto.IListPluginResp} message ListPluginResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ListPluginResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ListPluginResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.ListPluginResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.ListPluginResp} ListPluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListPluginResp.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.ListPluginResp();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    if (!(message.plugins && message.plugins.length))
+                        message.plugins = [];
+                    message.plugins.push($root.dto.Plugin.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ListPluginResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.ListPluginResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.ListPluginResp} ListPluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ListPluginResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ListPluginResp message.
+         * @function verify
+         * @memberof dto.ListPluginResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ListPluginResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.plugins != null && message.hasOwnProperty("plugins")) {
+                if (!Array.isArray(message.plugins))
+                    return "plugins: array expected";
+                for (var i = 0; i < message.plugins.length; ++i) {
+                    var error = $root.dto.Plugin.verify(message.plugins[i]);
+                    if (error)
+                        return "plugins." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a ListPluginResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.ListPluginResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.ListPluginResp} ListPluginResp
+         */
+        ListPluginResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.ListPluginResp)
+                return object;
+            var message = new $root.dto.ListPluginResp();
+            if (object.plugins) {
+                if (!Array.isArray(object.plugins))
+                    throw TypeError(".dto.ListPluginResp.plugins: array expected");
+                message.plugins = [];
+                for (var i = 0; i < object.plugins.length; ++i) {
+                    if (typeof object.plugins[i] !== "object")
+                        throw TypeError(".dto.ListPluginResp.plugins: object expected");
+                    message.plugins[i] = $root.dto.Plugin.fromObject(object.plugins[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ListPluginResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.ListPluginResp
+         * @static
+         * @param {dto.ListPluginResp} message ListPluginResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ListPluginResp.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.plugins = [];
+            if (message.plugins && message.plugins.length) {
+                object.plugins = [];
+                for (var j = 0; j < message.plugins.length; ++j)
+                    object.plugins[j] = $root.dto.Plugin.toObject(message.plugins[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this ListPluginResp to JSON.
+         * @function toJSON
+         * @memberof dto.ListPluginResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ListPluginResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return ListPluginResp;
+    })();
+
+    dto.SavePluginReq = (function() {
+
+        /**
+         * Properties of a SavePluginReq.
+         * @memberof dto
+         * @interface ISavePluginReq
+         * @property {dto.IPlugin|null} [plugin] SavePluginReq plugin
+         */
+
+        /**
+         * Constructs a new SavePluginReq.
+         * @memberof dto
+         * @classdesc Represents a SavePluginReq.
+         * @implements ISavePluginReq
+         * @constructor
+         * @param {dto.ISavePluginReq=} [properties] Properties to set
+         */
+        function SavePluginReq(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * SavePluginReq plugin.
+         * @member {dto.IPlugin|null|undefined} plugin
+         * @memberof dto.SavePluginReq
+         * @instance
+         */
+        SavePluginReq.prototype.plugin = null;
+
+        /**
+         * Creates a new SavePluginReq instance using the specified properties.
+         * @function create
+         * @memberof dto.SavePluginReq
+         * @static
+         * @param {dto.ISavePluginReq=} [properties] Properties to set
+         * @returns {dto.SavePluginReq} SavePluginReq instance
+         */
+        SavePluginReq.create = function create(properties) {
+            return new SavePluginReq(properties);
+        };
+
+        /**
+         * Encodes the specified SavePluginReq message. Does not implicitly {@link dto.SavePluginReq.verify|verify} messages.
+         * @function encode
+         * @memberof dto.SavePluginReq
+         * @static
+         * @param {dto.ISavePluginReq} message SavePluginReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SavePluginReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.plugin != null && Object.hasOwnProperty.call(message, "plugin"))
+                $root.dto.Plugin.encode(message.plugin, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SavePluginReq message, length delimited. Does not implicitly {@link dto.SavePluginReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.SavePluginReq
+         * @static
+         * @param {dto.ISavePluginReq} message SavePluginReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SavePluginReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SavePluginReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.SavePluginReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.SavePluginReq} SavePluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SavePluginReq.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.SavePluginReq();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.plugin = $root.dto.Plugin.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SavePluginReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.SavePluginReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.SavePluginReq} SavePluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SavePluginReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SavePluginReq message.
+         * @function verify
+         * @memberof dto.SavePluginReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SavePluginReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.plugin != null && message.hasOwnProperty("plugin")) {
+                var error = $root.dto.Plugin.verify(message.plugin);
+                if (error)
+                    return "plugin." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a SavePluginReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.SavePluginReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.SavePluginReq} SavePluginReq
+         */
+        SavePluginReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.SavePluginReq)
+                return object;
+            var message = new $root.dto.SavePluginReq();
+            if (object.plugin != null) {
+                if (typeof object.plugin !== "object")
+                    throw TypeError(".dto.SavePluginReq.plugin: object expected");
+                message.plugin = $root.dto.Plugin.fromObject(object.plugin);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SavePluginReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.SavePluginReq
+         * @static
+         * @param {dto.SavePluginReq} message SavePluginReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SavePluginReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults)
+                object.plugin = null;
+            if (message.plugin != null && message.hasOwnProperty("plugin"))
+                object.plugin = $root.dto.Plugin.toObject(message.plugin, options);
+            return object;
+        };
+
+        /**
+         * Converts this SavePluginReq to JSON.
+         * @function toJSON
+         * @memberof dto.SavePluginReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SavePluginReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return SavePluginReq;
+    })();
+
+    dto.SavePluginResp = (function() {
+
+        /**
+         * Properties of a SavePluginResp.
+         * @memberof dto
+         * @interface ISavePluginResp
+         */
+
+        /**
+         * Constructs a new SavePluginResp.
+         * @memberof dto
+         * @classdesc Represents a SavePluginResp.
+         * @implements ISavePluginResp
+         * @constructor
+         * @param {dto.ISavePluginResp=} [properties] Properties to set
+         */
+        function SavePluginResp(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new SavePluginResp instance using the specified properties.
+         * @function create
+         * @memberof dto.SavePluginResp
+         * @static
+         * @param {dto.ISavePluginResp=} [properties] Properties to set
+         * @returns {dto.SavePluginResp} SavePluginResp instance
+         */
+        SavePluginResp.create = function create(properties) {
+            return new SavePluginResp(properties);
+        };
+
+        /**
+         * Encodes the specified SavePluginResp message. Does not implicitly {@link dto.SavePluginResp.verify|verify} messages.
+         * @function encode
+         * @memberof dto.SavePluginResp
+         * @static
+         * @param {dto.ISavePluginResp} message SavePluginResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SavePluginResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SavePluginResp message, length delimited. Does not implicitly {@link dto.SavePluginResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.SavePluginResp
+         * @static
+         * @param {dto.ISavePluginResp} message SavePluginResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SavePluginResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SavePluginResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.SavePluginResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.SavePluginResp} SavePluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SavePluginResp.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.SavePluginResp();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SavePluginResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.SavePluginResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.SavePluginResp} SavePluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SavePluginResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SavePluginResp message.
+         * @function verify
+         * @memberof dto.SavePluginResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SavePluginResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a SavePluginResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.SavePluginResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.SavePluginResp} SavePluginResp
+         */
+        SavePluginResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.SavePluginResp)
+                return object;
+            return new $root.dto.SavePluginResp();
+        };
+
+        /**
+         * Creates a plain object from a SavePluginResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.SavePluginResp
+         * @static
+         * @param {dto.SavePluginResp} message SavePluginResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SavePluginResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this SavePluginResp to JSON.
+         * @function toJSON
+         * @memberof dto.SavePluginResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SavePluginResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return SavePluginResp;
+    })();
+
+    dto.DeletePluginReq = (function() {
+
+        /**
+         * Properties of a DeletePluginReq.
+         * @memberof dto
+         * @interface IDeletePluginReq
+         * @property {string|null} [name] DeletePluginReq name
+         */
+
+        /**
+         * Constructs a new DeletePluginReq.
+         * @memberof dto
+         * @classdesc Represents a DeletePluginReq.
+         * @implements IDeletePluginReq
+         * @constructor
+         * @param {dto.IDeletePluginReq=} [properties] Properties to set
+         */
+        function DeletePluginReq(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DeletePluginReq name.
+         * @member {string} name
+         * @memberof dto.DeletePluginReq
+         * @instance
+         */
+        DeletePluginReq.prototype.name = "";
+
+        /**
+         * Creates a new DeletePluginReq instance using the specified properties.
+         * @function create
+         * @memberof dto.DeletePluginReq
+         * @static
+         * @param {dto.IDeletePluginReq=} [properties] Properties to set
+         * @returns {dto.DeletePluginReq} DeletePluginReq instance
+         */
+        DeletePluginReq.create = function create(properties) {
+            return new DeletePluginReq(properties);
+        };
+
+        /**
+         * Encodes the specified DeletePluginReq message. Does not implicitly {@link dto.DeletePluginReq.verify|verify} messages.
+         * @function encode
+         * @memberof dto.DeletePluginReq
+         * @static
+         * @param {dto.IDeletePluginReq} message DeletePluginReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeletePluginReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeletePluginReq message, length delimited. Does not implicitly {@link dto.DeletePluginReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.DeletePluginReq
+         * @static
+         * @param {dto.IDeletePluginReq} message DeletePluginReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeletePluginReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeletePluginReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.DeletePluginReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.DeletePluginReq} DeletePluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeletePluginReq.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.DeletePluginReq();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeletePluginReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.DeletePluginReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.DeletePluginReq} DeletePluginReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeletePluginReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeletePluginReq message.
+         * @function verify
+         * @memberof dto.DeletePluginReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeletePluginReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeletePluginReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.DeletePluginReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.DeletePluginReq} DeletePluginReq
+         */
+        DeletePluginReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.DeletePluginReq)
+                return object;
+            var message = new $root.dto.DeletePluginReq();
+            if (object.name != null)
+                message.name = String(object.name);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeletePluginReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.DeletePluginReq
+         * @static
+         * @param {dto.DeletePluginReq} message DeletePluginReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeletePluginReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults)
+                object.name = "";
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
+            return object;
+        };
+
+        /**
+         * Converts this DeletePluginReq to JSON.
+         * @function toJSON
+         * @memberof dto.DeletePluginReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeletePluginReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return DeletePluginReq;
+    })();
+
+    dto.DeletePluginResp = (function() {
+
+        /**
+         * Properties of a DeletePluginResp.
+         * @memberof dto
+         * @interface IDeletePluginResp
+         */
+
+        /**
+         * Constructs a new DeletePluginResp.
+         * @memberof dto
+         * @classdesc Represents a DeletePluginResp.
+         * @implements IDeletePluginResp
+         * @constructor
+         * @param {dto.IDeletePluginResp=} [properties] Properties to set
+         */
+        function DeletePluginResp(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new DeletePluginResp instance using the specified properties.
+         * @function create
+         * @memberof dto.DeletePluginResp
+         * @static
+         * @param {dto.IDeletePluginResp=} [properties] Properties to set
+         * @returns {dto.DeletePluginResp} DeletePluginResp instance
+         */
+        DeletePluginResp.create = function create(properties) {
+            return new DeletePluginResp(properties);
+        };
+
+        /**
+         * Encodes the specified DeletePluginResp message. Does not implicitly {@link dto.DeletePluginResp.verify|verify} messages.
+         * @function encode
+         * @memberof dto.DeletePluginResp
+         * @static
+         * @param {dto.IDeletePluginResp} message DeletePluginResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeletePluginResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeletePluginResp message, length delimited. Does not implicitly {@link dto.DeletePluginResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.DeletePluginResp
+         * @static
+         * @param {dto.IDeletePluginResp} message DeletePluginResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeletePluginResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeletePluginResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.DeletePluginResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.DeletePluginResp} DeletePluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeletePluginResp.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.DeletePluginResp();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeletePluginResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.DeletePluginResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.DeletePluginResp} DeletePluginResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeletePluginResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeletePluginResp message.
+         * @function verify
+         * @memberof dto.DeletePluginResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeletePluginResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeletePluginResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.DeletePluginResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.DeletePluginResp} DeletePluginResp
+         */
+        DeletePluginResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.DeletePluginResp)
+                return object;
+            return new $root.dto.DeletePluginResp();
+        };
+
+        /**
+         * Creates a plain object from a DeletePluginResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.DeletePluginResp
+         * @static
+         * @param {dto.DeletePluginResp} message DeletePluginResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeletePluginResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this DeletePluginResp to JSON.
+         * @function toJSON
+         * @memberof dto.DeletePluginResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeletePluginResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return DeletePluginResp;
+    })();
+
     dto.HttpService = (function() {
 
         /**
@@ -3157,6 +4901,105 @@ $root.dto = (function() {
          * @instance
          * @param {dto.IQueryQRCodeStatusReq} request QueryQRCodeStatusReq message or plain object
          * @returns {Promise<dto.QRCodeLoginResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dto.HttpService#listPlugin}.
+         * @memberof dto.HttpService
+         * @typedef ListPluginCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dto.ListPluginResp} [response] ListPluginResp
+         */
+
+        /**
+         * Calls ListPlugin.
+         * @function listPlugin
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.IListPluginReq} request ListPluginReq message or plain object
+         * @param {dto.HttpService.ListPluginCallback} callback Node-style callback called with the error, if any, and ListPluginResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(HttpService.prototype.listPlugin = function listPlugin(request, callback) {
+            return this.rpcCall(listPlugin, $root.dto.ListPluginReq, $root.dto.ListPluginResp, request, callback);
+        }, "name", { value: "ListPlugin" });
+
+        /**
+         * Calls ListPlugin.
+         * @function listPlugin
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.IListPluginReq} request ListPluginReq message or plain object
+         * @returns {Promise<dto.ListPluginResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dto.HttpService#savePlugin}.
+         * @memberof dto.HttpService
+         * @typedef SavePluginCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dto.SavePluginResp} [response] SavePluginResp
+         */
+
+        /**
+         * Calls SavePlugin.
+         * @function savePlugin
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.ISavePluginReq} request SavePluginReq message or plain object
+         * @param {dto.HttpService.SavePluginCallback} callback Node-style callback called with the error, if any, and SavePluginResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(HttpService.prototype.savePlugin = function savePlugin(request, callback) {
+            return this.rpcCall(savePlugin, $root.dto.SavePluginReq, $root.dto.SavePluginResp, request, callback);
+        }, "name", { value: "SavePlugin" });
+
+        /**
+         * Calls SavePlugin.
+         * @function savePlugin
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.ISavePluginReq} request SavePluginReq message or plain object
+         * @returns {Promise<dto.SavePluginResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dto.HttpService#deletePlugin}.
+         * @memberof dto.HttpService
+         * @typedef DeletePluginCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dto.DeletePluginResp} [response] DeletePluginResp
+         */
+
+        /**
+         * Calls DeletePlugin.
+         * @function deletePlugin
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.IDeletePluginReq} request DeletePluginReq message or plain object
+         * @param {dto.HttpService.DeletePluginCallback} callback Node-style callback called with the error, if any, and DeletePluginResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(HttpService.prototype.deletePlugin = function deletePlugin(request, callback) {
+            return this.rpcCall(deletePlugin, $root.dto.DeletePluginReq, $root.dto.DeletePluginResp, request, callback);
+        }, "name", { value: "DeletePlugin" });
+
+        /**
+         * Calls DeletePlugin.
+         * @function deletePlugin
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.IDeletePluginReq} request DeletePluginReq message or plain object
+         * @returns {Promise<dto.DeletePluginResp>} Promise
          * @variation 2
          */
 
