@@ -26,7 +26,7 @@
   "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "build:proto": "npx pbjs -t static-module -w commonjs -o src/api/gen/proto.js src/api/proto/http_dto.proto --force-long && npx pbts -o src/api/gen/proto.d.ts src/api/gen/proto.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
