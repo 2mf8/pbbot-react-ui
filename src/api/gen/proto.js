@@ -616,6 +616,7 @@ $root.dto = (function() {
          * @property {string|null} [password] CreateBotReq password
          * @property {Long|null} [deviceSeed] CreateBotReq deviceSeed
          * @property {number|null} [clientProtocol] CreateBotReq clientProtocol
+         * @property {string|null} [signServer] CreateBotReq signServer
          */
 
         /**
@@ -666,6 +667,14 @@ $root.dto = (function() {
         CreateBotReq.prototype.clientProtocol = 0;
 
         /**
+         * CreateBotReq signServer.
+         * @member {string} signServer
+         * @memberof dto.CreateBotReq
+         * @instance
+         */
+        CreateBotReq.prototype.signServer = "";
+
+        /**
          * Creates a new CreateBotReq instance using the specified properties.
          * @function create
          * @memberof dto.CreateBotReq
@@ -697,6 +706,8 @@ $root.dto = (function() {
                 writer.uint32(/* id 3, wireType 0 =*/24).int64(message.deviceSeed);
             if (message.clientProtocol != null && Object.hasOwnProperty.call(message, "clientProtocol"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.clientProtocol);
+            if (message.signServer != null && Object.hasOwnProperty.call(message, "signServer"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.signServer);
             return writer;
         };
 
@@ -742,6 +753,9 @@ $root.dto = (function() {
                     break;
                 case 4:
                     message.clientProtocol = reader.int32();
+                    break;
+                case 5:
+                    message.signServer = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -790,6 +804,9 @@ $root.dto = (function() {
             if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
                 if (!$util.isInteger(message.clientProtocol))
                     return "clientProtocol: integer expected";
+            if (message.signServer != null && message.hasOwnProperty("signServer"))
+                if (!$util.isString(message.signServer))
+                    return "signServer: string expected";
             return null;
         };
 
@@ -827,6 +844,8 @@ $root.dto = (function() {
                     message.deviceSeed = new $util.LongBits(object.deviceSeed.low >>> 0, object.deviceSeed.high >>> 0).toNumber();
             if (object.clientProtocol != null)
                 message.clientProtocol = object.clientProtocol | 0;
+            if (object.signServer != null)
+                message.signServer = String(object.signServer);
             return message;
         };
 
@@ -856,6 +875,7 @@ $root.dto = (function() {
                 } else
                     object.deviceSeed = options.longs === String ? "0" : 0;
                 object.clientProtocol = 0;
+                object.signServer = "";
             }
             if (message.botId != null && message.hasOwnProperty("botId"))
                 if (typeof message.botId === "number")
@@ -871,6 +891,8 @@ $root.dto = (function() {
                     object.deviceSeed = options.longs === String ? $util.Long.prototype.toString.call(message.deviceSeed) : options.longs === Number ? new $util.LongBits(message.deviceSeed.low >>> 0, message.deviceSeed.high >>> 0).toNumber() : message.deviceSeed;
             if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
                 object.clientProtocol = message.clientProtocol;
+            if (message.signServer != null && message.hasOwnProperty("signServer"))
+                object.signServer = message.signServer;
             return object;
         };
 

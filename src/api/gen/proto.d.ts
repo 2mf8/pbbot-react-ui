@@ -243,6 +243,9 @@ export namespace dto {
 
         /** CreateBotReq clientProtocol */
         clientProtocol?: (number|null);
+
+        /** CreateBotReq signServer */
+        signServer?: (string|null);
     }
 
     /** Represents a CreateBotReq. */
@@ -265,6 +268,9 @@ export namespace dto {
 
         /** CreateBotReq clientProtocol. */
         public clientProtocol: number;
+
+        /** CreateBotReq signServer. */
+        public signServer: string;
 
         /**
          * Creates a new CreateBotReq instance using the specified properties.

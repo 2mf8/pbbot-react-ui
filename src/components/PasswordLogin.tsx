@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Form, InputNumber, Button, notification, Input, Alert, Select } from 'antd'
 import { service } from '../api/RpcImpl'
 import Long from 'long'
+
 interface PasswordLoginProp {
     isVisible: boolean;
     onClose: (() => void);
@@ -12,6 +13,7 @@ const PasswordLogin = (props: PasswordLoginProp) => {
     const [password, setPassword] = useState("")
     const [clientProtocol, setClientProtocol] = useState<number>(0);
     const [deviceSeed, setDeviceSeed] = useState<number>(new Date().getTime());
+    const [signServer, setSignServer] = useState("")
 
     const handleCreateBot = async () => {
         try {
@@ -19,7 +21,8 @@ const PasswordLogin = (props: PasswordLoginProp) => {
                 botId: Long.fromString(botId),
                 password: password,
                 deviceSeed: Long.fromNumber(deviceSeed),
-                clientProtocol: clientProtocol
+                clientProtocol: clientProtocol,
+                signServer: signServer
             })
             notification["success"]({
                 message: '创建成功',
@@ -67,6 +70,7 @@ const PasswordLogin = (props: PasswordLoginProp) => {
                             <Select.Option value={3}>MacOS</Select.Option>
                             <Select.Option value={4}>QiDian</Select.Option>
                             <Select.Option value={5}>IPad</Select.Option>
+                            <Select.Option value={6}>AndroidPad</Select.Option>
                         </Select>
                     </Form.Item>
                     <Form.Item label="设备种子" style={{marginBottom: "12px"}}>
@@ -84,6 +88,10 @@ const PasswordLogin = (props: PasswordLoginProp) => {
                             使用账号
                         </Button>
                         <div style={{ color: "red" }}>建议每次使用相同种子</div>
+                    </Form.Item>
+                    <Form.Item label="SignServer" style={{marginBottom: "12px"}}>
+                        <Input value={signServer} onChange={(e) => { setSignServer(e.target.value) }}></Input>
+                        <div style={{ color: "red" }}>默认为空，没有 SignServer 请忽略</div>
                     </Form.Item>
                     <Alert message="随机种子是数字，种子相同生成的设备文件相同，随机种子设为0默认使用账号作为种子。" type="info" />
                 </Form>
