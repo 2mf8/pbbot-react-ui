@@ -617,6 +617,7 @@ $root.dto = (function() {
          * @property {Long|null} [deviceSeed] CreateBotReq deviceSeed
          * @property {number|null} [clientProtocol] CreateBotReq clientProtocol
          * @property {string|null} [signServer] CreateBotReq signServer
+         * @property {string|null} [signServerAuth] CreateBotReq signServerAuth
          */
 
         /**
@@ -675,6 +676,14 @@ $root.dto = (function() {
         CreateBotReq.prototype.signServer = "";
 
         /**
+         * CreateBotReq signServerAuth.
+         * @member {string} signServerAuth
+         * @memberof dto.CreateBotReq
+         * @instance
+         */
+        CreateBotReq.prototype.signServerAuth = "";
+
+        /**
          * Creates a new CreateBotReq instance using the specified properties.
          * @function create
          * @memberof dto.CreateBotReq
@@ -708,6 +717,8 @@ $root.dto = (function() {
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.clientProtocol);
             if (message.signServer != null && Object.hasOwnProperty.call(message, "signServer"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.signServer);
+            if (message.signServerAuth != null && Object.hasOwnProperty.call(message, "signServerAuth"))
+                writer.uint32(/* id 6, wireType 2 =*/50).string(message.signServerAuth);
             return writer;
         };
 
@@ -756,6 +767,9 @@ $root.dto = (function() {
                     break;
                 case 5:
                     message.signServer = reader.string();
+                    break;
+                case 6:
+                    message.signServerAuth = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -807,6 +821,9 @@ $root.dto = (function() {
             if (message.signServer != null && message.hasOwnProperty("signServer"))
                 if (!$util.isString(message.signServer))
                     return "signServer: string expected";
+            if (message.signServerAuth != null && message.hasOwnProperty("signServerAuth"))
+                if (!$util.isString(message.signServerAuth))
+                    return "signServerAuth: string expected";
             return null;
         };
 
@@ -846,6 +863,8 @@ $root.dto = (function() {
                 message.clientProtocol = object.clientProtocol | 0;
             if (object.signServer != null)
                 message.signServer = String(object.signServer);
+            if (object.signServerAuth != null)
+                message.signServerAuth = String(object.signServerAuth);
             return message;
         };
 
@@ -876,6 +895,7 @@ $root.dto = (function() {
                     object.deviceSeed = options.longs === String ? "0" : 0;
                 object.clientProtocol = 0;
                 object.signServer = "";
+                object.signServerAuth = "";
             }
             if (message.botId != null && message.hasOwnProperty("botId"))
                 if (typeof message.botId === "number")
@@ -893,6 +913,8 @@ $root.dto = (function() {
                 object.clientProtocol = message.clientProtocol;
             if (message.signServer != null && message.hasOwnProperty("signServer"))
                 object.signServer = message.signServer;
+            if (message.signServerAuth != null && message.hasOwnProperty("signServerAuth"))
+                object.signServerAuth = message.signServerAuth;
             return object;
         };
 

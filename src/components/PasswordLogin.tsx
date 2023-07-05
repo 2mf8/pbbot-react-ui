@@ -14,6 +14,7 @@ const PasswordLogin = (props: PasswordLoginProp) => {
     const [clientProtocol, setClientProtocol] = useState<number>(0);
     const [deviceSeed, setDeviceSeed] = useState<number>(new Date().getTime());
     const [signServer, setSignServer] = useState("")
+    const [signServerKey, setSignServerkey] = useState("")
 
     const handleCreateBot = async () => {
         try {
@@ -22,7 +23,8 @@ const PasswordLogin = (props: PasswordLoginProp) => {
                 password: password,
                 deviceSeed: Long.fromNumber(deviceSeed),
                 clientProtocol: clientProtocol,
-                signServer: signServer
+                signServer: signServer,
+                signServerAuth: signServerKey
             })
             notification["success"]({
                 message: '创建成功',
@@ -92,6 +94,9 @@ const PasswordLogin = (props: PasswordLoginProp) => {
                     <Form.Item label="SignServer" style={{marginBottom: "12px"}}>
                         <Input value={signServer} onChange={(e) => { setSignServer(e.target.value) }}></Input>
                         <div style={{ color: "red" }}>默认为空，没有 SignServer 请忽略</div>
+                    </Form.Item>
+                    <Form.Item label="SignServerKey" style={{marginBottom: "12px"}}>
+                        <Input value={signServerKey} onChange={(e) => { setSignServerkey(e.target.value) }}></Input>
                     </Form.Item>
                     <Alert message="随机种子是数字，种子相同生成的设备文件相同，随机种子设为0默认使用账号作为种子。" type="info" />
                 </Form>
