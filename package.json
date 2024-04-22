@@ -21,12 +21,14 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yarn": "^1.22.22"
   },
   "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
     "build:proto": "npx pbjs -t static-module -w commonjs -o src/api/gen/proto.js src/api/proto/http_dto.proto --force-long && npx pbts -o src/api/gen/proto.d.ts src/api/gen/proto.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

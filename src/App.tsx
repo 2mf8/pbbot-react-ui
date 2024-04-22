@@ -39,8 +39,6 @@ const App = () => {
           <div >
             <Button style={{ margin: "20px 8px" }} type="primary" onClick={() => setShowQRCodeLogin(true)}>扫码创建</Button>
             <QRCodeLogin isVisible={showQRCodeLogin} onClose={() => { setShowQRCodeLogin(false) }}/>
-            <Button style={{ margin: "20px 8px" }} type="primary" onClick={() => setShowPasswordLogin(true)}>密码创建</Button>
-            <PasswordLogin isVisible={showPasswordLogin} onClose={() => { setShowPasswordLogin(false) }}/>
             <Button style={{ margin: "20px 8px" }} shape="circle" icon={<SettingOutlined />} onClick={() => setShowSetting(true)}/>
             <PluginSetting isVisible={showSetting} onClose={() => { setShowSetting(false) }}/>
             <Button style={{ margin: "20px 8px" }} shape="circle" icon={<GithubOutlined />} href="https://github.com/ProtobufBot/ProtobufBot" target="_blank"/>
