@@ -92,6 +92,16 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
                 afterClose={() => setFetchQRCodeResp({})}
             >
                 <Form>
+                    <Form.Item label="设备种子" style={{marginBottom: "12px"}}>
+                        <InputNumber
+                            min={0}
+                            value={deviceSeed}
+                            max={4503599627370496}
+                            style={{ width: 180 }}
+                            onChange={(value) => { setDeviceSeed(value) }}
+                        />
+                        <div style={{ color: "red" }}>建议每次使用相同种子</div>
+                    </Form.Item>
                     <Form.Item style={{marginBottom: "12px"}}>
                         <Button
                           block
