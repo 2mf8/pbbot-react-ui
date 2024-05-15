@@ -2983,6 +2983,7 @@ $root.dto = (function() {
          * @property {string|null} [name] Plugin name
          * @property {boolean|null} [disabled] Plugin disabled
          * @property {boolean|null} [json] Plugin json
+         * @property {number|null} [protocol] Plugin protocol
          * @property {Array.<string>|null} [urls] Plugin urls
          * @property {Array.<number>|null} [eventFilter] Plugin eventFilter
          * @property {Array.<number>|null} [apiFilter] Plugin apiFilter
@@ -3033,6 +3034,14 @@ $root.dto = (function() {
          * @instance
          */
         Plugin.prototype.json = false;
+
+        /**
+         * Plugin protocol.
+         * @member {number} protocol
+         * @memberof dto.Plugin
+         * @instance
+         */
+        Plugin.prototype.protocol = 0;
 
         /**
          * Plugin urls.
@@ -3112,28 +3121,30 @@ $root.dto = (function() {
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.disabled);
             if (message.json != null && Object.hasOwnProperty.call(message, "json"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.json);
+            if (message.protocol != null && Object.hasOwnProperty.call(message, "protocol"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.protocol);
             if (message.urls != null && message.urls.length)
                 for (var i = 0; i < message.urls.length; ++i)
-                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.urls[i]);
+                    writer.uint32(/* id 5, wireType 2 =*/42).string(message.urls[i]);
             if (message.eventFilter != null && message.eventFilter.length) {
-                writer.uint32(/* id 5, wireType 2 =*/42).fork();
+                writer.uint32(/* id 6, wireType 2 =*/50).fork();
                 for (var i = 0; i < message.eventFilter.length; ++i)
                     writer.int32(message.eventFilter[i]);
                 writer.ldelim();
             }
             if (message.apiFilter != null && message.apiFilter.length) {
-                writer.uint32(/* id 6, wireType 2 =*/50).fork();
+                writer.uint32(/* id 7, wireType 2 =*/58).fork();
                 for (var i = 0; i < message.apiFilter.length; ++i)
                     writer.int32(message.apiFilter[i]);
                 writer.ldelim();
             }
             if (message.regexFilter != null && Object.hasOwnProperty.call(message, "regexFilter"))
-                writer.uint32(/* id 7, wireType 2 =*/58).string(message.regexFilter);
+                writer.uint32(/* id 8, wireType 2 =*/66).string(message.regexFilter);
             if (message.regexReplace != null && Object.hasOwnProperty.call(message, "regexReplace"))
-                writer.uint32(/* id 8, wireType 2 =*/66).string(message.regexReplace);
+                writer.uint32(/* id 9, wireType 2 =*/74).string(message.regexReplace);
             if (message.extraHeader != null && message.extraHeader.length)
                 for (var i = 0; i < message.extraHeader.length; ++i)
-                    $root.dto.Plugin.Header.encode(message.extraHeader[i], writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+                    $root.dto.Plugin.Header.encode(message.extraHeader[i], writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             return writer;
         };
 
@@ -3178,11 +3189,14 @@ $root.dto = (function() {
                     message.json = reader.bool();
                     break;
                 case 4:
+                    message.protocol = reader.int32();
+                    break;
+                case 5:
                     if (!(message.urls && message.urls.length))
                         message.urls = [];
                     message.urls.push(reader.string());
                     break;
-                case 5:
+                case 6:
                     if (!(message.eventFilter && message.eventFilter.length))
                         message.eventFilter = [];
                     if ((tag & 7) === 2) {
@@ -3192,7 +3206,7 @@ $root.dto = (function() {
                     } else
                         message.eventFilter.push(reader.int32());
                     break;
-                case 6:
+                case 7:
                     if (!(message.apiFilter && message.apiFilter.length))
                         message.apiFilter = [];
                     if ((tag & 7) === 2) {
@@ -3202,13 +3216,13 @@ $root.dto = (function() {
                     } else
                         message.apiFilter.push(reader.int32());
                     break;
-                case 7:
+                case 8:
                     message.regexFilter = reader.string();
                     break;
-                case 8:
+                case 9:
                     message.regexReplace = reader.string();
                     break;
-                case 9:
+                case 10:
                     if (!(message.extraHeader && message.extraHeader.length))
                         message.extraHeader = [];
                     message.extraHeader.push($root.dto.Plugin.Header.decode(reader, reader.uint32()));
@@ -3257,6 +3271,9 @@ $root.dto = (function() {
             if (message.json != null && message.hasOwnProperty("json"))
                 if (typeof message.json !== "boolean")
                     return "json: boolean expected";
+            if (message.protocol != null && message.hasOwnProperty("protocol"))
+                if (!$util.isInteger(message.protocol))
+                    return "protocol: integer expected";
             if (message.urls != null && message.hasOwnProperty("urls")) {
                 if (!Array.isArray(message.urls))
                     return "urls: array expected";
@@ -3314,6 +3331,8 @@ $root.dto = (function() {
                 message.disabled = Boolean(object.disabled);
             if (object.json != null)
                 message.json = Boolean(object.json);
+            if (object.protocol != null)
+                message.protocol = object.protocol | 0;
             if (object.urls) {
                 if (!Array.isArray(object.urls))
                     throw TypeError(".dto.Plugin.urls: array expected");
@@ -3375,6 +3394,7 @@ $root.dto = (function() {
                 object.name = "";
                 object.disabled = false;
                 object.json = false;
+                object.protocol = 0;
                 object.regexFilter = "";
                 object.regexReplace = "";
             }
@@ -3384,6 +3404,8 @@ $root.dto = (function() {
                 object.disabled = message.disabled;
             if (message.json != null && message.hasOwnProperty("json"))
                 object.json = message.json;
+            if (message.protocol != null && message.hasOwnProperty("protocol"))
+                object.protocol = message.protocol;
             if (message.urls && message.urls.length) {
                 object.urls = [];
                 for (var j = 0; j < message.urls.length; ++j)

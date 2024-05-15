@@ -1281,6 +1281,9 @@ export namespace dto {
         /** Plugin json */
         json?: (boolean|null);
 
+        /** Plugin protocol */
+        protocol?: (number|null);
+
         /** Plugin urls */
         urls?: (string[]|null);
 
@@ -1317,6 +1320,9 @@ export namespace dto {
 
         /** Plugin json. */
         public json: boolean;
+
+        /** Plugin protocol. */
+        public protocol: number;
 
         /** Plugin urls. */
         public urls: string[];
