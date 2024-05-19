@@ -186,7 +186,7 @@ const PluginSetting = (props: PluginSettingProp) => {
                   <Select.Option value={1}>OneBot V11</Select.Option>
               </Select>
           </Form.Item>
-          <Form.Item label="上报URL" style={{marginBottom: "12px"}}>
+          <Form.Item label="上报URLS" style={{marginBottom: "12px"}}>
             <Input
               value={!!plugin.urls && plugin.urls.length > 0 ? plugin.urls[0] : ""}
               onChange={(e) => {
@@ -196,6 +196,8 @@ const PluginSetting = (props: PluginSettingProp) => {
                 })
               }}
             />
+            <div style={{ color: "red" }}>可以配置多个URL作为候选项，URL之间用英文的 , 号隔开</div>
+            <div style={{ color: "red" }}>启动时选择其中的一个URL进行连接，当该URL对应的服务不可用时，自动选择其他服务可用的URL</div>
           </Form.Item>
           <Form.Item>
             <Button onClick={handleSavePlugin} type="primary">保存</Button>
