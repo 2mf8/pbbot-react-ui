@@ -171,21 +171,6 @@ const PluginSetting = (props: PluginSettingProp) => {
               }}
             />
           </Form.Item>
-          <Form.Item label="协议类型" style={{marginBottom: "12px"}}>
-              <Select
-                value={plugin.protocol}
-                style={{ width: 180 }}
-                onChange={(value) => { 
-                  setPlugin({
-                    ...plugin,
-                    protocol: value
-                  })
-                }}
-              >
-                  <Select.Option value={0}>ProtoBuf</Select.Option>
-                  <Select.Option value={1}>OneBot V11</Select.Option>
-              </Select>
-          </Form.Item>
           <Form.Item label="上报URLS" style={{marginBottom: "12px"}}>
             <Input
               value={!!plugin.urls && plugin.urls.length > 0 ? plugin.urls[0] : ""}
