@@ -14,7 +14,6 @@ interface QRCodeLoginProp {
 const QRCodeLogin = (props: QRCodeLoginProp) => {
     const { isVisible, onClose } = props;
     const [deviceSeed, setDeviceSeed] = useState<number>(new Date().getTime());
-    const [clientProtocol, setClientProtocol] = useState<number>(0);
     // 如果不是{}，轮询获取状态
     const [fetchQRCodeResp, setFetchQRCodeResp] = useState<dto.IQRCodeLoginResp>({});
     const queryQRCodeRespRef = useRef<dto.IQRCodeLoginResp>({});
@@ -69,7 +68,7 @@ const QRCodeLogin = (props: QRCodeLoginProp) => {
 
     const handleFetchQRCode = async () => {
         try {
-            let resp = await service.fetchQRCode({ deviceSeed: Long.fromNumber(deviceSeed), clientProtocol: clientProtocol })
+            let resp = await service.fetchQRCode({ deviceSeed: Long.fromNumber(deviceSeed) })
             setFetchQRCodeResp(resp)
         } catch (e) {
             notification["error"]({

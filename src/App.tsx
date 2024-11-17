@@ -9,12 +9,14 @@ import PluginSetting from "./components/PluginSetting";
 import { useInterval } from './utils/interval'
 import { service } from './api/RpcImpl'
 import { dto } from './api/gen/proto';
+import BaseInfoSet from './components/BaseInfoSet';
 
 const { Header, Content } = Layout;
 const App = () => {
   const [showQRCodeLogin, setShowQRCodeLogin] = useState<boolean>(false);
   const [showPasswordLogin, setShowPasswordLogin] = useState<boolean>(false);
   const [showSetting, setShowSetting] = useState<boolean>(false);
+  const [showBaseSetting, setShowBaseSetting] = useState<boolean>(false)
 
   const [listBotResp, setListBotResp] = useState<dto.IListBotResp>({});
   useInterval(async () => {
@@ -37,8 +39,12 @@ const App = () => {
         </Header>
         <Content>
           <div >
+            <Button style={{ margin: "20px 8px" }} type="primary" onClick={() => setShowBaseSetting(true)}>基础设置</Button>
+            <BaseInfoSet isVisible={showBaseSetting} onClose={() => { setShowBaseSetting(false) }}/>
             <Button style={{ margin: "20px 8px" }} type="primary" onClick={() => setShowQRCodeLogin(true)}>扫码创建</Button>
             <QRCodeLogin isVisible={showQRCodeLogin} onClose={() => { setShowQRCodeLogin(false) }}/>
+            <Button style={{ margin: "20px 8px" }} type="primary" onClick={() => setShowPasswordLogin(true)}>密码创建</Button>
+            <PasswordLogin isVisible={showPasswordLogin} onClose={() => {setShowPasswordLogin(false)}}/>
             <Button style={{ margin: "20px 8px" }} shape="circle" icon={<SettingOutlined />} onClick={() => setShowSetting(true)}/>
             <PluginSetting isVisible={showSetting} onClose={() => { setShowSetting(false) }}/>
             <Button style={{ margin: "20px 8px" }} shape="circle" icon={<GithubOutlined />} href="https://github.com/ProtobufBot/ProtobufBot" target="_blank"/>

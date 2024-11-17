@@ -614,10 +614,6 @@ $root.dto = (function() {
          * @interface ICreateBotReq
          * @property {Long|null} [botId] CreateBotReq botId
          * @property {string|null} [password] CreateBotReq password
-         * @property {Long|null} [deviceSeed] CreateBotReq deviceSeed
-         * @property {number|null} [clientProtocol] CreateBotReq clientProtocol
-         * @property {string|null} [signServer] CreateBotReq signServer
-         * @property {string|null} [signServerAuth] CreateBotReq signServerAuth
          */
 
         /**
@@ -652,38 +648,6 @@ $root.dto = (function() {
         CreateBotReq.prototype.password = "";
 
         /**
-         * CreateBotReq deviceSeed.
-         * @member {Long} deviceSeed
-         * @memberof dto.CreateBotReq
-         * @instance
-         */
-        CreateBotReq.prototype.deviceSeed = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-
-        /**
-         * CreateBotReq clientProtocol.
-         * @member {number} clientProtocol
-         * @memberof dto.CreateBotReq
-         * @instance
-         */
-        CreateBotReq.prototype.clientProtocol = 0;
-
-        /**
-         * CreateBotReq signServer.
-         * @member {string} signServer
-         * @memberof dto.CreateBotReq
-         * @instance
-         */
-        CreateBotReq.prototype.signServer = "";
-
-        /**
-         * CreateBotReq signServerAuth.
-         * @member {string} signServerAuth
-         * @memberof dto.CreateBotReq
-         * @instance
-         */
-        CreateBotReq.prototype.signServerAuth = "";
-
-        /**
          * Creates a new CreateBotReq instance using the specified properties.
          * @function create
          * @memberof dto.CreateBotReq
@@ -711,14 +675,6 @@ $root.dto = (function() {
                 writer.uint32(/* id 1, wireType 0 =*/8).int64(message.botId);
             if (message.password != null && Object.hasOwnProperty.call(message, "password"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.password);
-            if (message.deviceSeed != null && Object.hasOwnProperty.call(message, "deviceSeed"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.deviceSeed);
-            if (message.clientProtocol != null && Object.hasOwnProperty.call(message, "clientProtocol"))
-                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.clientProtocol);
-            if (message.signServer != null && Object.hasOwnProperty.call(message, "signServer"))
-                writer.uint32(/* id 5, wireType 2 =*/42).string(message.signServer);
-            if (message.signServerAuth != null && Object.hasOwnProperty.call(message, "signServerAuth"))
-                writer.uint32(/* id 6, wireType 2 =*/50).string(message.signServerAuth);
             return writer;
         };
 
@@ -758,18 +714,6 @@ $root.dto = (function() {
                     break;
                 case 2:
                     message.password = reader.string();
-                    break;
-                case 3:
-                    message.deviceSeed = reader.int64();
-                    break;
-                case 4:
-                    message.clientProtocol = reader.int32();
-                    break;
-                case 5:
-                    message.signServer = reader.string();
-                    break;
-                case 6:
-                    message.signServerAuth = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -812,18 +756,6 @@ $root.dto = (function() {
             if (message.password != null && message.hasOwnProperty("password"))
                 if (!$util.isString(message.password))
                     return "password: string expected";
-            if (message.deviceSeed != null && message.hasOwnProperty("deviceSeed"))
-                if (!$util.isInteger(message.deviceSeed) && !(message.deviceSeed && $util.isInteger(message.deviceSeed.low) && $util.isInteger(message.deviceSeed.high)))
-                    return "deviceSeed: integer|Long expected";
-            if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
-                if (!$util.isInteger(message.clientProtocol))
-                    return "clientProtocol: integer expected";
-            if (message.signServer != null && message.hasOwnProperty("signServer"))
-                if (!$util.isString(message.signServer))
-                    return "signServer: string expected";
-            if (message.signServerAuth != null && message.hasOwnProperty("signServerAuth"))
-                if (!$util.isString(message.signServerAuth))
-                    return "signServerAuth: string expected";
             return null;
         };
 
@@ -850,21 +782,6 @@ $root.dto = (function() {
                     message.botId = new $util.LongBits(object.botId.low >>> 0, object.botId.high >>> 0).toNumber();
             if (object.password != null)
                 message.password = String(object.password);
-            if (object.deviceSeed != null)
-                if ($util.Long)
-                    (message.deviceSeed = $util.Long.fromValue(object.deviceSeed)).unsigned = false;
-                else if (typeof object.deviceSeed === "string")
-                    message.deviceSeed = parseInt(object.deviceSeed, 10);
-                else if (typeof object.deviceSeed === "number")
-                    message.deviceSeed = object.deviceSeed;
-                else if (typeof object.deviceSeed === "object")
-                    message.deviceSeed = new $util.LongBits(object.deviceSeed.low >>> 0, object.deviceSeed.high >>> 0).toNumber();
-            if (object.clientProtocol != null)
-                message.clientProtocol = object.clientProtocol | 0;
-            if (object.signServer != null)
-                message.signServer = String(object.signServer);
-            if (object.signServerAuth != null)
-                message.signServerAuth = String(object.signServerAuth);
             return message;
         };
 
@@ -888,14 +805,6 @@ $root.dto = (function() {
                 } else
                     object.botId = options.longs === String ? "0" : 0;
                 object.password = "";
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, false);
-                    object.deviceSeed = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.deviceSeed = options.longs === String ? "0" : 0;
-                object.clientProtocol = 0;
-                object.signServer = "";
-                object.signServerAuth = "";
             }
             if (message.botId != null && message.hasOwnProperty("botId"))
                 if (typeof message.botId === "number")
@@ -904,17 +813,6 @@ $root.dto = (function() {
                     object.botId = options.longs === String ? $util.Long.prototype.toString.call(message.botId) : options.longs === Number ? new $util.LongBits(message.botId.low >>> 0, message.botId.high >>> 0).toNumber() : message.botId;
             if (message.password != null && message.hasOwnProperty("password"))
                 object.password = message.password;
-            if (message.deviceSeed != null && message.hasOwnProperty("deviceSeed"))
-                if (typeof message.deviceSeed === "number")
-                    object.deviceSeed = options.longs === String ? String(message.deviceSeed) : message.deviceSeed;
-                else
-                    object.deviceSeed = options.longs === String ? $util.Long.prototype.toString.call(message.deviceSeed) : options.longs === Number ? new $util.LongBits(message.deviceSeed.low >>> 0, message.deviceSeed.high >>> 0).toNumber() : message.deviceSeed;
-            if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
-                object.clientProtocol = message.clientProtocol;
-            if (message.signServer != null && message.hasOwnProperty("signServer"))
-                object.signServer = message.signServer;
-            if (message.signServerAuth != null && message.hasOwnProperty("signServerAuth"))
-                object.signServerAuth = message.signServerAuth;
             return object;
         };
 
@@ -1821,6 +1719,992 @@ $root.dto = (function() {
         return ListBotResp;
     })();
 
+    dto.SetBaseInfoReq = (function() {
+
+        /**
+         * Properties of a SetBaseInfoReq.
+         * @memberof dto
+         * @interface ISetBaseInfoReq
+         * @property {string|null} [platform] SetBaseInfoReq platform
+         * @property {string|null} [appVersion] SetBaseInfoReq appVersion
+         * @property {string|null} [signServer] SetBaseInfoReq signServer
+         */
+
+        /**
+         * Constructs a new SetBaseInfoReq.
+         * @memberof dto
+         * @classdesc Represents a SetBaseInfoReq.
+         * @implements ISetBaseInfoReq
+         * @constructor
+         * @param {dto.ISetBaseInfoReq=} [properties] Properties to set
+         */
+        function SetBaseInfoReq(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * SetBaseInfoReq platform.
+         * @member {string} platform
+         * @memberof dto.SetBaseInfoReq
+         * @instance
+         */
+        SetBaseInfoReq.prototype.platform = "";
+
+        /**
+         * SetBaseInfoReq appVersion.
+         * @member {string} appVersion
+         * @memberof dto.SetBaseInfoReq
+         * @instance
+         */
+        SetBaseInfoReq.prototype.appVersion = "";
+
+        /**
+         * SetBaseInfoReq signServer.
+         * @member {string} signServer
+         * @memberof dto.SetBaseInfoReq
+         * @instance
+         */
+        SetBaseInfoReq.prototype.signServer = "";
+
+        /**
+         * Creates a new SetBaseInfoReq instance using the specified properties.
+         * @function create
+         * @memberof dto.SetBaseInfoReq
+         * @static
+         * @param {dto.ISetBaseInfoReq=} [properties] Properties to set
+         * @returns {dto.SetBaseInfoReq} SetBaseInfoReq instance
+         */
+        SetBaseInfoReq.create = function create(properties) {
+            return new SetBaseInfoReq(properties);
+        };
+
+        /**
+         * Encodes the specified SetBaseInfoReq message. Does not implicitly {@link dto.SetBaseInfoReq.verify|verify} messages.
+         * @function encode
+         * @memberof dto.SetBaseInfoReq
+         * @static
+         * @param {dto.ISetBaseInfoReq} message SetBaseInfoReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SetBaseInfoReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.platform != null && Object.hasOwnProperty.call(message, "platform"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.platform);
+            if (message.appVersion != null && Object.hasOwnProperty.call(message, "appVersion"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.appVersion);
+            if (message.signServer != null && Object.hasOwnProperty.call(message, "signServer"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.signServer);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SetBaseInfoReq message, length delimited. Does not implicitly {@link dto.SetBaseInfoReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.SetBaseInfoReq
+         * @static
+         * @param {dto.ISetBaseInfoReq} message SetBaseInfoReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SetBaseInfoReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SetBaseInfoReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.SetBaseInfoReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.SetBaseInfoReq} SetBaseInfoReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SetBaseInfoReq.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.SetBaseInfoReq();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.platform = reader.string();
+                    break;
+                case 2:
+                    message.appVersion = reader.string();
+                    break;
+                case 3:
+                    message.signServer = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SetBaseInfoReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.SetBaseInfoReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.SetBaseInfoReq} SetBaseInfoReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SetBaseInfoReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SetBaseInfoReq message.
+         * @function verify
+         * @memberof dto.SetBaseInfoReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SetBaseInfoReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.platform != null && message.hasOwnProperty("platform"))
+                if (!$util.isString(message.platform))
+                    return "platform: string expected";
+            if (message.appVersion != null && message.hasOwnProperty("appVersion"))
+                if (!$util.isString(message.appVersion))
+                    return "appVersion: string expected";
+            if (message.signServer != null && message.hasOwnProperty("signServer"))
+                if (!$util.isString(message.signServer))
+                    return "signServer: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a SetBaseInfoReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.SetBaseInfoReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.SetBaseInfoReq} SetBaseInfoReq
+         */
+        SetBaseInfoReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.SetBaseInfoReq)
+                return object;
+            var message = new $root.dto.SetBaseInfoReq();
+            if (object.platform != null)
+                message.platform = String(object.platform);
+            if (object.appVersion != null)
+                message.appVersion = String(object.appVersion);
+            if (object.signServer != null)
+                message.signServer = String(object.signServer);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SetBaseInfoReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.SetBaseInfoReq
+         * @static
+         * @param {dto.SetBaseInfoReq} message SetBaseInfoReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SetBaseInfoReq.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.platform = "";
+                object.appVersion = "";
+                object.signServer = "";
+            }
+            if (message.platform != null && message.hasOwnProperty("platform"))
+                object.platform = message.platform;
+            if (message.appVersion != null && message.hasOwnProperty("appVersion"))
+                object.appVersion = message.appVersion;
+            if (message.signServer != null && message.hasOwnProperty("signServer"))
+                object.signServer = message.signServer;
+            return object;
+        };
+
+        /**
+         * Converts this SetBaseInfoReq to JSON.
+         * @function toJSON
+         * @memberof dto.SetBaseInfoReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SetBaseInfoReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return SetBaseInfoReq;
+    })();
+
+    dto.SetBaseInfoResp = (function() {
+
+        /**
+         * Properties of a SetBaseInfoResp.
+         * @memberof dto
+         * @interface ISetBaseInfoResp
+         */
+
+        /**
+         * Constructs a new SetBaseInfoResp.
+         * @memberof dto
+         * @classdesc Represents a SetBaseInfoResp.
+         * @implements ISetBaseInfoResp
+         * @constructor
+         * @param {dto.ISetBaseInfoResp=} [properties] Properties to set
+         */
+        function SetBaseInfoResp(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new SetBaseInfoResp instance using the specified properties.
+         * @function create
+         * @memberof dto.SetBaseInfoResp
+         * @static
+         * @param {dto.ISetBaseInfoResp=} [properties] Properties to set
+         * @returns {dto.SetBaseInfoResp} SetBaseInfoResp instance
+         */
+        SetBaseInfoResp.create = function create(properties) {
+            return new SetBaseInfoResp(properties);
+        };
+
+        /**
+         * Encodes the specified SetBaseInfoResp message. Does not implicitly {@link dto.SetBaseInfoResp.verify|verify} messages.
+         * @function encode
+         * @memberof dto.SetBaseInfoResp
+         * @static
+         * @param {dto.ISetBaseInfoResp} message SetBaseInfoResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SetBaseInfoResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SetBaseInfoResp message, length delimited. Does not implicitly {@link dto.SetBaseInfoResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.SetBaseInfoResp
+         * @static
+         * @param {dto.ISetBaseInfoResp} message SetBaseInfoResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SetBaseInfoResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SetBaseInfoResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.SetBaseInfoResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.SetBaseInfoResp} SetBaseInfoResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SetBaseInfoResp.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.SetBaseInfoResp();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SetBaseInfoResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.SetBaseInfoResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.SetBaseInfoResp} SetBaseInfoResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SetBaseInfoResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SetBaseInfoResp message.
+         * @function verify
+         * @memberof dto.SetBaseInfoResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SetBaseInfoResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a SetBaseInfoResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.SetBaseInfoResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.SetBaseInfoResp} SetBaseInfoResp
+         */
+        SetBaseInfoResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.SetBaseInfoResp)
+                return object;
+            return new $root.dto.SetBaseInfoResp();
+        };
+
+        /**
+         * Creates a plain object from a SetBaseInfoResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.SetBaseInfoResp
+         * @static
+         * @param {dto.SetBaseInfoResp} message SetBaseInfoResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SetBaseInfoResp.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this SetBaseInfoResp to JSON.
+         * @function toJSON
+         * @memberof dto.SetBaseInfoResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SetBaseInfoResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return SetBaseInfoResp;
+    })();
+
+    dto.GetAllVersionReq = (function() {
+
+        /**
+         * Properties of a GetAllVersionReq.
+         * @memberof dto
+         * @interface IGetAllVersionReq
+         */
+
+        /**
+         * Constructs a new GetAllVersionReq.
+         * @memberof dto
+         * @classdesc Represents a GetAllVersionReq.
+         * @implements IGetAllVersionReq
+         * @constructor
+         * @param {dto.IGetAllVersionReq=} [properties] Properties to set
+         */
+        function GetAllVersionReq(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new GetAllVersionReq instance using the specified properties.
+         * @function create
+         * @memberof dto.GetAllVersionReq
+         * @static
+         * @param {dto.IGetAllVersionReq=} [properties] Properties to set
+         * @returns {dto.GetAllVersionReq} GetAllVersionReq instance
+         */
+        GetAllVersionReq.create = function create(properties) {
+            return new GetAllVersionReq(properties);
+        };
+
+        /**
+         * Encodes the specified GetAllVersionReq message. Does not implicitly {@link dto.GetAllVersionReq.verify|verify} messages.
+         * @function encode
+         * @memberof dto.GetAllVersionReq
+         * @static
+         * @param {dto.IGetAllVersionReq} message GetAllVersionReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GetAllVersionReq.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GetAllVersionReq message, length delimited. Does not implicitly {@link dto.GetAllVersionReq.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.GetAllVersionReq
+         * @static
+         * @param {dto.IGetAllVersionReq} message GetAllVersionReq message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GetAllVersionReq.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a GetAllVersionReq message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.GetAllVersionReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.GetAllVersionReq} GetAllVersionReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GetAllVersionReq.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.GetAllVersionReq();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a GetAllVersionReq message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.GetAllVersionReq
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.GetAllVersionReq} GetAllVersionReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GetAllVersionReq.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a GetAllVersionReq message.
+         * @function verify
+         * @memberof dto.GetAllVersionReq
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GetAllVersionReq.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a GetAllVersionReq message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.GetAllVersionReq
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.GetAllVersionReq} GetAllVersionReq
+         */
+        GetAllVersionReq.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.GetAllVersionReq)
+                return object;
+            return new $root.dto.GetAllVersionReq();
+        };
+
+        /**
+         * Creates a plain object from a GetAllVersionReq message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.GetAllVersionReq
+         * @static
+         * @param {dto.GetAllVersionReq} message GetAllVersionReq
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GetAllVersionReq.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this GetAllVersionReq to JSON.
+         * @function toJSON
+         * @memberof dto.GetAllVersionReq
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GetAllVersionReq.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return GetAllVersionReq;
+    })();
+
+    dto.GetAllVersionResp = (function() {
+
+        /**
+         * Properties of a GetAllVersionResp.
+         * @memberof dto
+         * @interface IGetAllVersionResp
+         * @property {Array.<dto.GetAllVersionResp.IAllVersion>|null} [allVersion] GetAllVersionResp allVersion
+         */
+
+        /**
+         * Constructs a new GetAllVersionResp.
+         * @memberof dto
+         * @classdesc Represents a GetAllVersionResp.
+         * @implements IGetAllVersionResp
+         * @constructor
+         * @param {dto.IGetAllVersionResp=} [properties] Properties to set
+         */
+        function GetAllVersionResp(properties) {
+            this.allVersion = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * GetAllVersionResp allVersion.
+         * @member {Array.<dto.GetAllVersionResp.IAllVersion>} allVersion
+         * @memberof dto.GetAllVersionResp
+         * @instance
+         */
+        GetAllVersionResp.prototype.allVersion = $util.emptyArray;
+
+        /**
+         * Creates a new GetAllVersionResp instance using the specified properties.
+         * @function create
+         * @memberof dto.GetAllVersionResp
+         * @static
+         * @param {dto.IGetAllVersionResp=} [properties] Properties to set
+         * @returns {dto.GetAllVersionResp} GetAllVersionResp instance
+         */
+        GetAllVersionResp.create = function create(properties) {
+            return new GetAllVersionResp(properties);
+        };
+
+        /**
+         * Encodes the specified GetAllVersionResp message. Does not implicitly {@link dto.GetAllVersionResp.verify|verify} messages.
+         * @function encode
+         * @memberof dto.GetAllVersionResp
+         * @static
+         * @param {dto.IGetAllVersionResp} message GetAllVersionResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GetAllVersionResp.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.allVersion != null && message.allVersion.length)
+                for (var i = 0; i < message.allVersion.length; ++i)
+                    $root.dto.GetAllVersionResp.AllVersion.encode(message.allVersion[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GetAllVersionResp message, length delimited. Does not implicitly {@link dto.GetAllVersionResp.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof dto.GetAllVersionResp
+         * @static
+         * @param {dto.IGetAllVersionResp} message GetAllVersionResp message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GetAllVersionResp.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a GetAllVersionResp message from the specified reader or buffer.
+         * @function decode
+         * @memberof dto.GetAllVersionResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {dto.GetAllVersionResp} GetAllVersionResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GetAllVersionResp.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.GetAllVersionResp();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    if (!(message.allVersion && message.allVersion.length))
+                        message.allVersion = [];
+                    message.allVersion.push($root.dto.GetAllVersionResp.AllVersion.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a GetAllVersionResp message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof dto.GetAllVersionResp
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {dto.GetAllVersionResp} GetAllVersionResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GetAllVersionResp.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a GetAllVersionResp message.
+         * @function verify
+         * @memberof dto.GetAllVersionResp
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GetAllVersionResp.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.allVersion != null && message.hasOwnProperty("allVersion")) {
+                if (!Array.isArray(message.allVersion))
+                    return "allVersion: array expected";
+                for (var i = 0; i < message.allVersion.length; ++i) {
+                    var error = $root.dto.GetAllVersionResp.AllVersion.verify(message.allVersion[i]);
+                    if (error)
+                        return "allVersion." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GetAllVersionResp message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof dto.GetAllVersionResp
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {dto.GetAllVersionResp} GetAllVersionResp
+         */
+        GetAllVersionResp.fromObject = function fromObject(object) {
+            if (object instanceof $root.dto.GetAllVersionResp)
+                return object;
+            var message = new $root.dto.GetAllVersionResp();
+            if (object.allVersion) {
+                if (!Array.isArray(object.allVersion))
+                    throw TypeError(".dto.GetAllVersionResp.allVersion: array expected");
+                message.allVersion = [];
+                for (var i = 0; i < object.allVersion.length; ++i) {
+                    if (typeof object.allVersion[i] !== "object")
+                        throw TypeError(".dto.GetAllVersionResp.allVersion: object expected");
+                    message.allVersion[i] = $root.dto.GetAllVersionResp.AllVersion.fromObject(object.allVersion[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GetAllVersionResp message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof dto.GetAllVersionResp
+         * @static
+         * @param {dto.GetAllVersionResp} message GetAllVersionResp
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GetAllVersionResp.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.allVersion = [];
+            if (message.allVersion && message.allVersion.length) {
+                object.allVersion = [];
+                for (var j = 0; j < message.allVersion.length; ++j)
+                    object.allVersion[j] = $root.dto.GetAllVersionResp.AllVersion.toObject(message.allVersion[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this GetAllVersionResp to JSON.
+         * @function toJSON
+         * @memberof dto.GetAllVersionResp
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GetAllVersionResp.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        GetAllVersionResp.AllVersion = (function() {
+
+            /**
+             * Properties of an AllVersion.
+             * @memberof dto.GetAllVersionResp
+             * @interface IAllVersion
+             * @property {string|null} [platform] AllVersion platform
+             * @property {Array.<string>|null} [appVersion] AllVersion appVersion
+             */
+
+            /**
+             * Constructs a new AllVersion.
+             * @memberof dto.GetAllVersionResp
+             * @classdesc Represents an AllVersion.
+             * @implements IAllVersion
+             * @constructor
+             * @param {dto.GetAllVersionResp.IAllVersion=} [properties] Properties to set
+             */
+            function AllVersion(properties) {
+                this.appVersion = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * AllVersion platform.
+             * @member {string} platform
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @instance
+             */
+            AllVersion.prototype.platform = "";
+
+            /**
+             * AllVersion appVersion.
+             * @member {Array.<string>} appVersion
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @instance
+             */
+            AllVersion.prototype.appVersion = $util.emptyArray;
+
+            /**
+             * Creates a new AllVersion instance using the specified properties.
+             * @function create
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @static
+             * @param {dto.GetAllVersionResp.IAllVersion=} [properties] Properties to set
+             * @returns {dto.GetAllVersionResp.AllVersion} AllVersion instance
+             */
+            AllVersion.create = function create(properties) {
+                return new AllVersion(properties);
+            };
+
+            /**
+             * Encodes the specified AllVersion message. Does not implicitly {@link dto.GetAllVersionResp.AllVersion.verify|verify} messages.
+             * @function encode
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @static
+             * @param {dto.GetAllVersionResp.IAllVersion} message AllVersion message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            AllVersion.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.platform != null && Object.hasOwnProperty.call(message, "platform"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.platform);
+                if (message.appVersion != null && message.appVersion.length)
+                    for (var i = 0; i < message.appVersion.length; ++i)
+                        writer.uint32(/* id 2, wireType 2 =*/18).string(message.appVersion[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified AllVersion message, length delimited. Does not implicitly {@link dto.GetAllVersionResp.AllVersion.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @static
+             * @param {dto.GetAllVersionResp.IAllVersion} message AllVersion message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            AllVersion.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an AllVersion message from the specified reader or buffer.
+             * @function decode
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {dto.GetAllVersionResp.AllVersion} AllVersion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            AllVersion.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.GetAllVersionResp.AllVersion();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.platform = reader.string();
+                        break;
+                    case 2:
+                        if (!(message.appVersion && message.appVersion.length))
+                            message.appVersion = [];
+                        message.appVersion.push(reader.string());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an AllVersion message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {dto.GetAllVersionResp.AllVersion} AllVersion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            AllVersion.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an AllVersion message.
+             * @function verify
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            AllVersion.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.platform != null && message.hasOwnProperty("platform"))
+                    if (!$util.isString(message.platform))
+                        return "platform: string expected";
+                if (message.appVersion != null && message.hasOwnProperty("appVersion")) {
+                    if (!Array.isArray(message.appVersion))
+                        return "appVersion: array expected";
+                    for (var i = 0; i < message.appVersion.length; ++i)
+                        if (!$util.isString(message.appVersion[i]))
+                            return "appVersion: string[] expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates an AllVersion message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {dto.GetAllVersionResp.AllVersion} AllVersion
+             */
+            AllVersion.fromObject = function fromObject(object) {
+                if (object instanceof $root.dto.GetAllVersionResp.AllVersion)
+                    return object;
+                var message = new $root.dto.GetAllVersionResp.AllVersion();
+                if (object.platform != null)
+                    message.platform = String(object.platform);
+                if (object.appVersion) {
+                    if (!Array.isArray(object.appVersion))
+                        throw TypeError(".dto.GetAllVersionResp.AllVersion.appVersion: array expected");
+                    message.appVersion = [];
+                    for (var i = 0; i < object.appVersion.length; ++i)
+                        message.appVersion[i] = String(object.appVersion[i]);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an AllVersion message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @static
+             * @param {dto.GetAllVersionResp.AllVersion} message AllVersion
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            AllVersion.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.appVersion = [];
+                if (options.defaults)
+                    object.platform = "";
+                if (message.platform != null && message.hasOwnProperty("platform"))
+                    object.platform = message.platform;
+                if (message.appVersion && message.appVersion.length) {
+                    object.appVersion = [];
+                    for (var j = 0; j < message.appVersion.length; ++j)
+                        object.appVersion[j] = message.appVersion[j];
+                }
+                return object;
+            };
+
+            /**
+             * Converts this AllVersion to JSON.
+             * @function toJSON
+             * @memberof dto.GetAllVersionResp.AllVersion
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            AllVersion.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return AllVersion;
+        })();
+
+        return GetAllVersionResp;
+    })();
+
     dto.SolveCaptchaReq = (function() {
 
         /**
@@ -2212,7 +3096,6 @@ $root.dto = (function() {
          * @memberof dto
          * @interface IFetchQRCodeReq
          * @property {Long|null} [deviceSeed] FetchQRCodeReq deviceSeed
-         * @property {number|null} [clientProtocol] FetchQRCodeReq clientProtocol
          */
 
         /**
@@ -2237,14 +3120,6 @@ $root.dto = (function() {
          * @instance
          */
         FetchQRCodeReq.prototype.deviceSeed = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-
-        /**
-         * FetchQRCodeReq clientProtocol.
-         * @member {number} clientProtocol
-         * @memberof dto.FetchQRCodeReq
-         * @instance
-         */
-        FetchQRCodeReq.prototype.clientProtocol = 0;
 
         /**
          * Creates a new FetchQRCodeReq instance using the specified properties.
@@ -2272,8 +3147,6 @@ $root.dto = (function() {
                 writer = $Writer.create();
             if (message.deviceSeed != null && Object.hasOwnProperty.call(message, "deviceSeed"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int64(message.deviceSeed);
-            if (message.clientProtocol != null && Object.hasOwnProperty.call(message, "clientProtocol"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.clientProtocol);
             return writer;
         };
 
@@ -2310,9 +3183,6 @@ $root.dto = (function() {
                 switch (tag >>> 3) {
                 case 1:
                     message.deviceSeed = reader.int64();
-                    break;
-                case 2:
-                    message.clientProtocol = reader.int32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -2352,9 +3222,6 @@ $root.dto = (function() {
             if (message.deviceSeed != null && message.hasOwnProperty("deviceSeed"))
                 if (!$util.isInteger(message.deviceSeed) && !(message.deviceSeed && $util.isInteger(message.deviceSeed.low) && $util.isInteger(message.deviceSeed.high)))
                     return "deviceSeed: integer|Long expected";
-            if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
-                if (!$util.isInteger(message.clientProtocol))
-                    return "clientProtocol: integer expected";
             return null;
         };
 
@@ -2379,8 +3246,6 @@ $root.dto = (function() {
                     message.deviceSeed = object.deviceSeed;
                 else if (typeof object.deviceSeed === "object")
                     message.deviceSeed = new $util.LongBits(object.deviceSeed.low >>> 0, object.deviceSeed.high >>> 0).toNumber();
-            if (object.clientProtocol != null)
-                message.clientProtocol = object.clientProtocol | 0;
             return message;
         };
 
@@ -2397,21 +3262,17 @@ $root.dto = (function() {
             if (!options)
                 options = {};
             var object = {};
-            if (options.defaults) {
+            if (options.defaults)
                 if ($util.Long) {
                     var long = new $util.Long(0, 0, false);
                     object.deviceSeed = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                 } else
                     object.deviceSeed = options.longs === String ? "0" : 0;
-                object.clientProtocol = 0;
-            }
             if (message.deviceSeed != null && message.hasOwnProperty("deviceSeed"))
                 if (typeof message.deviceSeed === "number")
                     object.deviceSeed = options.longs === String ? String(message.deviceSeed) : message.deviceSeed;
                 else
                     object.deviceSeed = options.longs === String ? $util.Long.prototype.toString.call(message.deviceSeed) : options.longs === Number ? new $util.LongBits(message.deviceSeed.low >>> 0, message.deviceSeed.high >>> 0).toNumber() : message.deviceSeed;
-            if (message.clientProtocol != null && message.hasOwnProperty("clientProtocol"))
-                object.clientProtocol = message.clientProtocol;
             return object;
         };
 
@@ -5066,6 +5927,72 @@ $root.dto = (function() {
          * @instance
          * @param {dto.IDeletePluginReq} request DeletePluginReq message or plain object
          * @returns {Promise<dto.DeletePluginResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dto.HttpService#setBaseInfo}.
+         * @memberof dto.HttpService
+         * @typedef SetBaseInfoCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dto.SetBaseInfoResp} [response] SetBaseInfoResp
+         */
+
+        /**
+         * Calls SetBaseInfo.
+         * @function setBaseInfo
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.ISetBaseInfoReq} request SetBaseInfoReq message or plain object
+         * @param {dto.HttpService.SetBaseInfoCallback} callback Node-style callback called with the error, if any, and SetBaseInfoResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(HttpService.prototype.setBaseInfo = function setBaseInfo(request, callback) {
+            return this.rpcCall(setBaseInfo, $root.dto.SetBaseInfoReq, $root.dto.SetBaseInfoResp, request, callback);
+        }, "name", { value: "SetBaseInfo" });
+
+        /**
+         * Calls SetBaseInfo.
+         * @function setBaseInfo
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.ISetBaseInfoReq} request SetBaseInfoReq message or plain object
+         * @returns {Promise<dto.SetBaseInfoResp>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link dto.HttpService#getAllVersion}.
+         * @memberof dto.HttpService
+         * @typedef GetAllVersionCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {dto.GetAllVersionResp} [response] GetAllVersionResp
+         */
+
+        /**
+         * Calls GetAllVersion.
+         * @function getAllVersion
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.IGetAllVersionReq} request GetAllVersionReq message or plain object
+         * @param {dto.HttpService.GetAllVersionCallback} callback Node-style callback called with the error, if any, and GetAllVersionResp
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(HttpService.prototype.getAllVersion = function getAllVersion(request, callback) {
+            return this.rpcCall(getAllVersion, $root.dto.GetAllVersionReq, $root.dto.GetAllVersionResp, request, callback);
+        }, "name", { value: "GetAllVersion" });
+
+        /**
+         * Calls GetAllVersion.
+         * @function getAllVersion
+         * @memberof dto.HttpService
+         * @instance
+         * @param {dto.IGetAllVersionReq} request GetAllVersionReq message or plain object
+         * @returns {Promise<dto.GetAllVersionResp>} Promise
          * @variation 2
          */
 

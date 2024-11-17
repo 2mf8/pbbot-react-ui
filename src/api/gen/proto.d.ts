@@ -237,18 +237,6 @@ export namespace dto {
 
         /** CreateBotReq password */
         password?: (string|null);
-
-        /** CreateBotReq deviceSeed */
-        deviceSeed?: (Long|null);
-
-        /** CreateBotReq clientProtocol */
-        clientProtocol?: (number|null);
-
-        /** CreateBotReq signServer */
-        signServer?: (string|null);
-
-        /** CreateBotReq signServerAuth */
-        signServerAuth?: (string|null);
     }
 
     /** Represents a CreateBotReq. */
@@ -265,18 +253,6 @@ export namespace dto {
 
         /** CreateBotReq password. */
         public password: string;
-
-        /** CreateBotReq deviceSeed. */
-        public deviceSeed: Long;
-
-        /** CreateBotReq clientProtocol. */
-        public clientProtocol: number;
-
-        /** CreateBotReq signServer. */
-        public signServer: string;
-
-        /** CreateBotReq signServerAuth. */
-        public signServerAuth: string;
 
         /**
          * Creates a new CreateBotReq instance using the specified properties.
@@ -781,6 +757,465 @@ export namespace dto {
         public toJSON(): { [k: string]: any };
     }
 
+    /** Properties of a SetBaseInfoReq. */
+    interface ISetBaseInfoReq {
+
+        /** SetBaseInfoReq platform */
+        platform?: (string|null);
+
+        /** SetBaseInfoReq appVersion */
+        appVersion?: (string|null);
+
+        /** SetBaseInfoReq signServer */
+        signServer?: (string|null);
+    }
+
+    /** Represents a SetBaseInfoReq. */
+    class SetBaseInfoReq implements ISetBaseInfoReq {
+
+        /**
+         * Constructs a new SetBaseInfoReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.ISetBaseInfoReq);
+
+        /** SetBaseInfoReq platform. */
+        public platform: string;
+
+        /** SetBaseInfoReq appVersion. */
+        public appVersion: string;
+
+        /** SetBaseInfoReq signServer. */
+        public signServer: string;
+
+        /**
+         * Creates a new SetBaseInfoReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SetBaseInfoReq instance
+         */
+        public static create(properties?: dto.ISetBaseInfoReq): dto.SetBaseInfoReq;
+
+        /**
+         * Encodes the specified SetBaseInfoReq message. Does not implicitly {@link dto.SetBaseInfoReq.verify|verify} messages.
+         * @param message SetBaseInfoReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.ISetBaseInfoReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SetBaseInfoReq message, length delimited. Does not implicitly {@link dto.SetBaseInfoReq.verify|verify} messages.
+         * @param message SetBaseInfoReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.ISetBaseInfoReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SetBaseInfoReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SetBaseInfoReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.SetBaseInfoReq;
+
+        /**
+         * Decodes a SetBaseInfoReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SetBaseInfoReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.SetBaseInfoReq;
+
+        /**
+         * Verifies a SetBaseInfoReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SetBaseInfoReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SetBaseInfoReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.SetBaseInfoReq;
+
+        /**
+         * Creates a plain object from a SetBaseInfoReq message. Also converts values to other types if specified.
+         * @param message SetBaseInfoReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.SetBaseInfoReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SetBaseInfoReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a SetBaseInfoResp. */
+    interface ISetBaseInfoResp {
+    }
+
+    /** Represents a SetBaseInfoResp. */
+    class SetBaseInfoResp implements ISetBaseInfoResp {
+
+        /**
+         * Constructs a new SetBaseInfoResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.ISetBaseInfoResp);
+
+        /**
+         * Creates a new SetBaseInfoResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SetBaseInfoResp instance
+         */
+        public static create(properties?: dto.ISetBaseInfoResp): dto.SetBaseInfoResp;
+
+        /**
+         * Encodes the specified SetBaseInfoResp message. Does not implicitly {@link dto.SetBaseInfoResp.verify|verify} messages.
+         * @param message SetBaseInfoResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.ISetBaseInfoResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified SetBaseInfoResp message, length delimited. Does not implicitly {@link dto.SetBaseInfoResp.verify|verify} messages.
+         * @param message SetBaseInfoResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.ISetBaseInfoResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a SetBaseInfoResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SetBaseInfoResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.SetBaseInfoResp;
+
+        /**
+         * Decodes a SetBaseInfoResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SetBaseInfoResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.SetBaseInfoResp;
+
+        /**
+         * Verifies a SetBaseInfoResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a SetBaseInfoResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SetBaseInfoResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.SetBaseInfoResp;
+
+        /**
+         * Creates a plain object from a SetBaseInfoResp message. Also converts values to other types if specified.
+         * @param message SetBaseInfoResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.SetBaseInfoResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this SetBaseInfoResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a GetAllVersionReq. */
+    interface IGetAllVersionReq {
+    }
+
+    /** Represents a GetAllVersionReq. */
+    class GetAllVersionReq implements IGetAllVersionReq {
+
+        /**
+         * Constructs a new GetAllVersionReq.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IGetAllVersionReq);
+
+        /**
+         * Creates a new GetAllVersionReq instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GetAllVersionReq instance
+         */
+        public static create(properties?: dto.IGetAllVersionReq): dto.GetAllVersionReq;
+
+        /**
+         * Encodes the specified GetAllVersionReq message. Does not implicitly {@link dto.GetAllVersionReq.verify|verify} messages.
+         * @param message GetAllVersionReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IGetAllVersionReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GetAllVersionReq message, length delimited. Does not implicitly {@link dto.GetAllVersionReq.verify|verify} messages.
+         * @param message GetAllVersionReq message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IGetAllVersionReq, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GetAllVersionReq message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns GetAllVersionReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.GetAllVersionReq;
+
+        /**
+         * Decodes a GetAllVersionReq message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns GetAllVersionReq
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.GetAllVersionReq;
+
+        /**
+         * Verifies a GetAllVersionReq message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GetAllVersionReq message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GetAllVersionReq
+         */
+        public static fromObject(object: { [k: string]: any }): dto.GetAllVersionReq;
+
+        /**
+         * Creates a plain object from a GetAllVersionReq message. Also converts values to other types if specified.
+         * @param message GetAllVersionReq
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.GetAllVersionReq, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GetAllVersionReq to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    /** Properties of a GetAllVersionResp. */
+    interface IGetAllVersionResp {
+
+        /** GetAllVersionResp allVersion */
+        allVersion?: (dto.GetAllVersionResp.IAllVersion[]|null);
+    }
+
+    /** Represents a GetAllVersionResp. */
+    class GetAllVersionResp implements IGetAllVersionResp {
+
+        /**
+         * Constructs a new GetAllVersionResp.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: dto.IGetAllVersionResp);
+
+        /** GetAllVersionResp allVersion. */
+        public allVersion: dto.GetAllVersionResp.IAllVersion[];
+
+        /**
+         * Creates a new GetAllVersionResp instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GetAllVersionResp instance
+         */
+        public static create(properties?: dto.IGetAllVersionResp): dto.GetAllVersionResp;
+
+        /**
+         * Encodes the specified GetAllVersionResp message. Does not implicitly {@link dto.GetAllVersionResp.verify|verify} messages.
+         * @param message GetAllVersionResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: dto.IGetAllVersionResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GetAllVersionResp message, length delimited. Does not implicitly {@link dto.GetAllVersionResp.verify|verify} messages.
+         * @param message GetAllVersionResp message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: dto.IGetAllVersionResp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GetAllVersionResp message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns GetAllVersionResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.GetAllVersionResp;
+
+        /**
+         * Decodes a GetAllVersionResp message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns GetAllVersionResp
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.GetAllVersionResp;
+
+        /**
+         * Verifies a GetAllVersionResp message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GetAllVersionResp message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GetAllVersionResp
+         */
+        public static fromObject(object: { [k: string]: any }): dto.GetAllVersionResp;
+
+        /**
+         * Creates a plain object from a GetAllVersionResp message. Also converts values to other types if specified.
+         * @param message GetAllVersionResp
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: dto.GetAllVersionResp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GetAllVersionResp to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
+
+    namespace GetAllVersionResp {
+
+        /** Properties of an AllVersion. */
+        interface IAllVersion {
+
+            /** AllVersion platform */
+            platform?: (string|null);
+
+            /** AllVersion appVersion */
+            appVersion?: (string[]|null);
+        }
+
+        /** Represents an AllVersion. */
+        class AllVersion implements IAllVersion {
+
+            /**
+             * Constructs a new AllVersion.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: dto.GetAllVersionResp.IAllVersion);
+
+            /** AllVersion platform. */
+            public platform: string;
+
+            /** AllVersion appVersion. */
+            public appVersion: string[];
+
+            /**
+             * Creates a new AllVersion instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns AllVersion instance
+             */
+            public static create(properties?: dto.GetAllVersionResp.IAllVersion): dto.GetAllVersionResp.AllVersion;
+
+            /**
+             * Encodes the specified AllVersion message. Does not implicitly {@link dto.GetAllVersionResp.AllVersion.verify|verify} messages.
+             * @param message AllVersion message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: dto.GetAllVersionResp.IAllVersion, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified AllVersion message, length delimited. Does not implicitly {@link dto.GetAllVersionResp.AllVersion.verify|verify} messages.
+             * @param message AllVersion message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: dto.GetAllVersionResp.IAllVersion, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an AllVersion message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns AllVersion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.GetAllVersionResp.AllVersion;
+
+            /**
+             * Decodes an AllVersion message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns AllVersion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.GetAllVersionResp.AllVersion;
+
+            /**
+             * Verifies an AllVersion message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an AllVersion message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns AllVersion
+             */
+            public static fromObject(object: { [k: string]: any }): dto.GetAllVersionResp.AllVersion;
+
+            /**
+             * Creates a plain object from an AllVersion message. Also converts values to other types if specified.
+             * @param message AllVersion
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: dto.GetAllVersionResp.AllVersion, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this AllVersion to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+    }
+
     /** Properties of a SolveCaptchaReq. */
     interface ISolveCaptchaReq {
 
@@ -966,9 +1401,6 @@ export namespace dto {
 
         /** FetchQRCodeReq deviceSeed */
         deviceSeed?: (Long|null);
-
-        /** FetchQRCodeReq clientProtocol */
-        clientProtocol?: (number|null);
     }
 
     /** Represents a FetchQRCodeReq. */
@@ -982,9 +1414,6 @@ export namespace dto {
 
         /** FetchQRCodeReq deviceSeed. */
         public deviceSeed: Long;
-
-        /** FetchQRCodeReq clientProtocol. */
-        public clientProtocol: number;
 
         /**
          * Creates a new FetchQRCodeReq instance using the specified properties.
@@ -2179,6 +2608,34 @@ export namespace dto {
          * @returns Promise
          */
         public deletePlugin(request: dto.IDeletePluginReq): Promise<dto.DeletePluginResp>;
+
+        /**
+         * Calls SetBaseInfo.
+         * @param request SetBaseInfoReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and SetBaseInfoResp
+         */
+        public setBaseInfo(request: dto.ISetBaseInfoReq, callback: dto.HttpService.SetBaseInfoCallback): void;
+
+        /**
+         * Calls SetBaseInfo.
+         * @param request SetBaseInfoReq message or plain object
+         * @returns Promise
+         */
+        public setBaseInfo(request: dto.ISetBaseInfoReq): Promise<dto.SetBaseInfoResp>;
+
+        /**
+         * Calls GetAllVersion.
+         * @param request GetAllVersionReq message or plain object
+         * @param callback Node-style callback called with the error, if any, and GetAllVersionResp
+         */
+        public getAllVersion(request: dto.IGetAllVersionReq, callback: dto.HttpService.GetAllVersionCallback): void;
+
+        /**
+         * Calls GetAllVersion.
+         * @param request GetAllVersionReq message or plain object
+         * @returns Promise
+         */
+        public getAllVersion(request: dto.IGetAllVersionReq): Promise<dto.GetAllVersionResp>;
     }
 
     namespace HttpService {
@@ -2245,5 +2702,19 @@ export namespace dto {
          * @param [response] DeletePluginResp
          */
         type DeletePluginCallback = (error: (Error|null), response?: dto.DeletePluginResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#setBaseInfo}.
+         * @param error Error, if any
+         * @param [response] SetBaseInfoResp
+         */
+        type SetBaseInfoCallback = (error: (Error|null), response?: dto.SetBaseInfoResp) => void;
+
+        /**
+         * Callback as used by {@link dto.HttpService#getAllVersion}.
+         * @param error Error, if any
+         * @param [response] GetAllVersionResp
+         */
+        type GetAllVersionCallback = (error: (Error|null), response?: dto.GetAllVersionResp) => void;
     }
 }

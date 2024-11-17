@@ -11,20 +11,12 @@ const PasswordLogin = (props: PasswordLoginProp) => {
     const { isVisible, onClose } = props
     const [botId, setBotId] = useState("")
     const [password, setPassword] = useState("")
-    const [clientProtocol, setClientProtocol] = useState<number>(0);
-    const [deviceSeed, setDeviceSeed] = useState<number>(new Date().getTime());
-    const [signServer, setSignServer] = useState("")
-    const [signServerKey, setSignServerkey] = useState("")
 
     const handleCreateBot = async () => {
         try {
             await service.createBot({
                 botId: Long.fromString(botId),
-                password: password,
-                deviceSeed: Long.fromNumber(deviceSeed),
-                clientProtocol: clientProtocol,
-                signServer: signServer,
-                signServerAuth: signServerKey
+                password: password
             })
             notification["success"]({
                 message: '创建成功',
@@ -60,45 +52,6 @@ const PasswordLogin = (props: PasswordLoginProp) => {
                     <Form.Item label="密码" style={{marginBottom: "12px"}}>
                         <Input.Password onChange={(e) => { setPassword(e.target.value) }}></Input.Password>
                     </Form.Item>
-                    <Form.Item label="协议类型" style={{marginBottom: "12px"}}>
-                        <Select
-                          value={clientProtocol}
-                          style={{ width: 180 }}
-                          onChange={(value) => { setClientProtocol(value) }}
-                        >
-                            <Select.Option value={0}>Default</Select.Option>
-                            <Select.Option value={1}>AndroidPhone</Select.Option>
-                            <Select.Option value={2}>AndroidWatch</Select.Option>
-                            <Select.Option value={3}>MacOS</Select.Option>
-                            <Select.Option value={4}>QiDian</Select.Option>
-                            <Select.Option value={5}>IPad</Select.Option>
-                            <Select.Option value={6}>AndroidPad</Select.Option>
-                        </Select>
-                    </Form.Item>
-                    <Form.Item label="设备种子" style={{marginBottom: "12px"}}>
-                        <InputNumber
-                            min={0}
-                            value={deviceSeed}
-                            max={4503599627370496}
-                            style={{ width: 180 }}
-                            onChange={(value) => { setDeviceSeed(value) }}
-                        />
-                        <Button
-                            style={{ marginLeft: "16px" }}
-                            onClick={() => setDeviceSeed(0)}
-                        >
-                            使用账号
-                        </Button>
-                        <div style={{ color: "red" }}>建议每次使用相同种子</div>
-                    </Form.Item>
-                    <Form.Item label="SignServer" style={{marginBottom: "12px"}}>
-                        <Input value={signServer} onChange={(e) => { setSignServer(e.target.value) }}></Input>
-                        <div style={{ color: "red" }}>默认为空，没有 SignServer 请忽略</div>
-                    </Form.Item>
-                    <Form.Item label="SignServerKey" style={{marginBottom: "12px"}}>
-                        <Input value={signServerKey} onChange={(e) => { setSignServerkey(e.target.value) }}></Input>
-                    </Form.Item>
-                    <Alert message="随机种子是数字，种子相同生成的设备文件相同，随机种子设为0默认使用账号作为种子。" type="info" />
                 </Form>
             </Modal>
         </>

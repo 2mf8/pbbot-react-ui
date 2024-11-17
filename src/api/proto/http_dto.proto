@@ -26,10 +26,6 @@ message Bot{
 message CreateBotReq{
     int64 bot_id = 1;
     string password = 2;
-    int64 device_seed = 3; // 设备信息随机种子
-    int32 client_protocol = 4; // 协议类型
-    string sign_server = 5;
-    string sign_server_auth = 6;
 }
 message CreateBotResp{
 }
@@ -48,6 +44,27 @@ message ListBotResp{
     repeated Bot bot_list = 1;
 }
 
+// 配置基本信息
+
+message SetBaseInfoReq{
+    string platform = 1;
+    string app_version = 2;
+    string sign_server = 3;
+}
+message SetBaseInfoResp{
+}
+
+// 获取版本信息
+message GetAllVersionReq{
+}
+message GetAllVersionResp{
+    repeated AllVersion all_version = 1;
+    message AllVersion{
+        string platform = 1;
+        repeated string app_version = 2;
+    }
+}
+
 // 处理验证码 /captcha/solve/v1/
 message SolveCaptchaReq{
     int64 bot_id = 1;
@@ -59,7 +76,6 @@ message SolveCaptchaResp{
 // 获取二维码 /qrcode/fetch/v1/
 message FetchQRCodeReq{
     int64 device_seed = 1;
-    int32 client_protocol = 2; // 协议类型
 }
 // 查询二维码状态 /qrcode/query/v1/
 message QueryQRCodeStatusReq{
@@ -130,4 +146,7 @@ service HttpService{
     rpc ListPlugin(ListPluginReq)returns (ListPluginResp);
     rpc SavePlugin(SavePluginReq)returns (SavePluginResp);
     rpc DeletePlugin(DeletePluginReq)returns (DeletePluginResp);
+
+    rpc SetBaseInfo(SetBaseInfoReq)returns (SetBaseInfoResp);
+    rpc GetAllVersion(GetAllVersionReq)returns (GetAllVersionResp);
 }

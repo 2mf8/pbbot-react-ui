@@ -10,4 +10,6 @@ export const urls: { [key: string]: string } = {
     'ListPlugin': "./plugin/list/v1",
     'SavePlugin': "./plugin/save/v1",
     'DeletePlugin': "./plugin/delete/v1",
+    'GetAllVersion':"./all/app/version/get/v1",
+    'SetBaseInfo': "./base/info/set/v1"
 }
