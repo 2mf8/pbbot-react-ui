@@ -1032,6 +1032,9 @@ export namespace dto {
 
         /** GetAllVersionResp allVersion */
         allVersion?: (dto.GetAllVersionResp.IAllVersion[]|null);
+
+        /** GetAllVersionResp usedVersion */
+        usedVersion?: (dto.GetAllVersionResp.IUsedVersion|null);
     }
 
     /** Represents a GetAllVersionResp. */
@@ -1045,6 +1048,9 @@ export namespace dto {
 
         /** GetAllVersionResp allVersion. */
         public allVersion: dto.GetAllVersionResp.IAllVersion[];
+
+        /** GetAllVersionResp usedVersion. */
+        public usedVersion?: (dto.GetAllVersionResp.IUsedVersion|null);
 
         /**
          * Creates a new GetAllVersionResp instance using the specified properties.
@@ -1210,6 +1216,108 @@ export namespace dto {
 
             /**
              * Converts this AllVersion to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a UsedVersion. */
+        interface IUsedVersion {
+
+            /** UsedVersion platform */
+            platform?: (string|null);
+
+            /** UsedVersion appVersion */
+            appVersion?: (string|null);
+
+            /** UsedVersion signServer */
+            signServer?: (string|null);
+        }
+
+        /** Represents a UsedVersion. */
+        class UsedVersion implements IUsedVersion {
+
+            /**
+             * Constructs a new UsedVersion.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: dto.GetAllVersionResp.IUsedVersion);
+
+            /** UsedVersion platform. */
+            public platform: string;
+
+            /** UsedVersion appVersion. */
+            public appVersion: string;
+
+            /** UsedVersion signServer. */
+            public signServer: string;
+
+            /**
+             * Creates a new UsedVersion instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns UsedVersion instance
+             */
+            public static create(properties?: dto.GetAllVersionResp.IUsedVersion): dto.GetAllVersionResp.UsedVersion;
+
+            /**
+             * Encodes the specified UsedVersion message. Does not implicitly {@link dto.GetAllVersionResp.UsedVersion.verify|verify} messages.
+             * @param message UsedVersion message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: dto.GetAllVersionResp.IUsedVersion, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified UsedVersion message, length delimited. Does not implicitly {@link dto.GetAllVersionResp.UsedVersion.verify|verify} messages.
+             * @param message UsedVersion message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: dto.GetAllVersionResp.IUsedVersion, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a UsedVersion message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns UsedVersion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): dto.GetAllVersionResp.UsedVersion;
+
+            /**
+             * Decodes a UsedVersion message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns UsedVersion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): dto.GetAllVersionResp.UsedVersion;
+
+            /**
+             * Verifies a UsedVersion message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a UsedVersion message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns UsedVersion
+             */
+            public static fromObject(object: { [k: string]: any }): dto.GetAllVersionResp.UsedVersion;
+
+            /**
+             * Creates a plain object from a UsedVersion message. Also converts values to other types if specified.
+             * @param message UsedVersion
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: dto.GetAllVersionResp.UsedVersion, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this UsedVersion to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };

@@ -2278,6 +2278,7 @@ $root.dto = (function() {
          * @memberof dto
          * @interface IGetAllVersionResp
          * @property {Array.<dto.GetAllVersionResp.IAllVersion>|null} [allVersion] GetAllVersionResp allVersion
+         * @property {dto.GetAllVersionResp.IUsedVersion|null} [usedVersion] GetAllVersionResp usedVersion
          */
 
         /**
@@ -2303,6 +2304,14 @@ $root.dto = (function() {
          * @instance
          */
         GetAllVersionResp.prototype.allVersion = $util.emptyArray;
+
+        /**
+         * GetAllVersionResp usedVersion.
+         * @member {dto.GetAllVersionResp.IUsedVersion|null|undefined} usedVersion
+         * @memberof dto.GetAllVersionResp
+         * @instance
+         */
+        GetAllVersionResp.prototype.usedVersion = null;
 
         /**
          * Creates a new GetAllVersionResp instance using the specified properties.
@@ -2331,6 +2340,8 @@ $root.dto = (function() {
             if (message.allVersion != null && message.allVersion.length)
                 for (var i = 0; i < message.allVersion.length; ++i)
                     $root.dto.GetAllVersionResp.AllVersion.encode(message.allVersion[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.usedVersion != null && Object.hasOwnProperty.call(message, "usedVersion"))
+                $root.dto.GetAllVersionResp.UsedVersion.encode(message.usedVersion, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             return writer;
         };
 
@@ -2369,6 +2380,9 @@ $root.dto = (function() {
                     if (!(message.allVersion && message.allVersion.length))
                         message.allVersion = [];
                     message.allVersion.push($root.dto.GetAllVersionResp.AllVersion.decode(reader, reader.uint32()));
+                    break;
+                case 2:
+                    message.usedVersion = $root.dto.GetAllVersionResp.UsedVersion.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -2414,6 +2428,11 @@ $root.dto = (function() {
                         return "allVersion." + error;
                 }
             }
+            if (message.usedVersion != null && message.hasOwnProperty("usedVersion")) {
+                var error = $root.dto.GetAllVersionResp.UsedVersion.verify(message.usedVersion);
+                if (error)
+                    return "usedVersion." + error;
+            }
             return null;
         };
 
@@ -2439,6 +2458,11 @@ $root.dto = (function() {
                     message.allVersion[i] = $root.dto.GetAllVersionResp.AllVersion.fromObject(object.allVersion[i]);
                 }
             }
+            if (object.usedVersion != null) {
+                if (typeof object.usedVersion !== "object")
+                    throw TypeError(".dto.GetAllVersionResp.usedVersion: object expected");
+                message.usedVersion = $root.dto.GetAllVersionResp.UsedVersion.fromObject(object.usedVersion);
+            }
             return message;
         };
 
@@ -2457,11 +2481,15 @@ $root.dto = (function() {
             var object = {};
             if (options.arrays || options.defaults)
                 object.allVersion = [];
+            if (options.defaults)
+                object.usedVersion = null;
             if (message.allVersion && message.allVersion.length) {
                 object.allVersion = [];
                 for (var j = 0; j < message.allVersion.length; ++j)
                     object.allVersion[j] = $root.dto.GetAllVersionResp.AllVersion.toObject(message.allVersion[j], options);
             }
+            if (message.usedVersion != null && message.hasOwnProperty("usedVersion"))
+                object.usedVersion = $root.dto.GetAllVersionResp.UsedVersion.toObject(message.usedVersion, options);
             return object;
         };
 
@@ -2700,6 +2728,238 @@ $root.dto = (function() {
             };
 
             return AllVersion;
+        })();
+
+        GetAllVersionResp.UsedVersion = (function() {
+
+            /**
+             * Properties of a UsedVersion.
+             * @memberof dto.GetAllVersionResp
+             * @interface IUsedVersion
+             * @property {string|null} [platform] UsedVersion platform
+             * @property {string|null} [appVersion] UsedVersion appVersion
+             * @property {string|null} [signServer] UsedVersion signServer
+             */
+
+            /**
+             * Constructs a new UsedVersion.
+             * @memberof dto.GetAllVersionResp
+             * @classdesc Represents a UsedVersion.
+             * @implements IUsedVersion
+             * @constructor
+             * @param {dto.GetAllVersionResp.IUsedVersion=} [properties] Properties to set
+             */
+            function UsedVersion(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * UsedVersion platform.
+             * @member {string} platform
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @instance
+             */
+            UsedVersion.prototype.platform = "";
+
+            /**
+             * UsedVersion appVersion.
+             * @member {string} appVersion
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @instance
+             */
+            UsedVersion.prototype.appVersion = "";
+
+            /**
+             * UsedVersion signServer.
+             * @member {string} signServer
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @instance
+             */
+            UsedVersion.prototype.signServer = "";
+
+            /**
+             * Creates a new UsedVersion instance using the specified properties.
+             * @function create
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @static
+             * @param {dto.GetAllVersionResp.IUsedVersion=} [properties] Properties to set
+             * @returns {dto.GetAllVersionResp.UsedVersion} UsedVersion instance
+             */
+            UsedVersion.create = function create(properties) {
+                return new UsedVersion(properties);
+            };
+
+            /**
+             * Encodes the specified UsedVersion message. Does not implicitly {@link dto.GetAllVersionResp.UsedVersion.verify|verify} messages.
+             * @function encode
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @static
+             * @param {dto.GetAllVersionResp.IUsedVersion} message UsedVersion message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            UsedVersion.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.platform != null && Object.hasOwnProperty.call(message, "platform"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.platform);
+                if (message.appVersion != null && Object.hasOwnProperty.call(message, "appVersion"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.appVersion);
+                if (message.signServer != null && Object.hasOwnProperty.call(message, "signServer"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.signServer);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified UsedVersion message, length delimited. Does not implicitly {@link dto.GetAllVersionResp.UsedVersion.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @static
+             * @param {dto.GetAllVersionResp.IUsedVersion} message UsedVersion message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            UsedVersion.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a UsedVersion message from the specified reader or buffer.
+             * @function decode
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {dto.GetAllVersionResp.UsedVersion} UsedVersion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            UsedVersion.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.dto.GetAllVersionResp.UsedVersion();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.platform = reader.string();
+                        break;
+                    case 2:
+                        message.appVersion = reader.string();
+                        break;
+                    case 3:
+                        message.signServer = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a UsedVersion message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {dto.GetAllVersionResp.UsedVersion} UsedVersion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            UsedVersion.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a UsedVersion message.
+             * @function verify
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            UsedVersion.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.platform != null && message.hasOwnProperty("platform"))
+                    if (!$util.isString(message.platform))
+                        return "platform: string expected";
+                if (message.appVersion != null && message.hasOwnProperty("appVersion"))
+                    if (!$util.isString(message.appVersion))
+                        return "appVersion: string expected";
+                if (message.signServer != null && message.hasOwnProperty("signServer"))
+                    if (!$util.isString(message.signServer))
+                        return "signServer: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a UsedVersion message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {dto.GetAllVersionResp.UsedVersion} UsedVersion
+             */
+            UsedVersion.fromObject = function fromObject(object) {
+                if (object instanceof $root.dto.GetAllVersionResp.UsedVersion)
+                    return object;
+                var message = new $root.dto.GetAllVersionResp.UsedVersion();
+                if (object.platform != null)
+                    message.platform = String(object.platform);
+                if (object.appVersion != null)
+                    message.appVersion = String(object.appVersion);
+                if (object.signServer != null)
+                    message.signServer = String(object.signServer);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a UsedVersion message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @static
+             * @param {dto.GetAllVersionResp.UsedVersion} message UsedVersion
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            UsedVersion.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.platform = "";
+                    object.appVersion = "";
+                    object.signServer = "";
+                }
+                if (message.platform != null && message.hasOwnProperty("platform"))
+                    object.platform = message.platform;
+                if (message.appVersion != null && message.hasOwnProperty("appVersion"))
+                    object.appVersion = message.appVersion;
+                if (message.signServer != null && message.hasOwnProperty("signServer"))
+                    object.signServer = message.signServer;
+                return object;
+            };
+
+            /**
+             * Converts this UsedVersion to JSON.
+             * @function toJSON
+             * @memberof dto.GetAllVersionResp.UsedVersion
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            UsedVersion.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return UsedVersion;
         })();
 
         return GetAllVersionResp;

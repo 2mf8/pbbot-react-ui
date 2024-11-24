@@ -17,11 +17,21 @@ const BaseInfoSet = (props: BaseInfoSetProp) => {
     const [appVersion, setAppVersion] = useState("default")
     const [signServer, setSignServer] = useState("default")
     const [versions, setVersions] = useState<string[]>([])
+    const [isGetAgain, setIsGetAgain] = useState<Boolean>(true)
 
     const [getAllVersion, setGetAllVersion] = useState<dto.IGetAllVersionResp>({})
     useInterval(async () => {
         try {
-          setGetAllVersion(await service.getAllVersion({}))
+            if(isGetAgain){
+                if (!!getAllVersion && !!getAllVersion.usedVersion){
+                    setIsGetAgain(false)
+                    setPlatform(getAllVersion.usedVersion.platform)
+                    setAppVersion(getAllVersion.usedVersion.appVersion)
+                    setSignServer(getAllVersion.usedVersion.signServer)
+                }else{
+                    setGetAllVersion(await service.getAllVersion({}))
+                }
+            }
         } catch (e) {
           notification["error"]({
             message: '获取基础信息失败',
@@ -39,6 +49,7 @@ const BaseInfoSet = (props: BaseInfoSetProp) => {
             }
         }) : _versions = []
         setVersions(_versions)
+        setAppVersion(_versions[0])
     }
     const handleSetBaseInfo = async () => {
         try {
@@ -79,17 +90,17 @@ const BaseInfoSet = (props: BaseInfoSetProp) => {
                         handleVersions(getAllVersion, value)
                      }}
                 >
-                    <Select.Option value={"default"}>Default</Select.Option>
-                    {getAllVersion.allVersion.map(baseInfo => (<Select.Option value={baseInfo.platform}>{baseInfo.platform}</Select.Option>))}
+                    <Select.Option value={platform}>{platform}</Select.Option>
+                    {getAllVersion.allVersion.filter((p)=>{return p.platform != platform}).map(baseInfo => (<Select.Option value={baseInfo.platform}>{baseInfo.platform}</Select.Option>))}
                     </Select></Form.Item>
                     <Form.Item label="AppVersion"><Select 
                     value={appVersion}
                     style={{ width: 180 }}
                     onChange={(value) => { setAppVersion(value) }}
                 >
-                    <Select.Option value={"default"}>Default</Select.Option>
+                    <Select.Option value={appVersion}>{appVersion}</Select.Option>
                     {
-                        versions.map(version=>(<Select.Option value={version}>{version}</Select.Option>))
+                        versions.filter((a) => {return a != appVersion}).map(version=>(<Select.Option value={version}>{version}</Select.Option>))
                     }
                     </Select></Form.Item>
             </Form> : <Form>
@@ -103,6 +114,7 @@ const BaseInfoSet = (props: BaseInfoSetProp) => {
             <Form.Item label="SignServer" style={{marginBottom: "12px"}}>
                 <Input value={signServer} onChange={(e) => { setSignServer(e.target.value) }}></Input>
             </Form.Item>
+            <div style={{ color: "red" }}>改动只对新创建的机器人生效</div>
         </Modal>
         </>
     )

@@ -59,9 +59,15 @@ message GetAllVersionReq{
 }
 message GetAllVersionResp{
     repeated AllVersion all_version = 1;
+    UsedVersion used_version = 2;
     message AllVersion{
         string platform = 1;
         repeated string app_version = 2;
+    }
+    message UsedVersion{
+        string platform = 1;
+        string app_version = 2;
+        string sign_server = 3;
     }
 }
 
