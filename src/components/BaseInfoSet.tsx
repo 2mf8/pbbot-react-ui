@@ -28,6 +28,7 @@ const BaseInfoSet = (props: BaseInfoSetProp) => {
                     setPlatform(getAllVersion.usedVersion.platform)
                     setAppVersion(getAllVersion.usedVersion.appVersion)
                     setSignServer(getAllVersion.usedVersion.signServer)
+                    handleVersions(getAllVersion, getAllVersion.usedVersion.platform)
                 }else{
                     setGetAllVersion(await service.getAllVersion({}))
                 }
